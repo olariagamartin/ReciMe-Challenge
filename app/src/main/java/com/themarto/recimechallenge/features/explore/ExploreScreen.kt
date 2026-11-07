@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -13,16 +14,38 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.themarto.recimechallenge.components.RecipeCard
 import com.themarto.recimechallenge.model.Recipe
 import com.themarto.recimechallenge.ui.preview.PreviewData
 
 @Composable
 fun ExploreScreen(
-    modifier: Modifier = Modifier
+    viewModel: ExploreViewModel = viewModel()
 ) {
-    // todo:
-    //ExploreScreenContent()
+    val uiState = viewModel.uiState.collectAsStateWithLifecycle()
+    when (val state = uiState.value) {
+        is ExploreUiState.Success -> {
+            ExploreScreenContent(
+                recipes = state.recipes,
+                onRecipeClick = { recipe -> viewModel.onRecipeClick(recipe) },
+                onBookmarkClick = { recipe -> viewModel.onBookmarkClick(recipe) },
+                recipeOfTheDay = state.recipeOfTheDay
+            )
+        }
+        is ExploreUiState.Loading -> {
+            CircularProgressIndicator(
+                modifier = Modifier.fillMaxSize()
+            )
+        }
+        is ExploreUiState.Error -> {
+            Text(
+                text = state.message,
+                modifier = Modifier.fillMaxSize()
+            )
+        }
+    }
 }
 
 @Composable
