@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ReciMe Challenge</string>
+    <string name="save_recipe">Save recipe</string>
+    <string name="remove_from_saved">Remove from saved</string>
+    <string name="time_min">%d min</string>
+    <string name="servings">%d servings</string>
 </resources>
