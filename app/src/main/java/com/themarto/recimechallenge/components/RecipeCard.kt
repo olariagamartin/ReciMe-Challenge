@@ -1,4 +1,4 @@
-package com.themarto.recimechallenge.ui.features
+package com.themarto.recimechallenge.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
