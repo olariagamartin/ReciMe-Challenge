@@ -34,7 +34,8 @@ import com.themarto.recimechallenge.ui.theme.ReciMeChallengeTheme
 @Composable
 fun RatingChip(
     rating: Rating,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    showReviews: Boolean = false,
 ) {
     Row(
         modifier = modifier
@@ -48,7 +49,18 @@ fun RatingChip(
             tint = MaterialTheme.colorScheme.primary
         )
         Spacer(modifier = Modifier.width(4.dp))
-        Text(text = "${rating.stars} (${rating.reviews})") // todo: format count
+        Text(
+            text = rating.stars.toString(),
+            style = MaterialTheme.typography.bodyMedium
+        )
+        if (showReviews) {
+            Spacer(modifier = Modifier.width(4.dp))
+            // todo: format
+            Text(
+                text = "(${rating.reviews})",
+                style = MaterialTheme.typography.bodySmall
+            )
+        }
     }
 }
 
@@ -99,8 +111,7 @@ fun MetricChip(
     modifier: Modifier = Modifier
 ) {
     Row(
-        modifier = modifier
-            .padding(4.dp),
+        modifier = modifier,
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Icon(
@@ -110,7 +121,7 @@ fun MetricChip(
         )
         Text(
             text = label,
-            modifier = Modifier.padding(8.dp),
+            modifier = Modifier.padding(horizontal = 8.dp),
             style = MaterialTheme.typography.bodyMedium
         )
     }

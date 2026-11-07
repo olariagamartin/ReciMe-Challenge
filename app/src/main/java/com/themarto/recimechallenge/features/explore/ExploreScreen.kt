@@ -1,4 +1,4 @@
-package com.themarto.recimechallenge.features
+package com.themarto.recimechallenge.features.explore
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -38,19 +38,12 @@ fun ExploreScreenContent(
             .fillMaxSize()
             .padding(16.dp)
     ) {
-
         LazyColumn(
             verticalArrangement = Arrangement.spacedBy(16.dp),
             modifier = Modifier.fillMaxSize()
         ) {
             item {
-                Text(
-                    text = "Recipe of the Day",
-                    style = MaterialTheme.typography.headlineSmall,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(bottom = 8.dp)
-                )
-                RecipeCard(
+                FeaturedRecipe(
                     recipe = recipeOfTheDay,
                     onClick = { onRecipeClick(recipeOfTheDay) },
                     onBookmarkClick = { onBookmarkClick(recipeOfTheDay) }

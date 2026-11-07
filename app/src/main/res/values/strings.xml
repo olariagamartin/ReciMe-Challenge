@@ -7,4 +7,6 @@
     <string name="explore_tab_label">Explore</string>
     <string name="saved_tab_label">Saved</string>
     <string name="search_tab_label">Search</string>
+    <string name="recipe_of_the_day_label">Today\'s Kitchen Inspiration</string>
+    <string name="view_recipe">View Recipe</string>
 </resources>
