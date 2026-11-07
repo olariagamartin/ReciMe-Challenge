@@ -14,4 +14,11 @@ object PreviewData {
         dietaryAttributes = listOf("vegetarian", "gluten-free", "dairy-free"),
         saved = true
     )
+
+    val recipeList = listOf(
+        recipe,
+        recipe.copy(id = "2", title = "Roasted Vegetables 2"),
+        recipe.copy(id = "3", title = "Roasted Vegetables 3"),
+        recipe.copy(id = "4", title = "Roasted Vegetables 4"),
+    )
 }
