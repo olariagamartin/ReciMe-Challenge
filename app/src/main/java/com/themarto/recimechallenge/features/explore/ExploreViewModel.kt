@@ -21,10 +21,6 @@ class ExploreViewModel : ViewModel() {
         )
     }
 
-    fun onRecipeClick(recipe: Recipe) {
-        
-    }
-
     fun onBookmarkClick(recipe: Recipe) {
         
     }

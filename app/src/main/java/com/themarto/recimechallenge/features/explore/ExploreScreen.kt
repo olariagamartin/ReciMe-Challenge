@@ -10,6 +10,7 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -22,14 +23,15 @@ import com.themarto.recimechallenge.ui.preview.PreviewData
 
 @Composable
 fun ExploreScreen(
-    viewModel: ExploreViewModel = viewModel()
+    viewModel: ExploreViewModel = viewModel(),
+    onRecipeClick: (String) -> Unit,
 ) {
-    val uiState = viewModel.uiState.collectAsStateWithLifecycle()
-    when (val state = uiState.value) {
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    when (val state = uiState) {
         is ExploreUiState.Success -> {
             ExploreScreenContent(
                 recipes = state.recipes,
-                onRecipeClick = { recipe -> viewModel.onRecipeClick(recipe) },
+                onRecipeClick = { recipe -> onRecipeClick(recipe.id) },
                 onBookmarkClick = { recipe -> viewModel.onBookmarkClick(recipe) },
                 recipeOfTheDay = state.recipeOfTheDay
             )

@@ -61,7 +61,11 @@ fun RecipeNavHost(
         modifier = modifier
     ) {
         composable(Destinations.Explore.route) {
-            ExploreScreen()
+            ExploreScreen(
+                onRecipeClick = { recipeId ->
+                    navController.navigate(Destinations.RecipeDetails.createRoute(recipeId))
+                }
+            )
         }
         composable(Destinations.Search.route) {
             SearchScreen()
