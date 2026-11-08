@@ -12,4 +12,5 @@
     <string name="search_button_content_description">Search</string>
     <string name="search_button_text">Search recipes</string>
     <string name="explore_header_title">What are you cooking today?</string>
+    <string name="reset_all">Reset search</string>
 </resources>
