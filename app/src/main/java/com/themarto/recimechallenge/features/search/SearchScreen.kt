@@ -26,6 +26,7 @@ import com.themarto.recimechallenge.ui.theme.ReciMeChallengeTheme
 
 @Composable
 fun SearchScreen(
+    onRecipeClick: (String) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: SearchViewModel = viewModel()
 ) {
@@ -56,7 +57,7 @@ fun SearchScreen(
                 onResetFilters = viewModel::onResetFilters,
                 onApplyFilters = viewModel::onApplyFilters,
                 onBookmarkClick = viewModel::onBookmarkClick,
-                onRecipeClick = viewModel::onRecipeClick,
+                onRecipeClick = onRecipeClick,
                 results = state.results
             )
         }

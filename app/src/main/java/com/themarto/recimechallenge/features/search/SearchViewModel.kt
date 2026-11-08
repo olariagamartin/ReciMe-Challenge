@@ -135,10 +135,6 @@ class SearchViewModel : ViewModel() {
         // Implementation for bookmarking a recipe
     }
 
-    fun onRecipeClick(recipeId: String) {
-        // Implementation for navigating to a recipe detail screen
-    }
-
 
     private fun updateSuccessState(update: (SearchUiState.Success) -> SearchUiState.Success) {
         _uiState.update { currentState ->
