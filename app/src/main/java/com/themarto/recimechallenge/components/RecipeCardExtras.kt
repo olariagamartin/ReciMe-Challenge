@@ -65,7 +65,7 @@ fun RatingChip(
             Spacer(modifier = Modifier.width(4.dp))
             // todo: format
             Text(
-                text = "(${rating.reviews})",
+                text = stringResource(R.string.reviews, rating.reviews),
                 style = MaterialTheme.typography.bodySmall
             )
         }
