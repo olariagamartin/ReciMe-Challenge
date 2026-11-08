@@ -25,6 +25,7 @@ import com.themarto.recimechallenge.ui.preview.PreviewData
 fun ExploreScreen(
     viewModel: ExploreViewModel = viewModel(),
     onRecipeClick: (String) -> Unit,
+    onSearchClick: () -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     when (val state = uiState) {
@@ -33,7 +34,10 @@ fun ExploreScreen(
                 recipes = state.recipes,
                 onRecipeClick = { recipe -> onRecipeClick(recipe.id) },
                 onBookmarkClick = { recipe -> viewModel.onBookmarkClick(recipe) },
-                recipeOfTheDay = state.recipeOfTheDay
+                recipeOfTheDay = state.recipeOfTheDay,
+                onSearchClick = { onSearchClick() },
+                dietaryFilters = state.dietaryFilters,
+                onDietaryFilterClick = { filter -> viewModel.onDietaryFilterClick(filter) }
             )
         }
         is ExploreUiState.Loading -> {
@@ -56,6 +60,9 @@ fun ExploreScreenContent(
     onRecipeClick: (Recipe) -> Unit,
     onBookmarkClick: (Recipe) -> Unit,
     recipeOfTheDay: Recipe,
+    onSearchClick: () -> Unit,
+    dietaryFilters: List<String>,
+    onDietaryFilterClick: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -67,6 +74,13 @@ fun ExploreScreenContent(
             verticalArrangement = Arrangement.spacedBy(16.dp),
             modifier = Modifier.fillMaxSize()
         ) {
+            item {
+                Header(
+                    onSearchClick = onSearchClick,
+                    dietaryFilters = dietaryFilters,
+                    onDietaryFilterClick = onDietaryFilterClick
+                )
+            }
             item {
                 FeaturedRecipe(
                     recipe = recipeOfTheDay,
@@ -102,6 +116,9 @@ fun ExploreScreenContentPreview() {
         recipes = PreviewData.recipeList,
         onRecipeClick = {},
         recipeOfTheDay = PreviewData.recipe,
-        onBookmarkClick = {}
+        onBookmarkClick = {},
+        onSearchClick = {},
+        dietaryFilters = listOf("Vegan", "Vegetarian", "Gluten-free"),
+        onDietaryFilterClick = {}
     )
 }

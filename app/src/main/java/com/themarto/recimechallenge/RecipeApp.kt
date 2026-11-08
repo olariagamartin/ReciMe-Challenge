@@ -64,6 +64,13 @@ fun RecipeNavHost(
             ExploreScreen(
                 onRecipeClick = { recipeId ->
                     navController.navigate(Destinations.RecipeDetails.createRoute(recipeId))
+                },
+                onSearchClick = {
+                    navController.navigate(Destinations.Search.route) {
+                        popUpTo(navController.graph.startDestinationId) {
+                            saveState = true
+                        }
+                    }
                 }
             )
         }

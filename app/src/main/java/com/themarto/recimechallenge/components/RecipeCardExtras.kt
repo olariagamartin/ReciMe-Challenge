@@ -1,6 +1,7 @@
 package com.themarto.recimechallenge.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
@@ -111,6 +112,27 @@ fun DietaryBadges(
 }
 
 @Composable
+fun DietaryFilter(
+    text: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Row(
+        modifier = modifier
+            .clip(RoundedCornerShape(16.dp))
+            .background(MaterialTheme.colorScheme.primaryContainer)
+            .clickable(onClick = onClick)
+            .padding(horizontal = 8.dp, vertical = 4.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            text = text,
+            style = MaterialTheme.typography.bodyMedium
+        )
+    }
+}
+
+@Composable
 fun MetricChip(
     icon: ImageVector,
     label: String,
@@ -172,6 +194,17 @@ private fun MetricChipPreview() {
         MetricChip(
             icon = Icons.Outlined.Schedule,
             label = "30 min"
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun DietaryFilterPreview() {
+    ReciMeChallengeTheme {
+        DietaryFilter(
+            text = "Vegan",
+            onClick = {}
         )
     }
 }

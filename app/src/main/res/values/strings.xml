@@ -9,4 +9,7 @@
     <string name="search_tab_label">Search</string>
     <string name="recipe_of_the_day_label">Today\'s Kitchen Inspiration</string>
     <string name="view_recipe">View Recipe</string>
+    <string name="search_button_content_description">Search</string>
+    <string name="search_button_text">Search recipes</string>
+    <string name="explore_header_title">What are you cooking today?</string>
 </resources>

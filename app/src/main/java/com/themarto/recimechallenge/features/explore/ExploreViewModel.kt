@@ -17,11 +17,16 @@ class ExploreViewModel : ViewModel() {
     private fun getDiscoverFeed() {
         _uiState.value = ExploreUiState.Success(
             recipes = PreviewData.recipeList,
-            recipeOfTheDay = PreviewData.recipe
+            recipeOfTheDay = PreviewData.recipe,
+            dietaryFilters = listOf("Vegan", "Vegetarian", "Gluten-free")
         )
     }
 
     fun onBookmarkClick(recipe: Recipe) {
         
+    }
+
+    fun onDietaryFilterClick(filter: String) {
+
     }
 }
