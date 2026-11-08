@@ -18,7 +18,7 @@ class ExploreViewModel : ViewModel() {
         _uiState.value = ExploreUiState.Success(
             recipes = PreviewData.recipeList,
             recipeOfTheDay = PreviewData.recipe,
-            dietaryFilters = listOf("Vegan", "Vegetarian", "Gluten-free")
+            dietaryFilters = listOf("Vegan", "Vegetarian", "Gluten-free", "Dairy-free")
         )
     }
 
