@@ -3,20 +3,65 @@ package com.themarto.recimechallenge.features.search
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.themarto.recimechallenge.features.search.model.DietaryPreference
 import com.themarto.recimechallenge.features.search.model.FiltersStatus
 import com.themarto.recimechallenge.features.search.model.ServingOption
 import com.themarto.recimechallenge.ui.theme.ReciMeChallengeTheme
 
 @Composable
-fun SearchScreen(modifier: Modifier = Modifier) {
+fun SearchScreen(
+    modifier: Modifier = Modifier,
+    viewModel: SearchViewModel = viewModel()
+) {
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
+    when (val state = uiState) {
+        is SearchUiState.Loading -> {
+            CircularProgressIndicator(
+                modifier = modifier.fillMaxSize()
+            )
+        }
+
+        is SearchUiState.Success -> {
+            SearchScreenContent(
+                modifier = modifier,
+                searchQuery = state.searchQuery,
+                onQueryChange = viewModel::onQueryChange,
+                onFilterClick = viewModel::onFilterClick,
+                filtersApplied = state.filtersApplied,
+                filtersOpen = state.filtersOpen,
+                filtersStatus = state.filtersStatus,
+                onDietaryPreferenceSelected = viewModel::onDietaryPreferenceSelected,
+                onServingOptionSelected = viewModel::onServingOptionSelected,
+                onRemoveFromIncluded = viewModel::onRemoveFromIncluded,
+                onAddToIncluded = viewModel::onAddToIncluded,
+                onRemoveFromExcluded = viewModel::onRemoveFromExcluded,
+                onAddToExcluded = viewModel::onAddToExcluded,
+                onResetFilters = viewModel::onResetFilters
+            )
+        }
+
+        is SearchUiState.Error -> {
+            Text(
+                text = state.message,
+                modifier = modifier.fillMaxSize()
+            )
+        }
+    }
 }
 
 @Composable
@@ -36,7 +81,9 @@ fun SearchScreenContent(
     onAddToExcluded: () -> Unit,
     onResetFilters: () -> Unit
 ) {
-    Column(modifier = modifier) {
+    Column(
+        modifier = modifier.padding(8.dp),
+    ) {
         Row(
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -52,16 +99,20 @@ fun SearchScreenContent(
                 filtersApplied = filtersApplied
             )
         }
-        FiltersCard(
-            filtersStatus = filtersStatus,
-            onDietaryPreferenceSelected = onDietaryPreferenceSelected,
-            onServingOptionSelected = onServingOptionSelected,
-            onRemoveFromIncluded = onRemoveFromIncluded,
-            onAddToIncluded = onAddToIncluded,
-            onRemoveFromExcluded = onRemoveFromExcluded,
-            onAddToExcluded = onAddToExcluded,
-            onResetFilters = onResetFilters
-        )
+        
+        if (filtersOpen) {
+            Spacer(modifier = Modifier.height(8.dp))
+            FiltersCard(
+                filtersStatus = filtersStatus,
+                onDietaryPreferenceSelected = onDietaryPreferenceSelected,
+                onServingOptionSelected = onServingOptionSelected,
+                onRemoveFromIncluded = onRemoveFromIncluded,
+                onAddToIncluded = onAddToIncluded,
+                onRemoveFromExcluded = onRemoveFromExcluded,
+                onAddToExcluded = onAddToExcluded,
+                onResetFilters = onResetFilters
+            )
+        }
     }
 }
 
@@ -77,11 +128,11 @@ private fun SearchScreenContentPreview() {
             filtersOpen = true,
             filtersStatus = FiltersStatus(
                 dietaryPreferences = listOf(
-                    DietaryPreference("\uD83C\uDF3F Vegetarian", true),
-                    DietaryPreference("\uD83C\uDF31 Vegan", false),
-                    DietaryPreference("\uD83C\uDF3E Gluten-Free", false),
-                    DietaryPreference("\uD83E\uDD5B Dairy-Free", false),
-                    DietaryPreference("\uD83E\uDD51 Keto", false)
+                    DietaryPreference("🌿 Vegetarian", true),
+                    DietaryPreference("🌱 Vegan", false),
+                    DietaryPreference("🌾 Gluten-Free", false),
+                    DietaryPreference("🥛 Dairy-Free", false),
+                    DietaryPreference("🥑 Keto", false)
                 ),
                 selectedServingOption = ServingOption.ONE_TWO,
                 includedIngredients = listOf("Potatoes", "Carrots"),
