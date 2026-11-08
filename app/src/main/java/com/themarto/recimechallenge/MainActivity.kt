@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.view.WindowCompat
 import com.themarto.recimechallenge.ui.theme.ReciMeChallengeTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,6 +20,11 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ReciMeChallengeTheme {
+                val view = androidx.compose.ui.platform.LocalView.current
+                WindowCompat.getInsetsController(window, view).apply {
+                    isAppearanceLightStatusBars = true
+                    isAppearanceLightNavigationBars = true
+                }
                 RecipeApp()
             }
         }
