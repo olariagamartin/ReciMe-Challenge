@@ -11,7 +11,7 @@ object PreviewData {
         servings = 1,
         rating = Rating(stars = 1.0, reviews = 1),
         timeInMinutes = 1,
-        dietaryAttributes = listOf("vegetarian", "gluten-free", "dairy-free"),
+        dietaryAttributes = listOf("🌿 Vegetarian", "🌾 Gluten-Free", "🥛 Dairy-Free"),
         saved = true
     )
 
