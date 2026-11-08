@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import com.themarto.recimechallenge.features.search.model.DietaryPreference
 import com.themarto.recimechallenge.features.search.model.FiltersStatus
 import com.themarto.recimechallenge.features.search.model.ServingOption
+import com.themarto.recimechallenge.model.Recipe
+import com.themarto.recimechallenge.ui.preview.PreviewData
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -28,7 +30,8 @@ class SearchViewModel : ViewModel() {
                     DietaryPreference("🥛 Dairy-Free", false),
                     DietaryPreference("🥑 Keto", false)
                 )
-            )
+            ),
+            results = PreviewData.recipeList
         )
     }
 
@@ -127,6 +130,15 @@ class SearchViewModel : ViewModel() {
     fun onApplyFilters() {
 
     }
+
+    fun onBookmarkClick(recipe: Recipe) {
+        // Implementation for bookmarking a recipe
+    }
+
+    fun onRecipeClick(recipeId: String) {
+        // Implementation for navigating to a recipe detail screen
+    }
+
 
     private fun updateSuccessState(update: (SearchUiState.Success) -> SearchUiState.Success) {
         _uiState.update { currentState ->

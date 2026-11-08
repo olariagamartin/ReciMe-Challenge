@@ -71,7 +71,7 @@ fun ExploreScreenContent(
             .padding(16.dp)
     ) {
         LazyColumn(
-            verticalArrangement = Arrangement.spacedBy(16.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
             modifier = Modifier.fillMaxSize()
         ) {
             item {

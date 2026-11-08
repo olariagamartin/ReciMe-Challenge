@@ -20,6 +20,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.themarto.recimechallenge.features.search.model.DietaryPreference
 import com.themarto.recimechallenge.features.search.model.FiltersStatus
 import com.themarto.recimechallenge.features.search.model.ServingOption
+import com.themarto.recimechallenge.model.Recipe
+import com.themarto.recimechallenge.ui.preview.PreviewData
 import com.themarto.recimechallenge.ui.theme.ReciMeChallengeTheme
 
 @Composable
@@ -52,7 +54,10 @@ fun SearchScreen(
                 onRemoveFromExcluded = viewModel::onRemoveFromExcluded,
                 onAddToExcluded = viewModel::onAddToExcluded,
                 onResetFilters = viewModel::onResetFilters,
-                onApplyFilters = viewModel::onApplyFilters
+                onApplyFilters = viewModel::onApplyFilters,
+                onBookmarkClick = viewModel::onBookmarkClick,
+                onRecipeClick = viewModel::onRecipeClick,
+                results = state.results
             )
         }
 
@@ -82,6 +87,9 @@ fun SearchScreenContent(
     onAddToExcluded: () -> Unit,
     onResetFilters: () -> Unit,
     onApplyFilters: () -> Unit,
+    onBookmarkClick: (Recipe) -> Unit,
+    onRecipeClick: (String) -> Unit,
+    results: List<Recipe>
 ) {
     Column(
         modifier = modifier.padding(8.dp),
@@ -115,6 +123,12 @@ fun SearchScreenContent(
                 onApplyFilters = onApplyFilters
             )
         }
+        Spacer(modifier = Modifier.height(8.dp))
+        SearchResult(
+            results = results,
+            onRecipeClick = onRecipeClick,
+            onBookmarkClick = onBookmarkClick
+        )
     }
 }
 
@@ -147,7 +161,10 @@ private fun SearchScreenContentPreview() {
             onRemoveFromExcluded = {},
             onAddToExcluded = {},
             onResetFilters = {},
-            onApplyFilters = {}
+            onApplyFilters = {},
+            onBookmarkClick = {},
+            onRecipeClick = {},
+            results = PreviewData.recipeList
         )
     }
 }
