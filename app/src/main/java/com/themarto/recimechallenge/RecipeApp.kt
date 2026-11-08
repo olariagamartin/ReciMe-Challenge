@@ -14,7 +14,7 @@ import com.themarto.recimechallenge.navigation.Destinations
 import com.themarto.recimechallenge.features.explore.ExploreScreen
 import com.themarto.recimechallenge.features.RecipeDetailsScreen
 import com.themarto.recimechallenge.features.SavedScreen
-import com.themarto.recimechallenge.features.SearchScreen
+import com.themarto.recimechallenge.features.search.SearchScreen
 
 @Composable
 fun RecipeApp(modifier: Modifier = Modifier) {
