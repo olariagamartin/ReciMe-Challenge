@@ -12,7 +12,7 @@ import androidx.navigation.compose.rememberNavController
 import com.themarto.recimechallenge.components.BottomNavBar
 import com.themarto.recimechallenge.navigation.Destinations
 import com.themarto.recimechallenge.features.explore.ExploreScreen
-import com.themarto.recimechallenge.features.RecipeDetailsScreen
+import com.themarto.recimechallenge.features.recipe_details.RecipeDetailsScreen
 import com.themarto.recimechallenge.features.SavedScreen
 import com.themarto.recimechallenge.features.search.SearchScreen
 
