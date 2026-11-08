@@ -28,7 +28,7 @@ fun ImageCard(
     onBookmarkClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Box(modifier = Modifier
+    Box(modifier = modifier
         .padding(4.dp)
         .fillMaxWidth()
         .height(300.dp)
