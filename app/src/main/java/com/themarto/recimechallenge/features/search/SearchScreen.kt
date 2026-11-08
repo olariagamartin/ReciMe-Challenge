@@ -51,7 +51,8 @@ fun SearchScreen(
                 onAddToIncluded = viewModel::onAddToIncluded,
                 onRemoveFromExcluded = viewModel::onRemoveFromExcluded,
                 onAddToExcluded = viewModel::onAddToExcluded,
-                onResetFilters = viewModel::onResetFilters
+                onResetFilters = viewModel::onResetFilters,
+                onApplyFilters = viewModel::onApplyFilters
             )
         }
 
@@ -79,7 +80,8 @@ fun SearchScreenContent(
     onAddToIncluded: () -> Unit,
     onRemoveFromExcluded: (String) -> Unit,
     onAddToExcluded: () -> Unit,
-    onResetFilters: () -> Unit
+    onResetFilters: () -> Unit,
+    onApplyFilters: () -> Unit,
 ) {
     Column(
         modifier = modifier.padding(8.dp),
@@ -99,7 +101,6 @@ fun SearchScreenContent(
                 filtersApplied = filtersApplied
             )
         }
-        
         if (filtersOpen) {
             Spacer(modifier = Modifier.height(8.dp))
             FiltersCard(
@@ -110,7 +111,8 @@ fun SearchScreenContent(
                 onAddToIncluded = onAddToIncluded,
                 onRemoveFromExcluded = onRemoveFromExcluded,
                 onAddToExcluded = onAddToExcluded,
-                onResetFilters = onResetFilters
+                onResetFilters = onResetFilters,
+                onApplyFilters = onApplyFilters
             )
         }
     }
@@ -144,7 +146,8 @@ private fun SearchScreenContentPreview() {
             onAddToIncluded = {},
             onRemoveFromExcluded = {},
             onAddToExcluded = {},
-            onResetFilters = {}
+            onResetFilters = {},
+            onApplyFilters = {}
         )
     }
 }

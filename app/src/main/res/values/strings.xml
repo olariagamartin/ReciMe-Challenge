@@ -28,4 +28,5 @@
     <string name="gluten_free">Gluten-Free</string>
     <string name="dairy_free">Dairy-Free</string>
     <string name="keto">Keto</string>
+    <string name="apply">Apply</string>
 </resources>

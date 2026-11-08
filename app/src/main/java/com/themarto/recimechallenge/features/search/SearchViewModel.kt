@@ -124,6 +124,10 @@ class SearchViewModel : ViewModel() {
         }
     }
 
+    fun onApplyFilters() {
+
+    }
+
     private fun updateSuccessState(update: (SearchUiState.Success) -> SearchUiState.Success) {
         _uiState.update { currentState ->
             if (currentState is SearchUiState.Success) {

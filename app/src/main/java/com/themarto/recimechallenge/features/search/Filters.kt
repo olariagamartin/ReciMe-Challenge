@@ -31,8 +31,10 @@ import androidx.compose.material.icons.outlined.RestartAlt
 import androidx.compose.material.icons.outlined.Tag
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
+import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -70,6 +72,7 @@ fun FiltersCard(
     onRemoveFromExcluded: (String) -> Unit,
     onAddToExcluded: () -> Unit,
     onResetFilters: () -> Unit,
+    onApplyFilters: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -99,7 +102,8 @@ fun FiltersCard(
             onAddIngredient = onAddToExcluded
         )
         FooterSection(
-            onResetFilters = onResetFilters
+            onResetFilters = onResetFilters,
+            onApplyFilters = onApplyFilters
         )
     }
 }
@@ -218,23 +222,46 @@ private fun ExcludeIngredientsSection(
 @Composable
 private fun FooterSection(
     onResetFilters: () -> Unit,
+    onApplyFilters: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Row(
-        modifier = modifier.clickable { onResetFilters() },
+        modifier = modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Icon(
-            imageVector = Icons.Outlined.RestartAlt,
-            contentDescription = null,
-            modifier = Modifier.size(16.dp),
-        )
-        Spacer(modifier = Modifier.width(4.dp))
-        Text(
-            text = stringResource(R.string.reset_all),
-            style = MaterialTheme.typography.bodyMedium,
-            fontWeight = FontWeight.Medium
-        )
+        OutlinedButton(
+            onClick = onApplyFilters,
+        ) {
+            Icon(
+                imageVector = Icons.Outlined.RestartAlt,
+                contentDescription = null,
+                modifier = Modifier.size(16.dp),
+            )
+            Spacer(modifier = Modifier.width(4.dp))
+            Text(
+                text = stringResource(R.string.reset_all),
+                style = MaterialTheme.typography.bodyMedium,
+                fontWeight = FontWeight.Medium
+            )
+        }
+        Spacer(modifier = Modifier.width(16.dp))
+        Button(
+            onClick = onApplyFilters,
+            modifier = Modifier.weight(1f)
+        ) {
+            Icon(
+                imageVector = Icons.Outlined.Check,
+                contentDescription = null,
+                modifier = Modifier.size(16.dp),
+            )
+            Spacer(modifier = Modifier.width(4.dp))
+            Text(
+                text = stringResource(R.string.apply),
+                style = MaterialTheme.typography.bodyMedium,
+                fontWeight = FontWeight.Medium
+            )
+        }
+
     }
 }
 
@@ -530,7 +557,8 @@ fun FiltersCardPreview() {
             onAddToIncluded = {},
             onRemoveFromExcluded = {},
             onAddToExcluded = {},
-            onResetFilters = {}
+            onResetFilters = {},
+            onApplyFilters = {}
         )
     }
 }
