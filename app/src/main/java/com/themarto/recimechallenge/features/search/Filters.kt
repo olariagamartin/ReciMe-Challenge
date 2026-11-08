@@ -69,6 +69,7 @@ fun FiltersCard(
     onAddToIncluded: () -> Unit,
     onRemoveFromExcluded: (String) -> Unit,
     onAddToExcluded: () -> Unit,
+    onResetFilters: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -98,7 +99,7 @@ fun FiltersCard(
             onAddIngredient = onAddToExcluded
         )
         FooterSection(
-            onClick = {}
+            onResetFilters = onResetFilters
         )
     }
 }
@@ -216,11 +217,11 @@ private fun ExcludeIngredientsSection(
 
 @Composable
 private fun FooterSection(
-    onClick: () -> Unit,
+    onResetFilters: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Row(
-        modifier = modifier.clickable { onClick() },
+        modifier = modifier.clickable { onResetFilters() },
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Icon(
@@ -528,7 +529,8 @@ fun FiltersCardPreview() {
             onRemoveFromIncluded = {},
             onAddToIncluded = {},
             onRemoveFromExcluded = {},
-            onAddToExcluded = {}
+            onAddToExcluded = {},
+            onResetFilters = {}
         )
     }
 }
