@@ -45,6 +45,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.themarto.recimechallenge.R
+import com.themarto.recimechallenge.features.search.model.DietaryPreference
+import com.themarto.recimechallenge.features.search.model.FiltersStatus
+import com.themarto.recimechallenge.features.search.model.ServingOption
 import com.themarto.recimechallenge.ui.theme.DietarySectionCountColor
 import com.themarto.recimechallenge.ui.theme.DietarySelectedChip
 import com.themarto.recimechallenge.ui.theme.ExcludeIngredientsSectionCountColor
@@ -59,14 +62,11 @@ import com.themarto.recimechallenge.ui.theme.ServingOptionSelectedTint
 
 @Composable
 fun FiltersCard(
-    dietaryPreferences: List<DietaryPreference>,
+    filtersStatus: FiltersStatus,
     onDietaryPreferenceSelected: (DietaryPreference) -> Unit,
-    selectedServingOption: ServingOption,
     onServingOptionSelected: (ServingOption) -> Unit,
-    includedIngredients: List<String>,
     onRemoveFromIncluded: (String) -> Unit,
     onAddToIncluded: () -> Unit,
-    excludedIngredients: List<String>,
     onRemoveFromExcluded: (String) -> Unit,
     onAddToExcluded: () -> Unit,
     modifier: Modifier = Modifier
@@ -80,20 +80,20 @@ fun FiltersCard(
         verticalArrangement = Arrangement.spacedBy(24.dp)
     ) {
         DietarySection(
-            dietaryPreferences = dietaryPreferences,
+            dietaryPreferences = filtersStatus.dietaryPreferences,
             onDietaryPreferenceSelected = onDietaryPreferenceSelected
         )
         ServingsSection(
-            selectedServingOption = selectedServingOption,
+            selectedServingOption = filtersStatus.selectedServingOption,
             onServingOptionSelected = onServingOptionSelected
         )
         IncludeIngredientsSection(
-            includeIngredients = includedIngredients,
+            includeIngredients = filtersStatus.includedIngredients,
             removeFromIncluded = onRemoveFromIncluded,
             onAddIngredient = onAddToIncluded
         )
         ExcludeIngredientsSection(
-            excludeIngredients = excludedIngredients,
+            excludeIngredients = filtersStatus.excludedIngredients,
             removeFromExcluded = onRemoveFromExcluded,
             onAddIngredient = onAddToExcluded
         )
@@ -511,20 +511,22 @@ fun FilterBtn(
 fun FiltersCardPreview() {
     ReciMeChallengeTheme {
         FiltersCard(
-            dietaryPreferences = listOf(
-                DietaryPreference("\uD83C\uDF3F Vegetarian", true),
-                DietaryPreference("\uD83C\uDF31 Vegan", false),
-                DietaryPreference("\uD83C\uDF3E Gluten-Free", false),
-                DietaryPreference("\uD83E\uDD5B Dairy-Free", false),
-                DietaryPreference("\uD83E\uDD51 Keto", false)
+            filtersStatus = FiltersStatus(
+                dietaryPreferences = listOf(
+                    DietaryPreference("\uD83C\uDF3F Vegetarian", true),
+                    DietaryPreference("\uD83C\uDF31 Vegan", false),
+                    DietaryPreference("\uD83C\uDF3E Gluten-Free", false),
+                    DietaryPreference("\uD83E\uDD5B Dairy-Free", false),
+                    DietaryPreference("\uD83E\uDD51 Keto", false)
+                ),
+                selectedServingOption = ServingOption.ONE_TWO,
+                includedIngredients = listOf("Potatoes", "Carrots"),
+                excludedIngredients = listOf("Spinach"),
             ),
             onDietaryPreferenceSelected = {},
-            selectedServingOption = ServingOption.ONE_TWO,
             onServingOptionSelected = {},
-            includedIngredients = listOf("Potatoes", "Carrots"),
             onRemoveFromIncluded = {},
             onAddToIncluded = {},
-            excludedIngredients = listOf("Spinach"),
             onRemoveFromExcluded = {},
             onAddToExcluded = {}
         )
