@@ -37,6 +37,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -69,13 +73,16 @@ fun FiltersCard(
     onDietaryPreferenceSelected: (DietaryAttribute) -> Unit,
     onServingOptionSelected: (ServingOption) -> Unit,
     onRemoveFromIncluded: (String) -> Unit,
-    onAddToIncluded: () -> Unit,
+    onAddToIncluded: (String) -> Unit,
     onRemoveFromExcluded: (String) -> Unit,
-    onAddToExcluded: () -> Unit,
+    onAddToExcluded: (String) -> Unit,
     onResetFilters: () -> Unit,
     onApplyFilters: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    var includeDialog by remember { mutableStateOf(false) }
+    var excludeDialog by remember { mutableStateOf(false) }
+
     Column(
         modifier = modifier
             .fillMaxWidth()
@@ -95,16 +102,37 @@ fun FiltersCard(
         IncludeIngredientsSection(
             includeIngredients = filtersStatus.includedIngredients,
             removeFromIncluded = onRemoveFromIncluded,
-            onAddIngredient = onAddToIncluded
+            onAddIngredient = { includeDialog = true }
         )
         ExcludeIngredientsSection(
             excludeIngredients = filtersStatus.excludedIngredients,
             removeFromExcluded = onRemoveFromExcluded,
-            onAddIngredient = onAddToExcluded
+            onAddIngredient = { excludeDialog = true }
         )
         FooterSection(
             onResetFilters = onResetFilters,
             onApplyFilters = onApplyFilters
+        )
+    }
+
+    if (includeDialog) {
+        IngredientPromptDialog(
+            title = stringResource(R.string.add_ingredient),
+            onDismiss = { includeDialog = false },
+            onConfirm = {
+                onAddToIncluded(it)
+                includeDialog = false
+            }
+        )
+    }
+    if (excludeDialog) {
+        IngredientPromptDialog(
+            title = stringResource(R.string.exclude_ingredient),
+            onDismiss = { excludeDialog = false },
+            onConfirm = {
+                onAddToExcluded(it)
+                excludeDialog = false
+            }
         )
     }
 }

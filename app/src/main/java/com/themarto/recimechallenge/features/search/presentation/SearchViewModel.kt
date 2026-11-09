@@ -134,12 +134,10 @@ class SearchViewModel(
         }
     }
 
-    fun onAddToIncluded() {
-        // Implementation for adding ingredient: adding a fake one for now
+    fun onAddToIncluded(ingredient: String) {
         _uiState.update { state ->
-            val newIngredient = "Ingredient ${state.filtersStatus.includedIngredients.size + 1}"
             val updatedStatus = state.filtersStatus.copy(
-                includedIngredients = state.filtersStatus.includedIngredients + newIngredient
+                includedIngredients = state.filtersStatus.includedIngredients + ingredient
             )
             state.copy(
                 filtersStatus = updatedStatus,
@@ -160,12 +158,10 @@ class SearchViewModel(
         }
     }
 
-    fun onAddToExcluded() {
-        // Implementation for adding ingredient: adding a fake one for now
+    fun onAddToExcluded(ingredient: String) {
         _uiState.update { state ->
-            val newIngredient = "Excluded ${state.filtersStatus.excludedIngredients.size + 1}"
             val updatedStatus = state.filtersStatus.copy(
-                excludedIngredients = state.filtersStatus.excludedIngredients + newIngredient
+                excludedIngredients = state.filtersStatus.excludedIngredients + ingredient
             )
             state.copy(
                 filtersStatus = updatedStatus,
