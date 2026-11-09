@@ -2,6 +2,8 @@ package com.themarto.recimechallenge.features.search.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Close
 import androidx.compose.material.icons.outlined.Search
@@ -19,6 +21,8 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.requestFocus
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.themarto.recimechallenge.R
@@ -28,10 +32,13 @@ import com.themarto.recimechallenge.ui.theme.ReciMeChallengeTheme
 fun SearchBar(
     searchQuery: String,
     onQueryChange: (String) -> Unit,
+    onSearchClick: () -> Unit,
     modifier: Modifier = Modifier,
     initialFocus: Boolean = false,
 ) {
     val focusRequester = remember { FocusRequester() }
+    val keyboardController = LocalSoftwareKeyboardController.current
+    val focusManager = LocalFocusManager.current
 
     LaunchedEffect(initialFocus) {
         if (initialFocus) {
@@ -67,6 +74,16 @@ fun SearchBar(
             unfocusedContainerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent
+        ),
+        keyboardOptions = KeyboardOptions(
+            imeAction = androidx.compose.ui.text.input.ImeAction.Search
+        ),
+        keyboardActions = KeyboardActions(
+            onSearch = {
+                keyboardController?.hide()
+                focusManager.clearFocus()
+                onSearchClick()
+            }
         )
     )
 }
@@ -76,7 +93,8 @@ fun SearchBar(
 private fun SearchBarPreview() {ReciMeChallengeTheme {
     SearchBar(
         searchQuery = "",
-        onQueryChange = {}
+        onQueryChange = {},
+        onSearchClick = {}
     )
 }
 }
@@ -87,7 +105,8 @@ private fun SearchBarFilledPreview() {
     ReciMeChallengeTheme {
         SearchBar(
             searchQuery = "Chicken",
-            onQueryChange = {}
+            onQueryChange = {},
+            onSearchClick = {}
         )
     }
 }

@@ -92,6 +92,15 @@ class SearchViewModel(
         _uiState.update { it.copy(searchQuery = query) }
     }
 
+    fun onSearch() {
+        _uiState.update { it.copy(loading = true) }
+        searchRecipes(
+            RecipeSearch(
+                query = _uiState.value.searchQuery
+            )
+        )
+    }
+
     fun onFilterClick() {
         _uiState.update { it.copy(filtersOpen = !it.filtersOpen) }
     }

@@ -61,6 +61,7 @@ fun SearchScreen(
             onApplyFilters = viewModel::onApplyFilters,
             onBookmarkClick = viewModel::onBookmarkClick,
             onRecipeClick = onRecipeClick,
+            onSearchClick = viewModel::onSearch
         )
 }
 
@@ -80,6 +81,7 @@ fun SearchScreenContent(
     onApplyFilters: () -> Unit,
     onBookmarkClick: (Recipe) -> Unit,
     onRecipeClick: (String) -> Unit,
+    onSearchClick: () -> Unit,
 ) {
     Column(
         modifier = modifier.padding(8.dp),
@@ -91,7 +93,8 @@ fun SearchScreenContent(
                 searchQuery = uiState.searchQuery,
                 onQueryChange = onQueryChange,
                 initialFocus = uiState.focusSearch,
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(1f),
+                onSearchClick = onSearchClick
             )
             Spacer(modifier = Modifier.width(8.dp))
             FilterBtn(
@@ -177,6 +180,7 @@ private fun SearchScreenContentPreview() {
             onApplyFilters = {},
             onBookmarkClick = {},
             onRecipeClick = {},
+            onSearchClick = {}
         )
     }
 }
