@@ -30,7 +30,8 @@ import org.koin.androidx.compose.koinViewModel
 fun ExploreScreen(
     viewModel: ExploreViewModel = koinViewModel(),
     onRecipeClick: (String) -> Unit,
-    onSearchClick: () -> Unit
+    onSearchClick: () -> Unit,
+    onFilterClick: (DietaryAttribute) -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     when (val state = uiState) {
@@ -42,7 +43,7 @@ fun ExploreScreen(
                 recipeOfTheDay = state.recipeOfTheDay,
                 onSearchClick = { onSearchClick() },
                 dietaryFilters = DietaryAttribute.entries,
-                onDietaryFilterClick = { filter -> viewModel.onDietaryFilterClick(filter) }
+                onDietaryFilterClick = onFilterClick
             )
         }
         is ExploreUiState.Loading -> {

@@ -66,7 +66,14 @@ fun RecipeNavHost(
                     navController.navigate(Destinations.RecipeDetails.createRoute(recipeId))
                 },
                 onSearchClick = {
-                    navController.navigate(Destinations.Search.route) {
+                    navController.navigate(Destinations.SearchWithParams.withSearchBar()) {
+                        popUpTo(navController.graph.startDestinationId) {
+                            saveState = true
+                        }
+                    }
+                },
+                onFilterClick = { dietaryAttribute ->
+                    navController.navigate(Destinations.SearchWithParams.withFilter(dietaryAttribute)) {
                         popUpTo(navController.graph.startDestinationId) {
                             saveState = true
                         }
@@ -74,6 +81,14 @@ fun RecipeNavHost(
                 }
             )
         }
+        composable(Destinations.SearchWithParams.route) {
+            SearchScreen(
+                onRecipeClick = { recipeId ->
+                    navController.navigate(Destinations.RecipeDetails.createRoute(recipeId))
+                }
+            )
+        }
+
         composable(Destinations.Search.route) {
             SearchScreen(
                 onRecipeClick = { recipeId ->
