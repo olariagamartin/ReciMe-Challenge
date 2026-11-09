@@ -8,10 +8,17 @@ data class Recipe(
     val rating: Rating,
     val timeInMinutes: Int,
     val dietaryAttributes: List<String>,
-    val saved: Boolean
+    val saved: Boolean,
+    val ingredients: List<Ingredient>
 )
 
 data class Rating(
     val stars: Double,
     val reviews: Int
+)
+
+data class Ingredient(
+    val name: String,
+    val amount: String,
+    val unit: String
 )
