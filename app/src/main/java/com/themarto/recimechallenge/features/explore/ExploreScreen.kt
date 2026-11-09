@@ -16,14 +16,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.themarto.recimechallenge.components.RecipeCard
 import com.themarto.recimechallenge.model.Recipe
 import com.themarto.recimechallenge.ui.preview.PreviewData
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ExploreScreen(
-    viewModel: ExploreViewModel = viewModel(),
+    viewModel: ExploreViewModel = koinViewModel(),
     onRecipeClick: (String) -> Unit,
     onSearchClick: () -> Unit
 ) {

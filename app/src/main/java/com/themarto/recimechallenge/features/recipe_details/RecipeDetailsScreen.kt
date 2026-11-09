@@ -19,16 +19,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.themarto.recimechallenge.model.Recipe
 import com.themarto.recimechallenge.ui.preview.PreviewData
 import com.themarto.recimechallenge.ui.theme.ReciMeChallengeTheme
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun RecipeDetailsScreen(
     onBackClick: () -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: RecipeDetailsViewModel = viewModel()
+    viewModel: RecipeDetailsViewModel = koinViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
