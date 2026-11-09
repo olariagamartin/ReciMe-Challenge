@@ -8,6 +8,7 @@ import com.themarto.recimechallenge.data.model.Rating
 import com.themarto.recimechallenge.data.model.Recipe
 import com.themarto.recimechallenge.data.model.RecipeSearch
 import com.themarto.recimechallenge.data.model.Result
+import com.themarto.recimechallenge.features.search.model.ServingOption
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -45,7 +46,7 @@ class FakeRecipesApi(context: Context) : RecipesApi {
     private fun Recipe.matches(search: RecipeSearch): Boolean {
         return matchesQuery(search.query) &&
             matchesDietaryPreferences(search.dietaryPreferences) &&
-            matchesServings(search.minServings, search.maxServings) &&
+            matchesServings(search.servingOption) &&
             matchesIncludedIngredients(search.includeIngredients) &&
             matchesExcludedIngredients(search.excludeIngredients)
     }
@@ -66,7 +67,19 @@ class FakeRecipesApi(context: Context) : RecipesApi {
         }
     }
 
-    private fun Recipe.matchesServings(minServings: Int?, maxServings: Int?): Boolean {
+    private fun Recipe.matchesServings(servingOption: ServingOption): Boolean {
+        val minServings = when (servingOption) {
+            ServingOption.ONE_TWO -> 1
+            ServingOption.THREE_FOUR -> 3
+            ServingOption.FIVE_PLUS -> 5
+            else -> null
+        }
+        val maxServings = when (servingOption) {
+            ServingOption.ONE_TWO -> 2
+            ServingOption.THREE_FOUR -> 4
+            ServingOption.FIVE_PLUS -> null
+            else -> null
+        }
         val aboveMin = minServings?.let { servings >= it } ?: true
         val belowMax = maxServings?.let { servings <= it } ?: true
         return aboveMin && belowMax

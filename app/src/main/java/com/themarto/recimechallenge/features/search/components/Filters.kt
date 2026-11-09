@@ -46,6 +46,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -78,7 +80,7 @@ fun FiltersCard(
     onAddToExcluded: (String) -> Unit,
     onResetFilters: () -> Unit,
     onApplyFilters: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     var includeDialog by remember { mutableStateOf(false) }
     var excludeDialog by remember { mutableStateOf(false) }
@@ -141,7 +143,7 @@ fun FiltersCard(
 private fun DietarySection(
     dietaryAttrsSelected: List<DietaryAttribute>,
     onDietaryPreferenceSelected: (DietaryAttribute) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(12.dp)) {
         SectionHeader(
@@ -170,7 +172,7 @@ private fun DietarySection(
 private fun ServingsSection(
     selectedServingOption: ServingOption,
     onServingOptionSelected: (ServingOption) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(12.dp)) {
         SectionHeader(
@@ -190,7 +192,7 @@ private fun IncludeIngredientsSection(
     includeIngredients: List<String>,
     removeFromIncluded: (String) -> Unit,
     onAddIngredient: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(12.dp)) {
         SectionHeader(
@@ -222,7 +224,7 @@ private fun ExcludeIngredientsSection(
     excludeIngredients: List<String>,
     removeFromExcluded: (String) -> Unit,
     onAddIngredient: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(12.dp)) {
         SectionHeader(
@@ -252,8 +254,11 @@ private fun ExcludeIngredientsSection(
 private fun FooterSection(
     onResetFilters: () -> Unit,
     onApplyFilters: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
+    val keyboardController = LocalSoftwareKeyboardController.current
+    val focusManager = LocalFocusManager.current
+
     Row(
         modifier = modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
@@ -275,7 +280,11 @@ private fun FooterSection(
         }
         Spacer(modifier = Modifier.width(16.dp))
         Button(
-            onClick = onApplyFilters,
+            onClick = {
+                keyboardController?.hide()
+                focusManager.clearFocus()
+                onApplyFilters()
+            },
             modifier = Modifier.weight(1f)
         ) {
             Icon(
@@ -300,7 +309,7 @@ private fun SectionHeader(
     title: String,
     modifier: Modifier = Modifier,
     countText: String? = null,
-    countColor: Color = Color.Unspecified
+    countColor: Color = Color.Unspecified,
 ) {
     Row(
         modifier = modifier.fillMaxWidth(),
@@ -336,7 +345,7 @@ private fun FilterChip(
     selected: Boolean,
     modifier: Modifier = Modifier,
     selectedColor: Color = Color.Transparent,
-    onClick: () -> Unit
+    onClick: () -> Unit,
 ) {
     Row(
         modifier = modifier
@@ -371,7 +380,7 @@ private fun IngredientChip(
     text: String,
     color: Color,
     onRemove: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Row(
         modifier = modifier
@@ -398,7 +407,7 @@ private fun IngredientChip(
 @Composable
 private fun AddIngredientButton(
     onClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Row(
         modifier = modifier
@@ -425,7 +434,7 @@ private fun AddIngredientButton(
 @Composable
 private fun ExcludePlaceholder(
     onClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Row(
         modifier = modifier
@@ -453,7 +462,7 @@ private fun ExcludePlaceholder(
 private fun ServingsSelector(
     selectedOption: ServingOption,
     onServingOptionSelected: (ServingOption) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Row(
         modifier = modifier
@@ -496,7 +505,7 @@ fun ServingOptionItem(
     icon: ImageVector,
     isSelected: Boolean,
     onClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Box(
         modifier = modifier
@@ -528,7 +537,7 @@ fun FilterBtn(
     onClick: () -> Unit,
     selected: Boolean,
     filtersApplied: Int,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     BadgedBox(
         badge = {

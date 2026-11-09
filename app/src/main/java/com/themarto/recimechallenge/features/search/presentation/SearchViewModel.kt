@@ -180,7 +180,22 @@ class SearchViewModel(
     }
 
     fun onApplyFilters() {
+        _uiState.update { state ->
+            state.copy(
+                filtersOpen = false,
+                loading = true,
 
+            )
+        }
+        searchRecipes(
+            RecipeSearch(
+                query = _uiState.value.searchQuery,
+                dietaryPreferences = _uiState.value.filtersStatus.dietaryAttrsSelected,
+                servingOption = _uiState.value.filtersStatus.selectedServingOption,
+                includeIngredients = _uiState.value.filtersStatus.includedIngredients,
+                excludeIngredients = _uiState.value.filtersStatus.excludedIngredients,
+            )
+        )
     }
 
     fun onBookmarkClick(recipe: Recipe) {
