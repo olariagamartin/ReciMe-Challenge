@@ -28,12 +28,14 @@ import com.themarto.recimechallenge.data.model.Recipe
 import com.themarto.recimechallenge.ui.preview.PreviewData
 import com.themarto.recimechallenge.ui.theme.ReciMeChallengeTheme
 import org.koin.androidx.compose.koinViewModel
+import org.koin.core.parameter.parametersOf
 
 @Composable
 fun RecipeDetailsScreen(
     onBackClick: () -> Unit,
+    recipeId: String,
     modifier: Modifier = Modifier,
-    viewModel: RecipeDetailsViewModel = koinViewModel()
+    viewModel: RecipeDetailsViewModel = koinViewModel { parametersOf(recipeId) }
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 

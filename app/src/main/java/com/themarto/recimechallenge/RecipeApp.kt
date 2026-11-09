@@ -106,9 +106,12 @@ fun RecipeNavHost(
             )
         }
 
-        composable(RecipeDetailsDestination.route) {
+        composable(RecipeDetailsDestination.route) { backStackEntry ->
+            val recipeId = backStackEntry.arguments?.getString(RecipeDetailsDestination.PARAM_RECIPE_ID)
+                ?: return@composable
             RecipeDetailsScreen(
-                onBackClick = { navController.popBackStack() }
+                onBackClick = { navController.popBackStack() },
+                recipeId = recipeId
             )
         }
     }

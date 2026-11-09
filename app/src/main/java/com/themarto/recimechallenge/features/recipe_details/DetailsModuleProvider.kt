@@ -10,7 +10,10 @@ object DetailsModuleProvider {
 }
 
 val viewModelModule = module {
-    viewModel {
-        RecipeDetailsViewModel()
+    viewModel { recipeId ->
+        RecipeDetailsViewModel(
+            recipeId = recipeId.get(),
+            recipesRepository = get()
+        )
     }
 }
