@@ -36,4 +36,5 @@
     <string name="ingredients">Ingredients</string>
     <string name="ingredient_section_title">Ingredients</string>
     <string name="instructions_section_title">Instructions</string>
+    <string name="recipes_found_title">%1$d recipes found</string>
 </resources>
