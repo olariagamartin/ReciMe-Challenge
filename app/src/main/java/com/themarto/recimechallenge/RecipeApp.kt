@@ -85,7 +85,9 @@ fun RecipeNavHost(
             SavedScreen()
         }
         composable(Destinations.RecipeDetails.route) {
-            RecipeDetailsScreen()
+            RecipeDetailsScreen(
+                onBackClick = { navController.popBackStack() }
+            )
         }
     }
 }
