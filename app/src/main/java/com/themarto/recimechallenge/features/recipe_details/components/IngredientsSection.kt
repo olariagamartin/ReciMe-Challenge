@@ -94,6 +94,7 @@ private fun IngredientRow(
             fontWeight = FontWeight.Bold,
             color = if (checked) MaterialTheme.colorScheme.outline else MaterialTheme.colorScheme.onSurface
         )
+        Spacer(modifier = Modifier.width(16.dp))
     }
 }
 
