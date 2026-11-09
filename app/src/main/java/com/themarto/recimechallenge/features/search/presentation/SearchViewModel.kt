@@ -23,29 +23,35 @@ class SearchViewModel(
     val uiState: StateFlow<SearchUiState> = _uiState.asStateFlow()
 
     init {
-        when (params) {
-            is SearchScreenParam.SearchBar -> Log.d("SearchViewModel", "SearchScreenParam.SearchBar")
-            is SearchScreenParam.Filter -> Log.d("SearchViewModel", "SearchScreenParam.Filter - ${params.filter}")
-            is SearchScreenParam.None -> Log.d("SearchViewModel", "SearchScreenParam.None")
+        _uiState.update {
+            SearchUiState.Success(
+                searchQuery = "",
+                filtersApplied = 0,
+                filtersOpen = true,
+                filtersStatus = FiltersStatus(),
+                results = emptyList()
+            )
         }
-        loadFakeData()
+        when (params) {
+            is SearchScreenParam.SearchBar -> onSearchBarRequested()
+            is SearchScreenParam.Filter -> {
+
+            }
+            is SearchScreenParam.None -> {}
+        }
     }
 
-    private fun loadFakeData() {
-        // Simulating loading fake data
-        _uiState.value = SearchUiState.Success(
-            filtersStatus = FiltersStatus(
-                dietaryItems = listOf(
-                    DietaryItem(DietaryAttribute.VEGETARIAN, true),
-                    DietaryItem(DietaryAttribute.VEGAN, false),
-                    DietaryItem(DietaryAttribute.GLUTEN_FREE, false),
-                    DietaryItem(DietaryAttribute.DAIRY_FREE, false),
-                    DietaryItem(DietaryAttribute.KETO, true),
-                    DietaryItem(DietaryAttribute.HIGH_PROTEIN, false)
-                )
-            ),
-            results = PreviewData.recipeList
-        )
+    private fun onSearchBarRequested() {
+        _uiState.update {
+            SearchUiState.Success(
+                searchQuery = "",
+                filtersApplied = 0,
+                filtersOpen = false,
+                filtersStatus = FiltersStatus(),
+                results = emptyList(),
+                focusSearch = true
+            )
+        }
     }
 
     fun onQueryChange(query: String) {

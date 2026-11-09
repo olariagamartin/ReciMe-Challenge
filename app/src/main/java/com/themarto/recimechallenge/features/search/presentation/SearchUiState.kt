@@ -10,7 +10,8 @@ sealed class SearchUiState {
         val filtersApplied: Int = 0,
         val filtersOpen: Boolean = false,
         val filtersStatus: FiltersStatus = FiltersStatus(),
-        val results: List<Recipe> = emptyList()
+        val results: List<Recipe> = emptyList(),
+        val focusSearch: Boolean = false
     ) : SearchUiState()
     data class Error(val message: String) : SearchUiState()
 }

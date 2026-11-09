@@ -12,7 +12,12 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.requestFocus
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -24,13 +29,30 @@ fun SearchBar(
     searchQuery: String,
     onQueryChange: (String) -> Unit,
     modifier: Modifier = Modifier,
+    initialFocus: Boolean = false,
 ) {
+    val focusRequester = remember { FocusRequester() }
+
+    LaunchedEffect(initialFocus) {
+        if (initialFocus) {
+            focusRequester.requestFocus()
+        }
+    }
+
     TextField(
         value = searchQuery,
         onValueChange = onQueryChange,
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier
+            .fillMaxWidth()
+            .focusRequester(focusRequester),
         placeholder = { Text(stringResource(R.string.search_button_text)) },
-        leadingIcon = { Icon(Icons.Outlined.Search, contentDescription = null, tint = MaterialTheme.colorScheme.primary) },
+        leadingIcon = {
+            Icon(
+                Icons.Outlined.Search,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.primary
+            )
+        },
         trailingIcon = {
             if (searchQuery.isNotEmpty()) {
                 IconButton(onClick = { onQueryChange("") }) {
