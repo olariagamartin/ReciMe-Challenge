@@ -16,7 +16,7 @@ class SearchViewModel(
     private val recipesRepository: RecipesRepository,
     private val params: SearchScreenParam
 ) : ViewModel() {
-    private val _uiState = MutableStateFlow<SearchUiState>(SearchUiState.Loading)
+    private val _uiState = MutableStateFlow(SearchUiState())
     val uiState: StateFlow<SearchUiState> = _uiState.asStateFlow()
 
     init {
@@ -29,7 +29,7 @@ class SearchViewModel(
 
     private fun onSearchBarRequested() {
         _uiState.update {
-            SearchUiState.Success(
+            SearchUiState(
                 searchQuery = "",
                 filtersApplied = 0,
                 filtersOpen = false,
@@ -42,7 +42,7 @@ class SearchViewModel(
 
     private fun onFilterRequested(filter: DietaryAttribute) {
         _uiState.update {
-            SearchUiState.Success(
+            SearchUiState(
                 searchQuery = "",
                 filtersApplied = 1,
                 filtersOpen = false,
@@ -57,7 +57,7 @@ class SearchViewModel(
 
     private fun onNonRequested() {
         _uiState.update {
-            SearchUiState.Success(
+            SearchUiState(
                 searchQuery = "",
                 filtersApplied = 0,
                 filtersOpen = false,
@@ -69,11 +69,11 @@ class SearchViewModel(
     }
 
     fun onQueryChange(query: String) {
-        updateSuccessState { it.copy(searchQuery = query) }
+        _uiState.update { it.copy(searchQuery = query) }
     }
 
     fun onFilterClick() {
-        updateSuccessState { it.copy(filtersOpen = !it.filtersOpen) }
+        _uiState.update { it.copy(filtersOpen = !it.filtersOpen) }
     }
 
     fun onDietaryPreferenceSelected(preference: DietaryAttribute) {
@@ -81,7 +81,7 @@ class SearchViewModel(
     }
 
     fun onServingOptionSelected(option: ServingOption) {
-        updateSuccessState { state ->
+        _uiState.update { state ->
             val updatedStatus = state.filtersStatus.copy(selectedServingOption = option)
             state.copy(
                 filtersStatus = updatedStatus,
@@ -91,7 +91,7 @@ class SearchViewModel(
     }
 
     fun onRemoveFromIncluded(ingredient: String) {
-        updateSuccessState { state ->
+        _uiState.update { state ->
             val updatedIngredients = state.filtersStatus.includedIngredients.filter { it != ingredient }
             val updatedStatus = state.filtersStatus.copy(includedIngredients = updatedIngredients)
             state.copy(
@@ -103,7 +103,7 @@ class SearchViewModel(
 
     fun onAddToIncluded() {
         // Implementation for adding ingredient: adding a fake one for now
-        updateSuccessState { state ->
+        _uiState.update { state ->
             val newIngredient = "Ingredient ${state.filtersStatus.includedIngredients.size + 1}"
             val updatedStatus = state.filtersStatus.copy(
                 includedIngredients = state.filtersStatus.includedIngredients + newIngredient
@@ -116,7 +116,7 @@ class SearchViewModel(
     }
 
     fun onRemoveFromExcluded(ingredient: String) {
-        updateSuccessState { state ->
+        _uiState.update { state ->
             val updatedIngredients = state.filtersStatus.excludedIngredients.filter { it != ingredient }
             val updatedStatus = state.filtersStatus.copy(excludedIngredients = updatedIngredients)
             state.copy(
@@ -128,7 +128,7 @@ class SearchViewModel(
 
     fun onAddToExcluded() {
         // Implementation for adding ingredient: adding a fake one for now
-        updateSuccessState { state ->
+        _uiState.update { state ->
             val newIngredient = "Excluded ${state.filtersStatus.excludedIngredients.size + 1}"
             val updatedStatus = state.filtersStatus.copy(
                 excludedIngredients = state.filtersStatus.excludedIngredients + newIngredient
@@ -141,7 +141,7 @@ class SearchViewModel(
     }
 
     fun onResetFilters() {
-        updateSuccessState { state ->
+        _uiState.update { state ->
             state.copy(
                 filtersStatus = FiltersStatus(),
                 filtersApplied = 0
@@ -155,17 +155,6 @@ class SearchViewModel(
 
     fun onBookmarkClick(recipe: Recipe) {
         // Implementation for bookmarking a recipe
-    }
-
-
-    private fun updateSuccessState(update: (SearchUiState.Success) -> SearchUiState.Success) {
-        _uiState.update { currentState ->
-            if (currentState is SearchUiState.Success) {
-                update(currentState)
-            } else {
-                currentState
-            }
-        }
     }
 
     private fun calculateFiltersApplied(status: FiltersStatus): Int {

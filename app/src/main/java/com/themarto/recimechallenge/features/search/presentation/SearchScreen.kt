@@ -39,9 +39,11 @@ fun SearchScreen(
     viewModel: SearchViewModel = koinViewModel{ parametersOf(params) }
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val loading = uiState.loading
+    val error = uiState.error
 
-    when (val state = uiState) {
-        is SearchUiState.Loading -> {
+    when {
+        loading -> {
             Box(
                 modifier = modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
@@ -49,16 +51,21 @@ fun SearchScreen(
                 CircularProgressIndicator()
             }
         }
-
-        is SearchUiState.Success -> {
+        error != null -> {
+            Text(
+                text = error,
+                modifier = modifier.fillMaxSize()
+            )
+        }
+        else -> {
             SearchScreenContent(
                 modifier = modifier,
-                searchQuery = state.searchQuery,
+                searchQuery = uiState.searchQuery,
                 onQueryChange = viewModel::onQueryChange,
                 onFilterClick = viewModel::onFilterClick,
-                filtersApplied = state.filtersApplied,
-                filtersOpen = state.filtersOpen,
-                filtersStatus = state.filtersStatus,
+                filtersApplied = uiState.filtersApplied,
+                filtersOpen = uiState.filtersOpen,
+                filtersStatus = uiState.filtersStatus,
                 onDietaryPreferenceSelected = viewModel::onDietaryPreferenceSelected,
                 onServingOptionSelected = viewModel::onServingOptionSelected,
                 onRemoveFromIncluded = viewModel::onRemoveFromIncluded,
@@ -69,15 +76,8 @@ fun SearchScreen(
                 onApplyFilters = viewModel::onApplyFilters,
                 onBookmarkClick = viewModel::onBookmarkClick,
                 onRecipeClick = onRecipeClick,
-                results = state.results,
-                focusSearch = state.focusSearch
-            )
-        }
-
-        is SearchUiState.Error -> {
-            Text(
-                text = state.message,
-                modifier = modifier.fillMaxSize()
+                results = uiState.results,
+                focusSearch = uiState.focusSearch
             )
         }
     }
