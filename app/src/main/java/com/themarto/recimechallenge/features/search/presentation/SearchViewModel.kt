@@ -97,7 +97,19 @@ class SearchViewModel(
     }
 
     fun onDietaryPreferenceSelected(preference: DietaryAttribute) {
-
+        _uiState.update { state ->
+            val updatedStatus = state.filtersStatus.copy(
+                dietaryAttrsSelected = if (preference in state.filtersStatus.dietaryAttrsSelected) {
+                    state.filtersStatus.dietaryAttrsSelected - preference
+                } else {
+                    state.filtersStatus.dietaryAttrsSelected + preference
+                }
+            )
+            state.copy(
+                filtersStatus = updatedStatus,
+                filtersApplied = calculateFiltersApplied(updatedStatus)
+            )
+        }
     }
 
     fun onServingOptionSelected(option: ServingOption) {
