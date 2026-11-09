@@ -1,5 +1,6 @@
-package com.themarto.recimechallenge.data
+package com.themarto.recimechallenge.data.repository
 
+import com.themarto.recimechallenge.data.model.Result
 import com.themarto.recimechallenge.data.model.ExploreFeed
 import com.themarto.recimechallenge.data.model.Recipe
 import com.themarto.recimechallenge.data.model.RecipeSearch

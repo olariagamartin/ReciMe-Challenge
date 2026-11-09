@@ -1,5 +1,6 @@
-package com.themarto.recimechallenge.data
+package com.themarto.recimechallenge.data.database
 
+import com.themarto.recimechallenge.data.model.Result
 import com.themarto.recimechallenge.data.model.Recipe
 
 interface RecipesLocalStorage {
