@@ -1,5 +1,6 @@
 package com.themarto.recimechallenge.features.search.presentation
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -39,9 +40,12 @@ fun SearchScreen(
 
     when (val state = uiState) {
         is SearchUiState.Loading -> {
-            CircularProgressIndicator(
-                modifier = modifier.fillMaxSize()
-            )
+            Box(
+                modifier = modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                CircularProgressIndicator()
+            }
         }
 
         is SearchUiState.Success -> {
