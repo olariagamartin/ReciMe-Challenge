@@ -1,4 +1,4 @@
-package com.themarto.recimechallenge.features.search
+package com.themarto.recimechallenge.features.search.presentation
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,10 +16,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.themarto.recimechallenge.features.search.components.FilterBtn
+import com.themarto.recimechallenge.features.search.components.FiltersCard
+import com.themarto.recimechallenge.features.search.components.SearchBar
+import com.themarto.recimechallenge.features.search.components.SearchResult
 import com.themarto.recimechallenge.features.search.model.DietaryPreference
 import com.themarto.recimechallenge.features.search.model.FiltersStatus
 import com.themarto.recimechallenge.features.search.model.ServingOption
-import com.themarto.recimechallenge.model.Recipe
+import com.themarto.recimechallenge.data.Recipe
 import com.themarto.recimechallenge.ui.preview.PreviewData
 import com.themarto.recimechallenge.ui.theme.ReciMeChallengeTheme
 import org.koin.androidx.compose.koinViewModel

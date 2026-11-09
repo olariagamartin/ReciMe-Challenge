@@ -1,4 +1,4 @@
-package com.themarto.recimechallenge.model
+package com.themarto.recimechallenge.data
 
 data class Recipe(
     val id: String,

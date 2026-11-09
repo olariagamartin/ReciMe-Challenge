@@ -1,4 +1,4 @@
-package com.themarto.recimechallenge.features.search
+package com.themarto.recimechallenge.features.search.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border

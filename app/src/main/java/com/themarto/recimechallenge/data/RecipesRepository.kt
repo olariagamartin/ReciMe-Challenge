@@ -1,6 +1,5 @@
 package com.themarto.recimechallenge.data
 
-import com.themarto.recimechallenge.model.Recipe
 import kotlinx.coroutines.flow.Flow
 
 interface RecipesRepository {

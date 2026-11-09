@@ -1,6 +1,5 @@
 package com.themarto.recimechallenge.data
 
-import com.themarto.recimechallenge.model.Recipe
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

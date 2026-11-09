@@ -1,6 +1,5 @@
-package com.themarto.recimechallenge.features.recipe_details
+package com.themarto.recimechallenge.features.recipe_details.components
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -19,7 +18,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.themarto.recimechallenge.R
-import com.themarto.recimechallenge.model.Rating
+import com.themarto.recimechallenge.data.Rating
 import com.themarto.recimechallenge.ui.theme.ReciMeChallengeTheme
 
 @Composable

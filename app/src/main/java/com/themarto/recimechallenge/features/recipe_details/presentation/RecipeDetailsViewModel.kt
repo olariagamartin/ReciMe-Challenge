@@ -1,4 +1,4 @@
-package com.themarto.recimechallenge.features.recipe_details
+package com.themarto.recimechallenge.features.recipe_details.presentation
 
 import androidx.lifecycle.ViewModel
 import com.themarto.recimechallenge.ui.preview.PreviewData

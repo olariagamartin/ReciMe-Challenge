@@ -1,4 +1,4 @@
-package com.themarto.recimechallenge.features.search
+package com.themarto.recimechallenge.features.search.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.CircleShape
@@ -13,6 +13,7 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.themarto.recimechallenge.R
@@ -42,8 +43,8 @@ fun SearchBar(
         colors = TextFieldDefaults.colors(
             focusedContainerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
             unfocusedContainerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
-            focusedIndicatorColor = androidx.compose.ui.graphics.Color.Transparent,
-            unfocusedIndicatorColor = androidx.compose.ui.graphics.Color.Transparent
+            focusedIndicatorColor = Color.Transparent,
+            unfocusedIndicatorColor = Color.Transparent
         )
     )
 }

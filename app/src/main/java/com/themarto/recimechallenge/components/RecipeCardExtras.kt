@@ -31,7 +31,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.themarto.recimechallenge.R
-import com.themarto.recimechallenge.model.Rating
+import com.themarto.recimechallenge.data.Rating
 import com.themarto.recimechallenge.ui.preview.PreviewData
 import com.themarto.recimechallenge.ui.theme.ReciMeChallengeTheme
 

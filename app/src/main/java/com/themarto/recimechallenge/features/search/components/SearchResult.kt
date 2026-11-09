@@ -1,4 +1,4 @@
-package com.themarto.recimechallenge.features.search
+package com.themarto.recimechallenge.features.search.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.themarto.recimechallenge.components.RecipeCard
-import com.themarto.recimechallenge.model.Recipe
+import com.themarto.recimechallenge.data.Recipe
 import com.themarto.recimechallenge.ui.preview.PreviewData
 import com.themarto.recimechallenge.ui.theme.ReciMeChallengeTheme
 

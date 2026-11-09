@@ -11,10 +11,10 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.themarto.recimechallenge.components.BottomNavBar
 import com.themarto.recimechallenge.navigation.Destinations
-import com.themarto.recimechallenge.features.explore.ExploreScreen
-import com.themarto.recimechallenge.features.recipe_details.RecipeDetailsScreen
+import com.themarto.recimechallenge.features.explore.presentation.ExploreScreen
+import com.themarto.recimechallenge.features.recipe_details.presentation.RecipeDetailsScreen
 import com.themarto.recimechallenge.features.SavedScreen
-import com.themarto.recimechallenge.features.search.SearchScreen
+import com.themarto.recimechallenge.features.search.presentation.SearchScreen
 
 @Composable
 fun RecipeApp(modifier: Modifier = Modifier) {

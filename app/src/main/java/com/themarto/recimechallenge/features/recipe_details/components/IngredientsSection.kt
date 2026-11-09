@@ -1,4 +1,4 @@
-package com.themarto.recimechallenge.features.recipe_details
+package com.themarto.recimechallenge.features.recipe_details.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -23,7 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.themarto.recimechallenge.R
-import com.themarto.recimechallenge.model.Ingredient
+import com.themarto.recimechallenge.data.Ingredient
 import com.themarto.recimechallenge.ui.theme.ReciMeChallengeTheme
 
 @Composable

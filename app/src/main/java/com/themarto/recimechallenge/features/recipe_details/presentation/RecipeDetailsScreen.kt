@@ -1,4 +1,4 @@
-package com.themarto.recimechallenge.features.recipe_details
+package com.themarto.recimechallenge.features.recipe_details.presentation
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -19,7 +19,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.themarto.recimechallenge.model.Recipe
+import com.themarto.recimechallenge.features.recipe_details.components.ImageCard
+import com.themarto.recimechallenge.features.recipe_details.components.IngredientsSection
+import com.themarto.recimechallenge.features.recipe_details.components.InstructionSection
+import com.themarto.recimechallenge.features.recipe_details.components.RatingSection
+import com.themarto.recimechallenge.features.recipe_details.components.TitleSection
+import com.themarto.recimechallenge.data.Recipe
 import com.themarto.recimechallenge.ui.preview.PreviewData
 import com.themarto.recimechallenge.ui.theme.ReciMeChallengeTheme
 import org.koin.androidx.compose.koinViewModel

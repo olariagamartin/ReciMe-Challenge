@@ -1,8 +1,8 @@
 package com.themarto.recimechallenge.ui.preview
 
-import com.themarto.recimechallenge.model.Recipe
-import com.themarto.recimechallenge.model.Rating
-import com.themarto.recimechallenge.model.Ingredient
+import com.themarto.recimechallenge.data.Recipe
+import com.themarto.recimechallenge.data.Rating
+import com.themarto.recimechallenge.data.Ingredient
 
 object PreviewData {
     val ingredients = listOf(

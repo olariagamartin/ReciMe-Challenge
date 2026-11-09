@@ -1,4 +1,4 @@
-package com.themarto.recimechallenge.features.explore
+package com.themarto.recimechallenge.features.explore.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -39,7 +39,7 @@ import com.themarto.recimechallenge.components.BookmarkButton
 import com.themarto.recimechallenge.components.DietaryBadges
 import com.themarto.recimechallenge.components.MetricChip
 import com.themarto.recimechallenge.components.RatingChip
-import com.themarto.recimechallenge.model.Recipe
+import com.themarto.recimechallenge.data.Recipe
 import com.themarto.recimechallenge.ui.preview.PreviewData
 
 @Composable

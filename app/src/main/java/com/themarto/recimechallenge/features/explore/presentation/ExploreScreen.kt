@@ -1,4 +1,4 @@
-package com.themarto.recimechallenge.features.explore
+package com.themarto.recimechallenge.features.explore.presentation
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,7 +17,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.themarto.recimechallenge.components.RecipeCard
-import com.themarto.recimechallenge.model.Recipe
+import com.themarto.recimechallenge.features.explore.components.FeaturedRecipe
+import com.themarto.recimechallenge.features.explore.components.Header
+import com.themarto.recimechallenge.data.Recipe
 import com.themarto.recimechallenge.ui.preview.PreviewData
 import org.koin.androidx.compose.koinViewModel
 

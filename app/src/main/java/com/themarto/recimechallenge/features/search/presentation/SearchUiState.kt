@@ -1,7 +1,7 @@
-package com.themarto.recimechallenge.features.search
+package com.themarto.recimechallenge.features.search.presentation
 
 import com.themarto.recimechallenge.features.search.model.FiltersStatus
-import com.themarto.recimechallenge.model.Recipe
+import com.themarto.recimechallenge.data.Recipe
 
 sealed class SearchUiState {
     data object Loading : SearchUiState()

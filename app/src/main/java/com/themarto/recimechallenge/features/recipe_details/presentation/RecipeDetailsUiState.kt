@@ -1,6 +1,6 @@
-package com.themarto.recimechallenge.features.recipe_details
+package com.themarto.recimechallenge.features.recipe_details.presentation
 
-import com.themarto.recimechallenge.model.Recipe
+import com.themarto.recimechallenge.data.Recipe
 
 sealed interface RecipeDetailsUiState {
     data object Loading : RecipeDetailsUiState

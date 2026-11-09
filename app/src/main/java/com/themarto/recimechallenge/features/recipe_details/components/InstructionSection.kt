@@ -1,4 +1,4 @@
-package com.themarto.recimechallenge.features.recipe_details
+package com.themarto.recimechallenge.features.recipe_details.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
