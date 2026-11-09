@@ -14,6 +14,7 @@ sealed class Result<T> {
 fun <T> Result<T>.isSuccess(): Boolean{
     contract {
         returns(true) implies (this@isSuccess is Result.Success)
+        returns(false) implies (this@isSuccess is Result.Error)
     }
     return this is Result.Success
 }
@@ -21,6 +22,7 @@ fun <T> Result<T>.isSuccess(): Boolean{
 fun <T> Result<T>.isError(): Boolean {
     contract {
         returns(true) implies (this@isError is Result.Error)
+        returns(false) implies (this@isError is Result.Success)
     }
     return this is Result.Error
 }
