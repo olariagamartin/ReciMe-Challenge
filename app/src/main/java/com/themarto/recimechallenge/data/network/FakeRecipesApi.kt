@@ -10,6 +10,7 @@ import com.themarto.recimechallenge.data.model.Result
 import org.json.JSONArray
 import org.json.JSONObject
 
+// simulates network connection
 class FakeRecipesApi(context: Context) : RecipesApi {
 
     private val recipes: List<Recipe> = loadRecipes(context)
