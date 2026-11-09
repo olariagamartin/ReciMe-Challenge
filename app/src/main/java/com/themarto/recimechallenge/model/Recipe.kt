@@ -14,7 +14,7 @@ data class Recipe(
 )
 
 data class Rating(
-    val stars: Double,
+    val stars: Float,
     val reviews: Int
 )
 

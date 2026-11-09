@@ -17,7 +17,7 @@ object PreviewData {
         title = "Roasted Vegetables",
         imgUrl = "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=1200&q=80",
         servings = 1,
-        rating = Rating(stars = 1.0, reviews = 1),
+        rating = Rating(stars = 1.0f, reviews = 1),
         timeInMinutes = 1,
         dietaryAttributes = listOf("🌿 Vegetarian", "🌾 Gluten-Free", "🥛 Dairy-Free"),
         saved = true,

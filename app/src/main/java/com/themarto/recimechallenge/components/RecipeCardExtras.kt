@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.BookmarkBorder
@@ -85,6 +86,22 @@ fun BookmarkButton(
         Icon(
             imageVector = if (saved) Icons.Filled.Bookmark else Icons.Outlined.BookmarkBorder,
             contentDescription = stringResource(id = if(saved) R.string.remove_from_saved else R.string.save_recipe)
+        )
+    }
+}
+
+@Composable
+fun BackButton(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    FilledIconButton(
+        modifier = modifier,
+        onClick = onClick
+    ) {
+        Icon(
+            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+            contentDescription = stringResource(R.string.back)
         )
     }
 }
