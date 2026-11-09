@@ -157,8 +157,6 @@ private fun SearchScreenContentPreview() {
             error = null,
         )
 
-
-
         SearchScreenContent(
             uiState = uiState,
             onQueryChange = {},
