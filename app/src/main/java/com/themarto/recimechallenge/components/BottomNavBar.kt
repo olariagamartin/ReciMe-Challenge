@@ -25,7 +25,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.themarto.recimechallenge.R
-import com.themarto.recimechallenge.navigation.Destinations
+import com.themarto.recimechallenge.features.explore.ExploreDestination
+import com.themarto.recimechallenge.features.saved.SavedDestination
+import com.themarto.recimechallenge.features.search.SearchDestinations
 import com.themarto.recimechallenge.ui.theme.ReciMeChallengeTheme
 
 data class BottomBar(
@@ -38,17 +40,17 @@ val bottomTabs = listOf(
     BottomBar(
         labelRes = R.string.explore_tab_label,
         icon = Icons.Filled.Explore,
-        route = Destinations.Explore.route
+        route = ExploreDestination.route
     ),
     BottomBar(
         labelRes = R.string.search_tab_label,
         icon = Icons.Filled.Search,
-        route = Destinations.Search.route
+        route = SearchDestinations.Search.route
     ),
     BottomBar(
         labelRes = R.string.saved_tab_label,
         icon = Icons.Filled.Bookmark,
-        route = Destinations.Saved.route
+        route = SavedDestination.route
     )
 )
 
@@ -112,7 +114,7 @@ fun BottomNavBar(
 fun BottomNavBarPreview() {
     ReciMeChallengeTheme {
         BottomNavBar(
-            currentRoute = Destinations.Search.route,
+            currentRoute = SearchDestinations.Search.route,
             onTabSelected = {}
         )
     }

@@ -26,15 +26,18 @@ import com.themarto.recimechallenge.features.search.model.DietaryItem
 import com.themarto.recimechallenge.features.search.model.FiltersStatus
 import com.themarto.recimechallenge.features.search.model.ServingOption
 import com.themarto.recimechallenge.data.model.Recipe
+import com.themarto.recimechallenge.features.search.model.SearchScreenParam
 import com.themarto.recimechallenge.ui.preview.PreviewData
 import com.themarto.recimechallenge.ui.theme.ReciMeChallengeTheme
 import org.koin.androidx.compose.koinViewModel
+import org.koin.core.parameter.parametersOf
 
 @Composable
 fun SearchScreen(
     onRecipeClick: (String) -> Unit,
+    params: SearchScreenParam,
     modifier: Modifier = Modifier,
-    viewModel: SearchViewModel = koinViewModel()
+    viewModel: SearchViewModel = koinViewModel{ parametersOf(params) }
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 

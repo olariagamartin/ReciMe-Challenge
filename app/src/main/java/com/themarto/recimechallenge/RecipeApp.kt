@@ -10,6 +10,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.themarto.recimechallenge.components.BottomNavBar
+import com.themarto.recimechallenge.data.model.DietaryAttribute
 import com.themarto.recimechallenge.features.explore.ExploreDestination
 import com.themarto.recimechallenge.features.explore.presentation.ExploreScreen
 import com.themarto.recimechallenge.features.recipe_details.RecipeDetailsDestination
@@ -18,6 +19,7 @@ import com.themarto.recimechallenge.features.saved.SavedDestination
 import com.themarto.recimechallenge.features.saved.SavedScreen
 import com.themarto.recimechallenge.features.search.SearchDestinations
 import com.themarto.recimechallenge.features.search.model.SearchScreenParam
+import com.themarto.recimechallenge.features.search.model.getSearchScreenParam
 import com.themarto.recimechallenge.features.search.presentation.SearchScreen
 
 @Composable
@@ -86,11 +88,13 @@ fun RecipeNavHost(
             )
         }
         composable(SearchDestinations.SearchWithParams.route) { backStackEntry ->
+            val openWith = backStackEntry.arguments?.getString(SearchDestinations.PARAM_OPEN_WITH)
+
             SearchScreen(
                 onRecipeClick = { recipeId ->
                     navController.navigate(RecipeDetailsDestination.createRoute(recipeId))
                 },
-                params = SearchScreenParam.SearchBar
+                params = getSearchScreenParam(openWith)
             )
         }
 

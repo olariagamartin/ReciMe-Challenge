@@ -1,22 +1,33 @@
 package com.themarto.recimechallenge.features.search.presentation
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.themarto.recimechallenge.data.model.DietaryAttribute
 import com.themarto.recimechallenge.features.search.model.DietaryItem
 import com.themarto.recimechallenge.features.search.model.FiltersStatus
 import com.themarto.recimechallenge.features.search.model.ServingOption
 import com.themarto.recimechallenge.data.model.Recipe
+import com.themarto.recimechallenge.data.repository.RecipesRepository
+import com.themarto.recimechallenge.features.search.model.SearchScreenParam
 import com.themarto.recimechallenge.ui.preview.PreviewData
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
-class SearchViewModel : ViewModel() {
+class SearchViewModel(
+    private val recipesRepository: RecipesRepository,
+    private val params: SearchScreenParam
+) : ViewModel() {
     private val _uiState = MutableStateFlow<SearchUiState>(SearchUiState.Loading)
     val uiState: StateFlow<SearchUiState> = _uiState.asStateFlow()
 
     init {
+        when (params) {
+            is SearchScreenParam.SearchBar -> Log.d("SearchViewModel", "SearchScreenParam.SearchBar")
+            is SearchScreenParam.Filter -> Log.d("SearchViewModel", "SearchScreenParam.Filter - ${params.filter}")
+            is SearchScreenParam.None -> Log.d("SearchViewModel", "SearchScreenParam.None")
+        }
         loadFakeData()
     }
 

@@ -10,7 +10,10 @@ object SearchModuleProvider {
 }
 
 val viewModelModule = module {
-    viewModel {
-        SearchViewModel()
+    viewModel { params ->
+        SearchViewModel(
+            recipesRepository = get(),
+            params = params.get()
+        )
     }
 }
