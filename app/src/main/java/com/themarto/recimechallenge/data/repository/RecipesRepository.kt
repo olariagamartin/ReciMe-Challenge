@@ -8,11 +8,11 @@ import kotlinx.coroutines.flow.Flow
 
 interface RecipesRepository {
 
-    suspend fun getExploreFeed(): Result<ExploreFeed>
+    fun getExploreFeed(): Flow<Result<ExploreFeed>>
 
-    suspend fun getRecipe(id: Int): Result<Recipe>
+    fun getRecipe(id: Int): Flow<Result<Recipe>>
 
-    suspend fun searchRecipes(search: RecipeSearch): Result<List<Recipe>>
+    fun searchRecipes(search: RecipeSearch): Flow<Result<List<Recipe>>>
 
     suspend fun saveRecipe(recipe: Recipe)
 

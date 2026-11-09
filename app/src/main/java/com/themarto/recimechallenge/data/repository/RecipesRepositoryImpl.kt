@@ -8,9 +8,14 @@ import com.themarto.recimechallenge.data.model.ExploreFeed
 import com.themarto.recimechallenge.data.model.Recipe
 import com.themarto.recimechallenge.data.model.RecipeSearch
 import com.themarto.recimechallenge.data.network.RecipesApi
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.emitAll
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onStart
 
 class RecipesRepositoryImpl(
     private val recipesApi: RecipesApi,
@@ -19,38 +24,56 @@ class RecipesRepositoryImpl(
 
     private val savedRecipes = MutableStateFlow<List<Recipe>>(emptyList())
 
-    override suspend fun getExploreFeed(): Result<ExploreFeed> {
+    override fun getExploreFeed(): Flow<Result<ExploreFeed>> = flow {
+        // simulates network delay
+        delay(200)
         val feedResult = recipesApi.getExploreFeed()
-        if (feedResult.isError()) return feedResult
+        if (feedResult.isError()) {
+            emit(feedResult)
+            return@flow
+        }
 
-        val savedIds = loadSavedIds()
         val feed = feedResult.value
-        return Result.Success(
-            feed.copy(
-                recipeOfTheDay = feed.recipeOfTheDay.withSavedFlag(savedIds),
-                recommended = feed.recommended.map { it.withSavedFlag(savedIds) }
-            )
+        emitAll(
+            observeSavedIds().map { savedIds ->
+                Result.Success(
+                    feed.copy(
+                        recipeOfTheDay = feed.recipeOfTheDay.withSavedFlag(savedIds),
+                        recommended = feed.recommended.map { it.withSavedFlag(savedIds) }
+                    )
+                )
+            }
         )
     }
 
-    override suspend fun getRecipe(id: Int): Result<Recipe> {
-        val localResult = recipesLocalStorage.getSavedRecipe(id)
-        if (localResult.isSuccess()) {
-            return Result.Success(localResult.value.copy(saved = true))
+    override fun getRecipe(id: Int): Flow<Result<Recipe>> = flow {
+        val remoteResult = recipesApi.getRecipe(id)
+        if (remoteResult.isError()) {
+            emit(remoteResult)
+            return@flow
         }
 
-        val remoteResult = recipesApi.getRecipe(id)
-        if (remoteResult.isError()) return remoteResult
-
-        return Result.Success(remoteResult.value.withSavedFlag(loadSavedIds()))
+        val recipe = remoteResult.value
+        emitAll(
+            observeSavedIds().map { savedIds ->
+                Result.Success(recipe.withSavedFlag(savedIds))
+            }
+        )
     }
 
-    override suspend fun searchRecipes(search: RecipeSearch): Result<List<Recipe>> {
+    override fun searchRecipes(search: RecipeSearch): Flow<Result<List<Recipe>>> = flow {
         val searchResult = recipesApi.searchRecipes(search)
-        if (searchResult.isError()) return searchResult
+        if (searchResult.isError()) {
+            emit(searchResult)
+            return@flow
+        }
 
-        val savedIds = loadSavedIds()
-        return Result.Success(searchResult.value.map { it.withSavedFlag(savedIds) })
+        val recipes = searchResult.value
+        emitAll(
+            observeSavedIds().map { savedIds ->
+                Result.Success(recipes.map { it.withSavedFlag(savedIds) })
+            }
+        )
     }
 
     override suspend fun saveRecipe(recipe: Recipe) {
@@ -75,9 +98,10 @@ class RecipesRepositoryImpl(
         }
     }
 
-    private suspend fun loadSavedIds(): Set<String> {
-        val result = recipesLocalStorage.getAllSavedRecipes()
-        return if (result.isSuccess()) result.value.map { it.id }.toSet() else emptySet()
+    private fun observeSavedIds(): Flow<Set<String>> {
+        return savedRecipes
+            .onStart { refreshSavedRecipes() }
+            .map { recipes -> recipes.map { it.id }.toSet() }
     }
 
     private fun Recipe.withSavedFlag(savedIds: Set<String>): Recipe {
