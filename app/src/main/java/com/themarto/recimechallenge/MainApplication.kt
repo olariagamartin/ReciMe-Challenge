@@ -1,6 +1,7 @@
 package com.themarto.recimechallenge
 
 import android.app.Application
+import com.themarto.recimechallenge.data.DataModuleProvider
 import com.themarto.recimechallenge.features.explore.ExploreModuleProvider
 import com.themarto.recimechallenge.features.recipe_details.DetailsModuleProvider
 import com.themarto.recimechallenge.features.search.SearchModuleProvider
@@ -17,7 +18,8 @@ class MainApplication : Application() {
             modules(
                 ExploreModuleProvider.getModules() +
                         DetailsModuleProvider.getModules() +
-                        SearchModuleProvider.getModules()
+                        SearchModuleProvider.getModules() +
+                        DataModuleProvider.getModules()
             )
         }
     }
