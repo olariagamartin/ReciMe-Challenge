@@ -1,4 +1,4 @@
-package com.themarto.recimechallenge.features
+package com.themarto.recimechallenge.features.saved
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize

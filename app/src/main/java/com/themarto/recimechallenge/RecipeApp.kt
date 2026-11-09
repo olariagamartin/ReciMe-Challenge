@@ -10,10 +10,14 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.themarto.recimechallenge.components.BottomNavBar
-import com.themarto.recimechallenge.navigation.Destinations
+import com.themarto.recimechallenge.features.explore.ExploreDestination
 import com.themarto.recimechallenge.features.explore.presentation.ExploreScreen
+import com.themarto.recimechallenge.features.recipe_details.RecipeDetailsDestination
 import com.themarto.recimechallenge.features.recipe_details.presentation.RecipeDetailsScreen
-import com.themarto.recimechallenge.features.SavedScreen
+import com.themarto.recimechallenge.features.saved.SavedDestination
+import com.themarto.recimechallenge.features.saved.SavedScreen
+import com.themarto.recimechallenge.features.search.SearchDestinations
+import com.themarto.recimechallenge.features.search.model.SearchScreenParam
 import com.themarto.recimechallenge.features.search.presentation.SearchScreen
 
 @Composable
@@ -21,10 +25,10 @@ fun RecipeApp(modifier: Modifier = Modifier) {
     val navController = rememberNavController()
     val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
     val showBottomBar = currentRoute in listOf(
-        Destinations.Explore.route,
-        Destinations.Search.route,
-        Destinations.Saved.route
-    )
+        ExploreDestination.route,
+        SavedDestination.route
+    ) || currentRoute?.startsWith(SearchDestinations.Search.route) == true
+
     Scaffold(
         bottomBar = {
             if (showBottomBar) {
@@ -57,23 +61,23 @@ fun RecipeNavHost(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Destinations.Explore.route,
+        startDestination = ExploreDestination.route,
         modifier = modifier
     ) {
-        composable(Destinations.Explore.route) {
+        composable(ExploreDestination.route) {
             ExploreScreen(
                 onRecipeClick = { recipeId ->
-                    navController.navigate(Destinations.RecipeDetails.createRoute(recipeId))
+                    navController.navigate(RecipeDetailsDestination.createRoute(recipeId))
                 },
                 onSearchClick = {
-                    navController.navigate(Destinations.SearchWithParams.withSearchBar()) {
+                    navController.navigate(SearchDestinations.SearchWithParams.withSearchBar()) {
                         popUpTo(navController.graph.startDestinationId) {
                             saveState = true
                         }
                     }
                 },
                 onFilterClick = { dietaryAttribute ->
-                    navController.navigate(Destinations.SearchWithParams.withFilter(dietaryAttribute)) {
+                    navController.navigate(SearchDestinations.SearchWithParams.withFilter(dietaryAttribute)) {
                         popUpTo(navController.graph.startDestinationId) {
                             saveState = true
                         }
@@ -81,25 +85,27 @@ fun RecipeNavHost(
                 }
             )
         }
-        composable(Destinations.SearchWithParams.route) {
+        composable(SearchDestinations.SearchWithParams.route) { backStackEntry ->
             SearchScreen(
                 onRecipeClick = { recipeId ->
-                    navController.navigate(Destinations.RecipeDetails.createRoute(recipeId))
-                }
+                    navController.navigate(RecipeDetailsDestination.createRoute(recipeId))
+                },
+                params = SearchScreenParam.SearchBar
             )
         }
 
-        composable(Destinations.Search.route) {
+        composable(SearchDestinations.Search.route) {
             SearchScreen(
                 onRecipeClick = { recipeId ->
-                    navController.navigate(Destinations.RecipeDetails.createRoute(recipeId))
-                }
+                    navController.navigate(RecipeDetailsDestination.createRoute(recipeId))
+                },
+                params = SearchScreenParam.None
             )
         }
-        composable(Destinations.Saved.route) {
+        composable(SavedDestination.route) {
             SavedScreen()
         }
-        composable(Destinations.RecipeDetails.route) {
+        composable(RecipeDetailsDestination.route) {
             RecipeDetailsScreen(
                 onBackClick = { navController.popBackStack() }
             )
