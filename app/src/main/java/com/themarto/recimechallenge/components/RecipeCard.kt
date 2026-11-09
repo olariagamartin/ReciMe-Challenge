@@ -37,6 +37,7 @@ fun RecipeCard(
     onClick: () -> Unit,
     onBookmarkClick: () -> Unit,
     modifier: Modifier = Modifier,
+    showRating: Boolean = true,
 ) {
     Card(
         modifier = modifier
@@ -64,12 +65,14 @@ fun RecipeCard(
                     saved = recipe.saved,
                     onClick = { onBookmarkClick() }
                 )
-                RatingChip(
-                    modifier = Modifier
-                        .align(Alignment.BottomStart)
-                        .padding(8.dp),
-                    rating = recipe.rating
-                )
+                if (showRating) {
+                    RatingChip(
+                        modifier = Modifier
+                            .align(Alignment.BottomStart)
+                            .padding(8.dp),
+                        rating = recipe.rating
+                    )
+                }
             }
             DietaryBadges(
                 modifier = Modifier

@@ -335,6 +335,6 @@ class SearchViewModelTest {
             deletedRecipeIds += id
         }
 
-        override suspend fun getAllSavedRecipes(): Flow<List<Recipe>> = emptyFlow()
+        override fun getAllSavedRecipes(): Flow<List<Recipe>> = emptyFlow()
     }
 }

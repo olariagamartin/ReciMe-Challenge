@@ -18,6 +18,6 @@ interface RecipesRepository {
 
     suspend fun deleteRecipe(id: Int)
 
-    suspend fun getAllSavedRecipes(): Flow<List<Recipe>>
+    fun getAllSavedRecipes(): Flow<List<Recipe>>
 
 }

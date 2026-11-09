@@ -6,6 +6,8 @@
     <string name="servings">%d servings</string>
     <string name="explore_tab_label">Explore</string>
     <string name="saved_tab_label">Saved</string>
+    <string name="saved_header_title">Saved</string>
+    <string name="saved_empty">No saved recipes yet</string>
     <string name="search_tab_label">Search</string>
     <string name="recipe_of_the_day_label">Today\'s Kitchen Inspiration</string>
     <string name="view_recipe">View Recipe</string>
@@ -37,6 +39,10 @@
     <string name="ingredient_section_title">Ingredients</string>
     <string name="instructions_section_title">Instructions</string>
     <string name="recipes_found_title">%1$d recipes found</string>
+    <plurals name="saved_recipes_count">
+        <item quantity="one">%d recipe saved</item>
+        <item quantity="other">%d recipes saved</item>
+    </plurals>
     <string name="cancel">Cancel</string>
     <string name="add_ingredient">Add ingredient</string>
     <string name="exclude_ingredient">Exclude ingredient</string>

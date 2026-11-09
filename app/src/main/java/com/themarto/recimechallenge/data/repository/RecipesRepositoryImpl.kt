@@ -87,8 +87,7 @@ class RecipesRepositoryImpl(
         refreshSavedRecipes()
     }
 
-    override suspend fun getAllSavedRecipes(): Flow<List<Recipe>> {
-        refreshSavedRecipes()
+    override fun getAllSavedRecipes(): Flow<List<Recipe>> {
         return savedRecipes.asStateFlow()
     }
 
