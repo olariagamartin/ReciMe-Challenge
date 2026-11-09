@@ -17,6 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.themarto.recimechallenge.components.RecipeCard
+import com.themarto.recimechallenge.data.model.DietaryFilters
 import com.themarto.recimechallenge.features.explore.components.FeaturedRecipe
 import com.themarto.recimechallenge.features.explore.components.Header
 import com.themarto.recimechallenge.data.model.Recipe
@@ -38,7 +39,7 @@ fun ExploreScreen(
                 onBookmarkClick = { recipe -> viewModel.onBookmarkClick(recipe) },
                 recipeOfTheDay = state.recipeOfTheDay,
                 onSearchClick = { onSearchClick() },
-                dietaryFilters = state.dietaryFilters,
+                dietaryFilters = DietaryFilters.entries,
                 onDietaryFilterClick = { filter -> viewModel.onDietaryFilterClick(filter) }
             )
         }
@@ -63,8 +64,8 @@ fun ExploreScreenContent(
     onBookmarkClick: (Recipe) -> Unit,
     recipeOfTheDay: Recipe,
     onSearchClick: () -> Unit,
-    dietaryFilters: List<String>,
-    onDietaryFilterClick: (String) -> Unit,
+    dietaryFilters: List<DietaryFilters>,
+    onDietaryFilterClick: (DietaryFilters) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -120,7 +121,7 @@ fun ExploreScreenContentPreview() {
         recipeOfTheDay = PreviewData.recipe,
         onBookmarkClick = {},
         onSearchClick = {},
-        dietaryFilters = listOf("Vegan", "Vegetarian", "Gluten-free"),
+        dietaryFilters = DietaryFilters.entries,
         onDietaryFilterClick = {}
     )
 }

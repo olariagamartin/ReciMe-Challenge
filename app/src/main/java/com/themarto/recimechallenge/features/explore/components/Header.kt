@@ -22,12 +22,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.themarto.recimechallenge.R
 import com.themarto.recimechallenge.components.DietaryFilter
+import com.themarto.recimechallenge.data.model.DietaryFilters
 
 @Composable
 fun Header(
     onSearchClick: () -> Unit,
-    dietaryFilters: List<String>,
-    onDietaryFilterClick: (String) -> Unit,
+    dietaryFilters: List<DietaryFilters>,
+    onDietaryFilterClick: (DietaryFilters) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -40,7 +41,7 @@ fun Header(
         SearchBarButton(
             onSearchClick = onSearchClick,
         )
-        DietaryFilters(
+        DietaryFiltersRow(
             dietaryFilters = dietaryFilters,
             onDietaryFilterClick = onDietaryFilterClick
         )
@@ -82,9 +83,9 @@ fun SearchBarButton(
 }
 
 @Composable
-fun DietaryFilters(
-    dietaryFilters: List<String>,
-    onDietaryFilterClick: (String) -> Unit,
+fun DietaryFiltersRow(
+    dietaryFilters: List<DietaryFilters>,
+    onDietaryFilterClick: (DietaryFilters) -> Unit,
     modifier: Modifier = Modifier
 ) {
     FlowRow(
@@ -93,10 +94,23 @@ fun DietaryFilters(
     ) {
         for (attribute in dietaryFilters) {
             DietaryFilter(
-                text = attribute,
-                onClick = { onDietaryFilterClick(attribute) }
+                text = getDietaryFilter(attribute),
+                onClick = { onDietaryFilterClick(attribute) },
+                modifier = Modifier.padding(vertical = 4.dp)
             )
         }
+    }
+}
+
+@Composable
+private fun getDietaryFilter(filter: DietaryFilters): String {
+    return when (filter) {
+        DietaryFilters.VEGAN -> stringResource(R.string.vegan_chip)
+        DietaryFilters.VEGETARIAN -> stringResource(R.string.vegetarian_chip)
+        DietaryFilters.GLUTEN_FREE -> stringResource(R.string.gluten_free_chip)
+        DietaryFilters.DAIRY_FREE -> stringResource(R.string.dairy_free_chip)
+        DietaryFilters.HIGH_PROTEIN -> stringResource(R.string.high_protein_chip)
+        DietaryFilters.KETO -> stringResource(R.string.keto_chip)
     }
 }
 
@@ -105,7 +119,7 @@ fun DietaryFilters(
 fun HeaderPrev() {
     Header(
         onSearchClick = { },
-        dietaryFilters = listOf("Vegan", "Vegetarian", "Gluten-free"),
+        dietaryFilters = DietaryFilters.entries,
         onDietaryFilterClick = { }
     )
 }

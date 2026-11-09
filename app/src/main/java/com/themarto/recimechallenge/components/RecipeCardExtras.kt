@@ -143,14 +143,13 @@ fun DietaryFilter(
                 color = MaterialTheme.colorScheme.primary,
                 shape = RoundedCornerShape(16.dp)
             )
-            .clickable(onClick = onClick)
-            .padding(horizontal = 8.dp, vertical = 4.dp),
+            .clickable(onClick = onClick),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
             text = text,
             style = MaterialTheme.typography.bodyMedium,
-            modifier = Modifier.padding(4.dp)
+            modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp)
         )
     }
 }
@@ -226,7 +225,7 @@ private fun MetricChipPreview() {
 private fun DietaryFilterPreview() {
     ReciMeChallengeTheme {
         DietaryFilter(
-            text = "Vegan",
+            text = "\uD83C\uDF31 Vegan",
             onClick = {}
         )
     }
