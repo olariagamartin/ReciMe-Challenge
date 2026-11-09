@@ -208,7 +208,13 @@ class SearchViewModel(
     }
 
     fun onBookmarkClick(recipe: Recipe) {
-        // Implementation for bookmarking a recipe
+        viewModelScope.launch {
+            if (recipe.saved) {
+                recipesRepository.deleteRecipe(recipe.id.toInt())
+            } else {
+                recipesRepository.saveRecipe(recipe)
+            }
+        }
     }
 
     private fun calculateFiltersApplied(status: FiltersStatus): Int {
