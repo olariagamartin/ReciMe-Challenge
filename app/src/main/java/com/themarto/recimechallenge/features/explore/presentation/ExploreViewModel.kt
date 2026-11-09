@@ -1,32 +1,45 @@
 package com.themarto.recimechallenge.features.explore.presentation
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.themarto.recimechallenge.data.model.DietaryAttribute
+import com.themarto.recimechallenge.data.model.ExploreFeed
 import com.themarto.recimechallenge.data.model.Recipe
-import com.themarto.recimechallenge.ui.preview.PreviewData
-import kotlinx.coroutines.flow.MutableStateFlow
+import com.themarto.recimechallenge.data.model.Result
+import com.themarto.recimechallenge.data.model.isSuccess
+import com.themarto.recimechallenge.data.repository.RecipesRepository
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 
-class ExploreViewModel : ViewModel() {
-    private val _uiState = MutableStateFlow<ExploreUiState>(ExploreUiState.Loading)
-    val uiState: StateFlow<ExploreUiState> = _uiState
+class ExploreViewModel(
+    private val recipesRepository: RecipesRepository
+) : ViewModel() {
 
-    init {
-        getDiscoverFeed()
-    }
-
-    private fun getDiscoverFeed() {
-        _uiState.value = ExploreUiState.Success(
-            recipes = PreviewData.recipeList,
-            recipeOfTheDay = PreviewData.recipe,
-            dietaryFilters = listOf("Vegan", "Vegetarian", "Gluten-free", "Dairy-free")
-        )
-    }
+    val uiState: StateFlow<ExploreUiState> = recipesRepository.getExploreFeed()
+        .map(::mapResultToUiState)
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), ExploreUiState.Loading)
 
     fun onBookmarkClick(recipe: Recipe) {
-        
+        viewModelScope.launch {
+            if (recipe.saved) {
+                recipesRepository.deleteRecipe(recipe.id.toInt())
+            } else {
+                recipesRepository.saveRecipe(recipe)
+            }
+        }
     }
 
-    fun onDietaryFilterClick(filter: String) {
-
+    private suspend fun mapResultToUiState(result: Result<ExploreFeed>): ExploreUiState {
+        return if (result.isSuccess()) {
+            ExploreUiState.Success(
+                recipes = result.value.recommended,
+                recipeOfTheDay = result.value.recipeOfTheDay,
+            )
+        } else {
+            ExploreUiState.Error(result.message)
+        }
     }
 }
