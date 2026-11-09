@@ -62,6 +62,7 @@ class RecipesRepositoryImpl(
     }
 
     override fun searchRecipes(search: RecipeSearch): Flow<Result<List<Recipe>>> = flow {
+        delay(400) // simulates network delay
         val searchResult = recipesApi.searchRecipes(search)
         if (searchResult.isError()) {
             emit(searchResult)

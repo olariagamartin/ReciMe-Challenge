@@ -1,20 +1,24 @@
 package com.themarto.recimechallenge.features.search.presentation
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.themarto.recimechallenge.data.model.DietaryAttribute
 import com.themarto.recimechallenge.features.search.model.FiltersStatus
 import com.themarto.recimechallenge.features.search.model.ServingOption
 import com.themarto.recimechallenge.data.model.Recipe
+import com.themarto.recimechallenge.data.model.RecipeSearch
+import com.themarto.recimechallenge.data.model.isError
 import com.themarto.recimechallenge.data.repository.RecipesRepository
 import com.themarto.recimechallenge.features.search.model.SearchScreenParam
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 
 class SearchViewModel(
     private val recipesRepository: RecipesRepository,
-    private val params: SearchScreenParam
+    private val params: SearchScreenParam,
 ) : ViewModel() {
     private val _uiState = MutableStateFlow(SearchUiState())
     val uiState: StateFlow<SearchUiState> = _uiState.asStateFlow()
@@ -39,10 +43,42 @@ class SearchViewModel(
         _uiState.update {
             SearchUiState(
                 filtersStatus = FiltersStatus(
-                    dietaryAttrsSelected = listOf(filter)
+                    dietaryAttrsSelected = listOf(filter),
                 ),
+                filtersApplied = 1
+            )
+        }
+        searchRecipes(
+            RecipeSearch(
+                dietaryPreferences = listOf(filter)
+            )
+        )
+    }
+
+    private fun searchRecipes(search: RecipeSearch) {
+        _uiState.update {
+            it.copy(
                 loading = true
             )
+        }
+        viewModelScope.launch {
+            recipesRepository.searchRecipes(search).collect { result ->
+                if (result.isError()) {
+                    _uiState.update {
+                        it.copy(
+                            loading = false,
+                            error = result.message
+                        )
+                    }
+                } else {
+                    _uiState.update {
+                        it.copy(
+                            loading = false,
+                            results = result.value
+                        )
+                    }
+                }
+            }
         }
     }
 
@@ -76,7 +112,8 @@ class SearchViewModel(
 
     fun onRemoveFromIncluded(ingredient: String) {
         _uiState.update { state ->
-            val updatedIngredients = state.filtersStatus.includedIngredients.filter { it != ingredient }
+            val updatedIngredients =
+                state.filtersStatus.includedIngredients.filter { it != ingredient }
             val updatedStatus = state.filtersStatus.copy(includedIngredients = updatedIngredients)
             state.copy(
                 filtersStatus = updatedStatus,
@@ -101,7 +138,8 @@ class SearchViewModel(
 
     fun onRemoveFromExcluded(ingredient: String) {
         _uiState.update { state ->
-            val updatedIngredients = state.filtersStatus.excludedIngredients.filter { it != ingredient }
+            val updatedIngredients =
+                state.filtersStatus.excludedIngredients.filter { it != ingredient }
             val updatedStatus = state.filtersStatus.copy(excludedIngredients = updatedIngredients)
             state.copy(
                 filtersStatus = updatedStatus,
