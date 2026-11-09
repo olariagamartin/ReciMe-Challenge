@@ -259,7 +259,7 @@ private fun FooterSection(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         OutlinedButton(
-            onClick = onApplyFilters,
+            onClick = onResetFilters,
         ) {
             Icon(
                 imageVector = Icons.Outlined.RestartAlt,
