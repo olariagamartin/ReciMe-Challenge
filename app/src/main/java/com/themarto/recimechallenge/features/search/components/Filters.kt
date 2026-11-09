@@ -314,9 +314,9 @@ private fun FilterChip(
     Row(
         modifier = modifier
             .clip(RoundedCornerShape(20.dp))
+            .clickable { onClick() }
             .background(if (selected) selectedColor else FilterSelectedBg)
-            .padding(horizontal = 12.dp, vertical = 6.dp)
-            .clickable { onClick() },
+            .padding(horizontal = 12.dp, vertical = 6.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         if (selected) {
@@ -331,6 +331,7 @@ private fun FilterChip(
         Spacer(modifier = Modifier.width(6.dp))
         Text(
             text = text,
+            modifier = Modifier.padding(vertical = 2.dp),
             style = MaterialTheme.typography.bodyMedium,
             color = FilterSelectedContent,
             fontWeight = FontWeight.Medium
