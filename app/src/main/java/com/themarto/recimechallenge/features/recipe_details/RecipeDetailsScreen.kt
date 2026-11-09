@@ -68,12 +68,15 @@ fun RecipeDetailsContent(
                 checkedIngredients = checkedIngredients,
                 onItemCheckedChange = onIngredientCheckedChange
             )
+            InstructionSection(
+                instructions = recipe.instructions
+            )
         }
     }
 
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, heightDp = 1000)
 @Composable
 private fun RecipeDetailsContentPrev() {
     ReciMeChallengeTheme {

@@ -9,7 +9,8 @@ data class Recipe(
     val timeInMinutes: Int,
     val dietaryAttributes: List<String>,
     val saved: Boolean,
-    val ingredients: List<Ingredient>
+    val ingredients: List<Ingredient>,
+    val instructions: List<String>
 )
 
 data class Rating(

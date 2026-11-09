@@ -34,4 +34,5 @@
     <string name="back">Navigate back</string>
     <string name="ingredients">Ingredients</string>
     <string name="ingredient_section_title">Ingredients</string>
+    <string name="instructions_section_title">Instructions</string>
 </resources>

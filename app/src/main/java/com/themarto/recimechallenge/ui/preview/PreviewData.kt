@@ -21,7 +21,14 @@ object PreviewData {
         timeInMinutes = 1,
         dietaryAttributes = listOf("🌿 Vegetarian", "🌾 Gluten-Free", "🥛 Dairy-Free"),
         saved = true,
-        ingredients = ingredients
+        ingredients = ingredients,
+        instructions = listOf(
+            "Preheat the oven to 200°C (400°F).",
+            "In a large bowl, toss the <b>potatoes</b> with olive oil, salt, and pepper.",
+            "Spread the potatoes in a single layer on a baking sheet.",
+            "Roast for 25-30 minutes, or until golden brown and crispy.",
+            "Serve hot and enjoy!"
+        )
     )
 
     val recipeList = listOf(
