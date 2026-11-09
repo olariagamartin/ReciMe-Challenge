@@ -27,7 +27,7 @@ import androidx.compose.ui.unit.dp
 import com.themarto.recimechallenge.R
 import com.themarto.recimechallenge.features.explore.ExploreDestination
 import com.themarto.recimechallenge.features.saved.SavedDestination
-import com.themarto.recimechallenge.features.search.SearchDestinations
+import com.themarto.recimechallenge.features.search.SearchDestination
 import com.themarto.recimechallenge.ui.theme.ReciMeChallengeTheme
 
 data class BottomBar(
@@ -45,7 +45,7 @@ val bottomTabs = listOf(
     BottomBar(
         labelRes = R.string.search_tab_label,
         icon = Icons.Filled.Search,
-        route = SearchDestinations.Search.route
+        route = SearchDestination.route
     ),
     BottomBar(
         labelRes = R.string.saved_tab_label,
@@ -114,7 +114,7 @@ fun BottomNavBar(
 fun BottomNavBarPreview() {
     ReciMeChallengeTheme {
         BottomNavBar(
-            currentRoute = SearchDestinations.Search.route,
+            currentRoute = SearchDestination.route,
             onTabSelected = {}
         )
     }

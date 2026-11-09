@@ -27,7 +27,7 @@ class SearchViewModel(
         when (params) {
             is SearchScreenParam.SearchBar -> onSearchBarRequested()
             is SearchScreenParam.Filter -> onFilterRequested(params.filter)
-            is SearchScreenParam.None -> onNonRequested()
+            is SearchScreenParam.None -> {}
         }
     }
 
@@ -79,12 +79,6 @@ class SearchViewModel(
                     }
                 }
             }
-        }
-    }
-
-    private fun onNonRequested() {
-        _uiState.update {
-            SearchUiState()
         }
     }
 
