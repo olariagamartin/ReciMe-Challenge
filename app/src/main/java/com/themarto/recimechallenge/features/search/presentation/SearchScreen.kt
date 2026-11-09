@@ -39,59 +39,31 @@ fun SearchScreen(
     viewModel: SearchViewModel = koinViewModel{ parametersOf(params) }
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    val loading = uiState.loading
-    val error = uiState.error
 
-    when {
-        loading -> {
-            Box(
-                modifier = modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
-                CircularProgressIndicator()
-            }
-        }
-        error != null -> {
-            Text(
-                text = error,
-                modifier = modifier.fillMaxSize()
-            )
-        }
-        else -> {
-            SearchScreenContent(
-                modifier = modifier,
-                searchQuery = uiState.searchQuery,
-                onQueryChange = viewModel::onQueryChange,
-                onFilterClick = viewModel::onFilterClick,
-                filtersApplied = uiState.filtersApplied,
-                filtersOpen = uiState.filtersOpen,
-                filtersStatus = uiState.filtersStatus,
-                onDietaryPreferenceSelected = viewModel::onDietaryPreferenceSelected,
-                onServingOptionSelected = viewModel::onServingOptionSelected,
-                onRemoveFromIncluded = viewModel::onRemoveFromIncluded,
-                onAddToIncluded = viewModel::onAddToIncluded,
-                onRemoveFromExcluded = viewModel::onRemoveFromExcluded,
-                onAddToExcluded = viewModel::onAddToExcluded,
-                onResetFilters = viewModel::onResetFilters,
-                onApplyFilters = viewModel::onApplyFilters,
-                onBookmarkClick = viewModel::onBookmarkClick,
-                onRecipeClick = onRecipeClick,
-                results = uiState.results,
-                focusSearch = uiState.focusSearch
-            )
-        }
-    }
+        SearchScreenContent(
+            modifier = modifier,
+            uiState = uiState,
+            onQueryChange = viewModel::onQueryChange,
+            onFilterClick = viewModel::onFilterClick,
+            onDietaryPreferenceSelected = viewModel::onDietaryPreferenceSelected,
+            onServingOptionSelected = viewModel::onServingOptionSelected,
+            onRemoveFromIncluded = viewModel::onRemoveFromIncluded,
+            onAddToIncluded = viewModel::onAddToIncluded,
+            onRemoveFromExcluded = viewModel::onRemoveFromExcluded,
+            onAddToExcluded = viewModel::onAddToExcluded,
+            onResetFilters = viewModel::onResetFilters,
+            onApplyFilters = viewModel::onApplyFilters,
+            onBookmarkClick = viewModel::onBookmarkClick,
+            onRecipeClick = onRecipeClick,
+        )
 }
 
 @Composable
 fun SearchScreenContent(
     modifier: Modifier = Modifier,
-    searchQuery: String,
+    uiState: SearchUiState,
     onQueryChange: (String) -> Unit,
     onFilterClick: () -> Unit,
-    filtersApplied: Int,
-    filtersOpen: Boolean,
-    filtersStatus: FiltersStatus,
     onDietaryPreferenceSelected: (DietaryAttribute) -> Unit,
     onServingOptionSelected: (ServingOption) -> Unit,
     onRemoveFromIncluded: (String) -> Unit,
@@ -102,8 +74,6 @@ fun SearchScreenContent(
     onApplyFilters: () -> Unit,
     onBookmarkClick: (Recipe) -> Unit,
     onRecipeClick: (String) -> Unit,
-    results: List<Recipe>,
-    focusSearch: Boolean
 ) {
     Column(
         modifier = modifier.padding(8.dp),
@@ -112,22 +82,22 @@ fun SearchScreenContent(
             verticalAlignment = Alignment.CenterVertically
         ) {
             SearchBar(
-                searchQuery = searchQuery,
+                searchQuery = uiState.searchQuery,
                 onQueryChange = onQueryChange,
-                initialFocus = focusSearch,
+                initialFocus = uiState.focusSearch,
                 modifier = Modifier.weight(1f)
             )
             Spacer(modifier = Modifier.width(8.dp))
             FilterBtn(
                 onClick = onFilterClick,
-                selected = filtersOpen,
-                filtersApplied = filtersApplied
+                selected = uiState.filtersOpen,
+                filtersApplied = uiState.filtersApplied
             )
         }
-        if (filtersOpen) {
+        if (uiState.filtersOpen) {
             Spacer(modifier = Modifier.height(8.dp))
             FiltersCard(
-                filtersStatus = filtersStatus,
+                filtersStatus = uiState.filtersStatus,
                 onDietaryPreferenceSelected = onDietaryPreferenceSelected,
                 onServingOptionSelected = onServingOptionSelected,
                 onRemoveFromIncluded = onRemoveFromIncluded,
@@ -139,11 +109,29 @@ fun SearchScreenContent(
             )
         }
         Spacer(modifier = Modifier.height(8.dp))
-        SearchResult(
-            results = results,
-            onRecipeClick = onRecipeClick,
-            onBookmarkClick = onBookmarkClick
-        )
+        when {
+            uiState.loading -> {
+                Box(
+                    modifier = modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    CircularProgressIndicator()
+                }
+            }
+            uiState.error != null -> {
+                Text(
+                    text = uiState.error,
+                    modifier = modifier.fillMaxSize()
+                )
+            }
+            else -> {
+                SearchResult(
+                    results = uiState.results,
+                    onRecipeClick = onRecipeClick,
+                    onBookmarkClick = onBookmarkClick
+                )
+            }
+        }
     }
 }
 
@@ -151,10 +139,8 @@ fun SearchScreenContent(
 @Composable
 private fun SearchScreenContentPreview() {
     ReciMeChallengeTheme {
-        SearchScreenContent(
+        val uiState = SearchUiState(
             searchQuery = "Pasta",
-            onQueryChange = {},
-            onFilterClick = {},
             filtersApplied = 2,
             filtersOpen = true,
             filtersStatus = FiltersStatus(
@@ -166,6 +152,17 @@ private fun SearchScreenContentPreview() {
                 includedIngredients = listOf("Potatoes", "Carrots"),
                 excludedIngredients = listOf("Spinach"),
             ),
+            results = PreviewData.recipeList,
+            loading = false,
+            error = null,
+        )
+
+
+
+        SearchScreenContent(
+            uiState = uiState,
+            onQueryChange = {},
+            onFilterClick = {},
             onDietaryPreferenceSelected = {},
             onServingOptionSelected = {},
             onRemoveFromIncluded = {},
@@ -176,8 +173,6 @@ private fun SearchScreenContentPreview() {
             onApplyFilters = {},
             onBookmarkClick = {},
             onRecipeClick = {},
-            results = PreviewData.recipeList,
-            focusSearch = false
         )
     }
 }

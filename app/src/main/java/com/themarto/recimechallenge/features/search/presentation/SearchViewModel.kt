@@ -30,11 +30,6 @@ class SearchViewModel(
     private fun onSearchBarRequested() {
         _uiState.update {
             SearchUiState(
-                searchQuery = "",
-                filtersApplied = 0,
-                filtersOpen = false,
-                filtersStatus = FiltersStatus(),
-                results = emptyList(),
                 focusSearch = true
             )
         }
@@ -43,28 +38,17 @@ class SearchViewModel(
     private fun onFilterRequested(filter: DietaryAttribute) {
         _uiState.update {
             SearchUiState(
-                searchQuery = "",
-                filtersApplied = 1,
-                filtersOpen = false,
                 filtersStatus = FiltersStatus(
                     dietaryAttrsSelected = listOf(filter)
                 ),
-                results = emptyList(),
-                focusSearch = false
+                loading = true
             )
         }
     }
 
     private fun onNonRequested() {
         _uiState.update {
-            SearchUiState(
-                searchQuery = "",
-                filtersApplied = 0,
-                filtersOpen = false,
-                filtersStatus = FiltersStatus(),
-                results = emptyList(),
-                focusSearch = false
-            )
+            SearchUiState()
         }
     }
 
