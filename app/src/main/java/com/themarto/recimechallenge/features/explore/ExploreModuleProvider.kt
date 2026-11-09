@@ -10,5 +10,6 @@ object ExploreModuleProvider {
 }
 
 val viewModelModule = module {
-    viewModel { ExploreViewModel() }
+    viewModel { ExploreViewModel(recipesRepository = get())
+    }
 }

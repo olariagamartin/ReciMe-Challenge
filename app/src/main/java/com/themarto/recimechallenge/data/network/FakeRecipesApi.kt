@@ -1,6 +1,7 @@
 package com.themarto.recimechallenge.data.network
 
 import android.content.Context
+import com.themarto.recimechallenge.data.model.DietaryAttribute
 import com.themarto.recimechallenge.data.model.ExploreFeed
 import com.themarto.recimechallenge.data.model.Ingredient
 import com.themarto.recimechallenge.data.model.Rating
@@ -57,12 +58,10 @@ class FakeRecipesApi(context: Context) : RecipesApi {
             instructions.any { it.contains(normalized, ignoreCase = true) }
     }
 
-    private fun Recipe.matchesDietaryPreferences(preferences: List<String>): Boolean {
+    private fun Recipe.matchesDietaryPreferences(preferences: List<DietaryAttribute>): Boolean {
         return preferences.all { preference ->
-            val expected = preference.normalized()
             dietaryAttributes.any { attribute ->
-                attribute.equals(preference, ignoreCase = true) ||
-                    attribute.normalized() == expected
+                attribute == preference
             }
         }
     }
@@ -85,10 +84,6 @@ class FakeRecipesApi(context: Context) : RecipesApi {
         }
     }
 
-    private fun String.normalized(): String {
-        return lowercase().filter { it.isLetter() || it == '-' || it.isWhitespace() }.trim()
-    }
-
     private companion object {
         const val RECIPES_FILE = "recipes.json"
 
@@ -105,7 +100,7 @@ class FakeRecipesApi(context: Context) : RecipesApi {
                 servings = getInt("servings"),
                 rating = getJSONObject("rating").toRating(),
                 timeInMinutes = getInt("timeInMinutes"),
-                dietaryAttributes = getJSONArray("dietaryAttributes").toStringList(),
+                dietaryAttributes = getJSONArray("dietaryAttributes").toDietaryAttrList(),
                 saved = optBoolean("saved", false),
                 ingredients = getJSONArray("ingredients").toIngredientList(),
                 instructions = getJSONArray("instructions").toStringList()
@@ -117,6 +112,26 @@ class FakeRecipesApi(context: Context) : RecipesApi {
                 stars = getDouble("stars").toFloat(),
                 reviews = getInt("reviews")
             )
+        }
+
+        fun JSONArray.toDietaryAttrList(): List<DietaryAttribute> {
+            return List(length()) { index ->
+                when (getString(index)) {
+                    "VEGAN" -> DietaryAttribute.VEGAN
+                    "VEGETARIAN" -> DietaryAttribute.VEGETARIAN
+                    "GLUTEN_FREE" -> DietaryAttribute.GLUTEN_FREE
+                    "DAIRY_FREE" -> DietaryAttribute.DAIRY_FREE
+                    "KETO" -> DietaryAttribute.KETO
+                    "HIGH_PROTEIN" -> DietaryAttribute.HIGH_PROTEIN
+                    else -> throw IllegalArgumentException(
+                        "Unknown dietary attribute: ${
+                            getString(
+                                index
+                            )
+                        }"
+                    )
+                }
+            }
         }
 
         fun JSONArray.toStringList(): List<String> {

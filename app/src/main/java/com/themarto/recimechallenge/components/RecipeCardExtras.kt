@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -31,6 +32,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.themarto.recimechallenge.R
+import com.themarto.recimechallenge.data.model.DietaryAttribute
 import com.themarto.recimechallenge.data.model.Rating
 import com.themarto.recimechallenge.ui.preview.PreviewData
 import com.themarto.recimechallenge.ui.theme.ReciMeChallengeTheme
@@ -108,24 +110,40 @@ fun BackButton(
 
 @Composable
 fun DietaryBadges(
-    dietaryAttributes: List<String>,
+    dietaryAttributes: List<DietaryAttribute>,
     modifier: Modifier = Modifier
 ) {
     FlowRow(
         modifier = modifier,
         horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        // todo: add icons
         for (attribute in dietaryAttributes) {
-            Text(
-                text = attribute,
-                modifier = Modifier
-                    .clip(RoundedCornerShape(16.dp))
-                    .background(MaterialTheme.colorScheme.primaryContainer)
-                    .padding(4.dp),
-                color = MaterialTheme.colorScheme.onPrimaryContainer
-            )
+            Box(
+                modifier = Modifier.padding(vertical = 4.dp)
+            ) {
+                Text(
+                    text = getDietaryAttrString(attribute),
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(16.dp))
+                        .background(MaterialTheme.colorScheme.primaryContainer)
+                        .padding(4.dp),
+                    color = MaterialTheme.colorScheme.onPrimaryContainer
+                )
+            }
+
         }
+    }
+}
+
+@Composable
+fun getDietaryAttrString(filter: DietaryAttribute): String {
+    return when (filter) {
+        DietaryAttribute.VEGAN -> stringResource(R.string.vegan_chip)
+        DietaryAttribute.VEGETARIAN -> stringResource(R.string.vegetarian_chip)
+        DietaryAttribute.GLUTEN_FREE -> stringResource(R.string.gluten_free_chip)
+        DietaryAttribute.DAIRY_FREE -> stringResource(R.string.dairy_free_chip)
+        DietaryAttribute.HIGH_PROTEIN -> stringResource(R.string.high_protein_chip)
+        DietaryAttribute.KETO -> stringResource(R.string.keto_chip)
     }
 }
 
@@ -204,7 +222,7 @@ private fun BookmarkButtonPreview() {
 private fun DietaryBadgesPreview() {
     ReciMeChallengeTheme {
         DietaryBadges(
-            dietaryAttributes = PreviewData.recipe.dietaryAttributes
+            dietaryAttributes = DietaryAttribute.entries
         )
     }
 }

@@ -16,11 +16,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.themarto.recimechallenge.data.model.DietaryAttribute
 import com.themarto.recimechallenge.features.search.components.FilterBtn
 import com.themarto.recimechallenge.features.search.components.FiltersCard
 import com.themarto.recimechallenge.features.search.components.SearchBar
 import com.themarto.recimechallenge.features.search.components.SearchResult
-import com.themarto.recimechallenge.features.search.model.DietaryPreference
+import com.themarto.recimechallenge.features.search.model.DietaryItem
 import com.themarto.recimechallenge.features.search.model.FiltersStatus
 import com.themarto.recimechallenge.features.search.model.ServingOption
 import com.themarto.recimechallenge.data.model.Recipe
@@ -84,7 +85,7 @@ fun SearchScreenContent(
     filtersApplied: Int,
     filtersOpen: Boolean,
     filtersStatus: FiltersStatus,
-    onDietaryPreferenceSelected: (DietaryPreference) -> Unit,
+    onDietaryPreferenceSelected: (DietaryItem) -> Unit,
     onServingOptionSelected: (ServingOption) -> Unit,
     onRemoveFromIncluded: (String) -> Unit,
     onAddToIncluded: () -> Unit,
@@ -148,12 +149,13 @@ private fun SearchScreenContentPreview() {
             filtersApplied = 2,
             filtersOpen = true,
             filtersStatus = FiltersStatus(
-                dietaryPreferences = listOf(
-                    DietaryPreference("🌿 Vegetarian", true),
-                    DietaryPreference("🌱 Vegan", false),
-                    DietaryPreference("🌾 Gluten-Free", false),
-                    DietaryPreference("🥛 Dairy-Free", false),
-                    DietaryPreference("🥑 Keto", false)
+                dietaryItems = listOf(
+                    DietaryItem(DietaryAttribute.VEGETARIAN, true),
+                    DietaryItem(DietaryAttribute.VEGAN, false),
+                    DietaryItem(DietaryAttribute.GLUTEN_FREE, false),
+                    DietaryItem(DietaryAttribute.DAIRY_FREE, false),
+                    DietaryItem(DietaryAttribute.KETO, true),
+                    DietaryItem(DietaryAttribute.HIGH_PROTEIN, false)
                 ),
                 selectedServingOption = ServingOption.ONE_TWO,
                 includedIngredients = listOf("Potatoes", "Carrots"),

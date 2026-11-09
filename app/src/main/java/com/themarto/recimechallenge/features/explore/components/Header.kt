@@ -22,13 +22,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.themarto.recimechallenge.R
 import com.themarto.recimechallenge.components.DietaryFilter
-import com.themarto.recimechallenge.data.model.DietaryFilters
+import com.themarto.recimechallenge.components.getDietaryAttrString
+import com.themarto.recimechallenge.data.model.DietaryAttribute
 
 @Composable
 fun Header(
     onSearchClick: () -> Unit,
-    dietaryFilters: List<DietaryFilters>,
-    onDietaryFilterClick: (DietaryFilters) -> Unit,
+    dietaryFilters: List<DietaryAttribute>,
+    onDietaryFilterClick: (DietaryAttribute) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -84,8 +85,8 @@ fun SearchBarButton(
 
 @Composable
 fun DietaryFiltersRow(
-    dietaryFilters: List<DietaryFilters>,
-    onDietaryFilterClick: (DietaryFilters) -> Unit,
+    dietaryFilters: List<DietaryAttribute>,
+    onDietaryFilterClick: (DietaryAttribute) -> Unit,
     modifier: Modifier = Modifier
 ) {
     FlowRow(
@@ -94,23 +95,11 @@ fun DietaryFiltersRow(
     ) {
         for (attribute in dietaryFilters) {
             DietaryFilter(
-                text = getDietaryFilter(attribute),
+                text = getDietaryAttrString(attribute),
                 onClick = { onDietaryFilterClick(attribute) },
                 modifier = Modifier.padding(vertical = 4.dp)
             )
         }
-    }
-}
-
-@Composable
-private fun getDietaryFilter(filter: DietaryFilters): String {
-    return when (filter) {
-        DietaryFilters.VEGAN -> stringResource(R.string.vegan_chip)
-        DietaryFilters.VEGETARIAN -> stringResource(R.string.vegetarian_chip)
-        DietaryFilters.GLUTEN_FREE -> stringResource(R.string.gluten_free_chip)
-        DietaryFilters.DAIRY_FREE -> stringResource(R.string.dairy_free_chip)
-        DietaryFilters.HIGH_PROTEIN -> stringResource(R.string.high_protein_chip)
-        DietaryFilters.KETO -> stringResource(R.string.keto_chip)
     }
 }
 
@@ -119,7 +108,7 @@ private fun getDietaryFilter(filter: DietaryFilters): String {
 fun HeaderPrev() {
     Header(
         onSearchClick = { },
-        dietaryFilters = DietaryFilters.entries,
+        dietaryFilters = DietaryAttribute.entries,
         onDietaryFilterClick = { }
     )
 }

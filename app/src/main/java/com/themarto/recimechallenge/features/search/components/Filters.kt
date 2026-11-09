@@ -47,7 +47,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.themarto.recimechallenge.R
-import com.themarto.recimechallenge.features.search.model.DietaryPreference
+import com.themarto.recimechallenge.components.getDietaryAttrString
+import com.themarto.recimechallenge.data.model.DietaryAttribute
+import com.themarto.recimechallenge.features.search.model.DietaryItem
 import com.themarto.recimechallenge.features.search.model.FiltersStatus
 import com.themarto.recimechallenge.features.search.model.ServingOption
 import com.themarto.recimechallenge.ui.theme.DietarySectionCountColor
@@ -65,7 +67,7 @@ import com.themarto.recimechallenge.ui.theme.ServingOptionSelectedTint
 @Composable
 fun FiltersCard(
     filtersStatus: FiltersStatus,
-    onDietaryPreferenceSelected: (DietaryPreference) -> Unit,
+    onDietaryPreferenceSelected: (DietaryItem) -> Unit,
     onServingOptionSelected: (ServingOption) -> Unit,
     onRemoveFromIncluded: (String) -> Unit,
     onAddToIncluded: () -> Unit,
@@ -84,7 +86,7 @@ fun FiltersCard(
         verticalArrangement = Arrangement.spacedBy(24.dp)
     ) {
         DietarySection(
-            dietaryPreferences = filtersStatus.dietaryPreferences,
+            dietaryItems = filtersStatus.dietaryItems,
             onDietaryPreferenceSelected = onDietaryPreferenceSelected
         )
         ServingsSection(
@@ -110,8 +112,8 @@ fun FiltersCard(
 
 @Composable
 private fun DietarySection(
-    dietaryPreferences: List<DietaryPreference>,
-    onDietaryPreferenceSelected: (DietaryPreference) -> Unit,
+    dietaryItems: List<DietaryItem>,
+    onDietaryPreferenceSelected: (DietaryItem) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(12.dp)) {
@@ -125,9 +127,9 @@ private fun DietarySection(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            dietaryPreferences.forEach { preference ->
+            dietaryItems.forEach { preference ->
                 FilterChip(
-                    text = preference.name,
+                    text = getDietaryAttrString(preference.dietaryAttribute),
                     selected = preference.isSelected,
                     selectedColor = DietarySelectedChip,
                     onClick = { onDietaryPreferenceSelected(preference) }
@@ -540,12 +542,13 @@ fun FiltersCardPreview() {
     ReciMeChallengeTheme {
         FiltersCard(
             filtersStatus = FiltersStatus(
-                dietaryPreferences = listOf(
-                    DietaryPreference("\uD83C\uDF3F Vegetarian", true),
-                    DietaryPreference("\uD83C\uDF31 Vegan", false),
-                    DietaryPreference("\uD83C\uDF3E Gluten-Free", false),
-                    DietaryPreference("\uD83E\uDD5B Dairy-Free", false),
-                    DietaryPreference("\uD83E\uDD51 Keto", false)
+                dietaryItems = listOf(
+                    DietaryItem(DietaryAttribute.VEGETARIAN, true),
+                    DietaryItem(DietaryAttribute.VEGAN, false),
+                    DietaryItem(DietaryAttribute.GLUTEN_FREE, false),
+                    DietaryItem(DietaryAttribute.DAIRY_FREE, false),
+                    DietaryItem(DietaryAttribute.KETO, true),
+                    DietaryItem(DietaryAttribute.HIGH_PROTEIN, false)
                 ),
                 selectedServingOption = ServingOption.ONE_TWO,
                 includedIngredients = listOf("Potatoes", "Carrots"),

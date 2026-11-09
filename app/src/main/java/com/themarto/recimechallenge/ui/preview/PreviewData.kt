@@ -1,5 +1,6 @@
 package com.themarto.recimechallenge.ui.preview
 
+import com.themarto.recimechallenge.data.model.DietaryAttribute
 import com.themarto.recimechallenge.data.model.Recipe
 import com.themarto.recimechallenge.data.model.Rating
 import com.themarto.recimechallenge.data.model.Ingredient
@@ -19,7 +20,7 @@ object PreviewData {
         servings = 1,
         rating = Rating(stars = 1.0f, reviews = 1),
         timeInMinutes = 1,
-        dietaryAttributes = listOf("🌿 Vegetarian", "🌾 Gluten-Free", "🥛 Dairy-Free"),
+        dietaryAttributes = listOf(DietaryAttribute.VEGETARIAN, DietaryAttribute.VEGAN, DietaryAttribute.GLUTEN_FREE),
         saved = true,
         ingredients = ingredients,
         instructions = listOf(

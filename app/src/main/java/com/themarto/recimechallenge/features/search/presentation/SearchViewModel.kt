@@ -1,7 +1,8 @@
 package com.themarto.recimechallenge.features.search.presentation
 
 import androidx.lifecycle.ViewModel
-import com.themarto.recimechallenge.features.search.model.DietaryPreference
+import com.themarto.recimechallenge.data.model.DietaryAttribute
+import com.themarto.recimechallenge.features.search.model.DietaryItem
 import com.themarto.recimechallenge.features.search.model.FiltersStatus
 import com.themarto.recimechallenge.features.search.model.ServingOption
 import com.themarto.recimechallenge.data.model.Recipe
@@ -23,12 +24,13 @@ class SearchViewModel : ViewModel() {
         // Simulating loading fake data
         _uiState.value = SearchUiState.Success(
             filtersStatus = FiltersStatus(
-                dietaryPreferences = listOf(
-                    DietaryPreference("🌿 Vegetarian", false),
-                    DietaryPreference("🌱 Vegan", false),
-                    DietaryPreference("🌾 Gluten-Free", false),
-                    DietaryPreference("🥛 Dairy-Free", false),
-                    DietaryPreference("🥑 Keto", false)
+                dietaryItems = listOf(
+                    DietaryItem(DietaryAttribute.VEGETARIAN, true),
+                    DietaryItem(DietaryAttribute.VEGAN, false),
+                    DietaryItem(DietaryAttribute.GLUTEN_FREE, false),
+                    DietaryItem(DietaryAttribute.DAIRY_FREE, false),
+                    DietaryItem(DietaryAttribute.KETO, true),
+                    DietaryItem(DietaryAttribute.HIGH_PROTEIN, false)
                 )
             ),
             results = PreviewData.recipeList
@@ -43,17 +45,8 @@ class SearchViewModel : ViewModel() {
         updateSuccessState { it.copy(filtersOpen = !it.filtersOpen) }
     }
 
-    fun onDietaryPreferenceSelected(preference: DietaryPreference) {
-        updateSuccessState { state ->
-            val updatedPreferences = state.filtersStatus.dietaryPreferences.map {
-                if (it.name == preference.name) it.copy(isSelected = !it.isSelected) else it
-            }
-            val updatedStatus = state.filtersStatus.copy(dietaryPreferences = updatedPreferences)
-            state.copy(
-                filtersStatus = updatedStatus,
-                filtersApplied = calculateFiltersApplied(updatedStatus)
-            )
-        }
+    fun onDietaryPreferenceSelected(preference: DietaryItem) {
+
     }
 
     fun onServingOptionSelected(option: ServingOption) {
@@ -118,8 +111,8 @@ class SearchViewModel : ViewModel() {
 
     fun onResetFilters() {
         updateSuccessState { state ->
-            val resetPreferences = state.filtersStatus.dietaryPreferences.map { it.copy(isSelected = false) }
-            val updatedStatus = FiltersStatus(dietaryPreferences = resetPreferences)
+            val resetPreferences = state.filtersStatus.dietaryItems.map { it.copy(isSelected = false) }
+            val updatedStatus = FiltersStatus(dietaryItems = resetPreferences)
             state.copy(
                 filtersStatus = updatedStatus,
                 filtersApplied = 0
@@ -148,7 +141,7 @@ class SearchViewModel : ViewModel() {
 
     private fun calculateFiltersApplied(status: FiltersStatus): Int {
         var count = 0
-        count += status.dietaryPreferences.count { it.isSelected }
+        count += status.dietaryItems.count { it.isSelected }
         if (status.selectedServingOption != ServingOption.ANY) count++
         count += status.includedIngredients.size
         count += status.excludedIngredients.size

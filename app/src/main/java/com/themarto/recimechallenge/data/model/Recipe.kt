@@ -7,7 +7,7 @@ data class Recipe(
     val servings: Int,
     val rating: Rating,
     val timeInMinutes: Int,
-    val dietaryAttributes: List<String>,
+    val dietaryAttributes: List<DietaryAttribute>,
     val saved: Boolean,
     val ingredients: List<Ingredient>,
     val instructions: List<String>

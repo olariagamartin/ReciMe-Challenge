@@ -6,7 +6,7 @@
     "servings": 2,
     "rating": { "stars": 4.6, "reviews": 128 },
     "timeInMinutes": 35,
-    "dietaryAttributes": ["Vegetarian"],
+    "dietaryAttributes": ["VEGETARIAN"],
     "saved": false,
     "ingredients": [
       { "name": "Pasta", "amount": "200", "unit": "g" },
@@ -30,7 +30,7 @@
     "servings": 4,
     "rating": { "stars": 4.8, "reviews": 256 },
     "timeInMinutes": 40,
-    "dietaryAttributes": ["Gluten-Free", "Dairy-Free", "Keto"],
+    "dietaryAttributes": ["GLUTEN_FREE", "DAIRY_FREE", "KETO", "HIGH_PROTEIN"],
     "saved": false,
     "ingredients": [
       { "name": "Chicken breast", "amount": "4", "unit": "pcs" },
@@ -53,7 +53,7 @@
     "servings": 3,
     "rating": { "stars": 4.4, "reviews": 89 },
     "timeInMinutes": 25,
-    "dietaryAttributes": ["Vegan", "Vegetarian", "Dairy-Free"],
+    "dietaryAttributes": ["VEGAN", "VEGETARIAN", "DAIRY_FREE"],
     "saved": false,
     "ingredients": [
       { "name": "Tofu", "amount": "300", "unit": "g" },
@@ -77,7 +77,7 @@
     "servings": 4,
     "rating": { "stars": 4.7, "reviews": 173 },
     "timeInMinutes": 45,
-    "dietaryAttributes": ["Vegetarian", "Gluten-Free"],
+    "dietaryAttributes": ["VEGETARIAN", "GLUTEN_FREE"],
     "saved": false,
     "ingredients": [
       { "name": "Arborio rice", "amount": "300", "unit": "g" },
@@ -101,7 +101,7 @@
     "servings": 6,
     "rating": { "stars": 4.5, "reviews": 201 },
     "timeInMinutes": 30,
-    "dietaryAttributes": ["Vegan", "Vegetarian", "Gluten-Free", "Dairy-Free"],
+    "dietaryAttributes": ["VEGAN", "VEGETARIAN", "GLUTEN_FREE", "DAIRY_FREE"],
     "saved": false,
     "ingredients": [
       { "name": "Chickpeas", "amount": "400", "unit": "g" },
@@ -125,7 +125,7 @@
     "servings": 1,
     "rating": { "stars": 4.9, "reviews": 64 },
     "timeInMinutes": 20,
-    "dietaryAttributes": ["Gluten-Free", "Dairy-Free", "Keto"],
+    "dietaryAttributes": ["GLUTEN_FREE", "DAIRY_FREE", "KETO", "HIGH_PROTEIN"],
     "saved": false,
     "ingredients": [
       { "name": "Salmon", "amount": "150", "unit": "g" },
@@ -148,7 +148,7 @@
     "servings": 4,
     "rating": { "stars": 4.3, "reviews": 142 },
     "timeInMinutes": 25,
-    "dietaryAttributes": ["Vegan", "Vegetarian", "Dairy-Free"],
+    "dietaryAttributes": ["VEGAN", "VEGETARIAN", "DAIRY_FREE"],
     "saved": false,
     "ingredients": [
       { "name": "Black beans", "amount": "400", "unit": "g" },
@@ -172,7 +172,7 @@
     "servings": 2,
     "rating": { "stars": 4.2, "reviews": 77 },
     "timeInMinutes": 15,
-    "dietaryAttributes": ["Vegetarian", "Gluten-Free", "Keto"],
+    "dietaryAttributes": ["VEGETARIAN", "GLUTEN_FREE", "KETO"],
     "saved": false,
     "ingredients": [
       { "name": "Cucumber", "amount": "1", "unit": "pc" },
@@ -196,7 +196,7 @@
     "servings": 3,
     "rating": { "stars": 4.6, "reviews": 188 },
     "timeInMinutes": 30,
-    "dietaryAttributes": ["Dairy-Free"],
+    "dietaryAttributes": ["DAIRY_FREE", "HIGH_PROTEIN"],
     "saved": false,
     "ingredients": [
       { "name": "Beef steak", "amount": "400", "unit": "g" },
@@ -220,7 +220,7 @@
     "servings": 6,
     "rating": { "stars": 4.7, "reviews": 231 },
     "timeInMinutes": 50,
-    "dietaryAttributes": ["Vegan", "Vegetarian", "Gluten-Free", "Dairy-Free"],
+    "dietaryAttributes": ["VEGAN", "VEGETARIAN", "GLUTEN_FREE", "DAIRY_FREE"],
     "saved": false,
     "ingredients": [
       { "name": "Lentils", "amount": "300", "unit": "g" },
@@ -244,7 +244,7 @@
     "servings": 2,
     "rating": { "stars": 4.8, "reviews": 164 },
     "timeInMinutes": 30,
-    "dietaryAttributes": ["Vegetarian", "Gluten-Free", "Keto"],
+    "dietaryAttributes": ["VEGETARIAN", "GLUTEN_FREE", "KETO"],
     "saved": false,
     "ingredients": [
       { "name": "Eggs", "amount": "4", "unit": "pcs" },
@@ -268,7 +268,7 @@
     "servings": 2,
     "rating": { "stars": 4.5, "reviews": 119 },
     "timeInMinutes": 20,
-    "dietaryAttributes": ["Dairy-Free"],
+    "dietaryAttributes": ["DAIRY_FREE"],
     "saved": false,
     "ingredients": [
       { "name": "Shrimp", "amount": "250", "unit": "g" },
@@ -292,7 +292,7 @@
     "servings": 4,
     "rating": { "stars": 4.4, "reviews": 96 },
     "timeInMinutes": 45,
-    "dietaryAttributes": ["Vegetarian", "Gluten-Free"],
+    "dietaryAttributes": ["VEGETARIAN", "GLUTEN_FREE"],
     "saved": false,
     "ingredients": [
       { "name": "Bell pepper", "amount": "4", "unit": "pcs" },
@@ -316,7 +316,7 @@
     "servings": 2,
     "rating": { "stars": 4.1, "reviews": 58 },
     "timeInMinutes": 35,
-    "dietaryAttributes": ["Vegan", "Vegetarian", "Gluten-Free", "Dairy-Free", "Keto"],
+    "dietaryAttributes": ["VEGAN", "VEGETARIAN", "GLUTEN_FREE", "DAIRY_FREE", "KETO"],
     "saved": false,
     "ingredients": [
       { "name": "Cauliflower", "amount": "1", "unit": "head" },
@@ -340,7 +340,7 @@
     "servings": 8,
     "rating": { "stars": 4.6, "reviews": 274 },
     "timeInMinutes": 55,
-    "dietaryAttributes": ["Gluten-Free", "Dairy-Free"],
+    "dietaryAttributes": ["GLUTEN_FREE", "DAIRY_FREE"],
     "saved": false,
     "ingredients": [
       { "name": "Ground turkey", "amount": "500", "unit": "g" },
@@ -364,7 +364,7 @@
     "servings": 1,
     "rating": { "stars": 4.3, "reviews": 41 },
     "timeInMinutes": 10,
-    "dietaryAttributes": ["Vegetarian"],
+    "dietaryAttributes": ["VEGETARIAN"],
     "saved": false,
     "ingredients": [
       { "name": "Ciabatta", "amount": "1", "unit": "roll" },
@@ -388,7 +388,7 @@
     "servings": 3,
     "rating": { "stars": 4.5, "reviews": 83 },
     "timeInMinutes": 35,
-    "dietaryAttributes": ["Vegan", "Vegetarian", "Dairy-Free"],
+    "dietaryAttributes": ["VEGAN", "VEGETARIAN", "DAIRY_FREE"],
     "saved": false,
     "ingredients": [
       { "name": "Eggplant", "amount": "2", "unit": "pcs" },
@@ -412,7 +412,7 @@
     "servings": 2,
     "rating": { "stars": 4.7, "reviews": 112 },
     "timeInMinutes": 25,
-    "dietaryAttributes": ["Gluten-Free", "Dairy-Free", "Keto"],
+    "dietaryAttributes": ["GLUTEN_FREE", "DAIRY_FREE", "KETO"],
     "saved": false,
     "ingredients": [
       { "name": "Cod", "amount": "2", "unit": "fillets" },
