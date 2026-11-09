@@ -1,5 +1,6 @@
 package com.themarto.recimechallenge.features.explore.components
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -41,6 +42,7 @@ import com.themarto.recimechallenge.components.MetricChip
 import com.themarto.recimechallenge.components.RatingChip
 import com.themarto.recimechallenge.data.model.Recipe
 import com.themarto.recimechallenge.ui.preview.PreviewData
+import com.themarto.recimechallenge.ui.theme.ReciMeChallengeTheme
 
 @Composable
 fun FeaturedRecipe(
@@ -93,6 +95,10 @@ fun FeaturedRecipeCard(
             .clickable(onClick = onClick),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow),
+        border = BorderStroke(
+            1.dp,
+            MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.4f)
+        ),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
     ) {
         Column {
@@ -139,7 +145,7 @@ fun FeaturedRecipeCard(
                 Row(
                     modifier = Modifier
                         .background(
-                            MaterialTheme.colorScheme.surfaceDim,
+                            MaterialTheme.colorScheme.surfaceContainer,
                             RoundedCornerShape(16.dp)
                         )
                         .padding(vertical = 4.dp)
@@ -177,9 +183,11 @@ fun FeaturedRecipeCard(
 @Preview(widthDp = 400, showBackground = true)
 @Composable
 private fun RecipeCardPrev() {
-    FeaturedRecipe(
-        recipe = PreviewData.recipe,
-        onClick = {},
-        onBookmarkClick = {}
-    )
+    ReciMeChallengeTheme {
+        FeaturedRecipe(
+            recipe = PreviewData.recipe,
+            onClick = {},
+            onBookmarkClick = {}
+        )
+    }
 }
