@@ -1,0 +1,432 @@
+[
+  {
+    "id": "1",
+    "title": "Roasted Vegetable Pasta",
+    "imgUrl": "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=1200&q=80",
+    "servings": 2,
+    "rating": { "stars": 4.6, "reviews": 128 },
+    "timeInMinutes": 35,
+    "dietaryAttributes": ["Vegetarian"],
+    "saved": false,
+    "ingredients": [
+      { "name": "Pasta", "amount": "200", "unit": "g" },
+      { "name": "Tomato", "amount": "3", "unit": "pcs" },
+      { "name": "Zucchini", "amount": "1", "unit": "pc" },
+      { "name": "Garlic", "amount": "2", "unit": "cloves" },
+      { "name": "Olive Oil", "amount": "2", "unit": "tbsp" },
+      { "name": "Parmesan", "amount": "30", "unit": "g" }
+    ],
+    "instructions": [
+      "Preheat the oven to 200°C.",
+      "Toss the tomato and zucchini with olive oil, salt, and pepper, then roast for 20 minutes.",
+      "Boil the pasta until al dente.",
+      "Sauté the garlic, fold in the roasted vegetables and pasta, and finish with parmesan."
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Lemon Herb Chicken",
+    "imgUrl": "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=1200&q=80",
+    "servings": 4,
+    "rating": { "stars": 4.8, "reviews": 256 },
+    "timeInMinutes": 40,
+    "dietaryAttributes": ["Gluten-Free", "Dairy-Free", "Keto"],
+    "saved": false,
+    "ingredients": [
+      { "name": "Chicken breast", "amount": "4", "unit": "pcs" },
+      { "name": "Lemon", "amount": "1", "unit": "pc" },
+      { "name": "Garlic", "amount": "3", "unit": "cloves" },
+      { "name": "Olive Oil", "amount": "2", "unit": "tbsp" },
+      { "name": "Rosemary", "amount": "1", "unit": "tbsp" }
+    ],
+    "instructions": [
+      "Season the chicken with salt, pepper, rosemary, and garlic.",
+      "Sear in olive oil until golden, then add lemon juice.",
+      "Cover and cook until the chicken reaches 74°C.",
+      "Rest for 5 minutes before serving."
+    ]
+  },
+  {
+    "id": "3",
+    "title": "Tofu Veggie Stir Fry",
+    "imgUrl": "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=1200&q=80",
+    "servings": 3,
+    "rating": { "stars": 4.4, "reviews": 89 },
+    "timeInMinutes": 25,
+    "dietaryAttributes": ["Vegan", "Vegetarian", "Dairy-Free"],
+    "saved": false,
+    "ingredients": [
+      { "name": "Tofu", "amount": "300", "unit": "g" },
+      { "name": "Broccoli", "amount": "1", "unit": "head" },
+      { "name": "Bell pepper", "amount": "1", "unit": "pc" },
+      { "name": "Soy sauce", "amount": "2", "unit": "tbsp" },
+      { "name": "Garlic", "amount": "2", "unit": "cloves" },
+      { "name": "Rice", "amount": "200", "unit": "g" }
+    ],
+    "instructions": [
+      "Press and cube the tofu, then pan-fry until crisp.",
+      "Stir-fry the broccoli, bell pepper, and garlic.",
+      "Add soy sauce and the tofu, and toss to coat.",
+      "Serve over steamed rice."
+    ]
+  },
+  {
+    "id": "4",
+    "title": "Mushroom Risotto",
+    "imgUrl": "https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=1200&q=80",
+    "servings": 4,
+    "rating": { "stars": 4.7, "reviews": 173 },
+    "timeInMinutes": 45,
+    "dietaryAttributes": ["Vegetarian", "Gluten-Free"],
+    "saved": false,
+    "ingredients": [
+      { "name": "Arborio rice", "amount": "300", "unit": "g" },
+      { "name": "Mushroom", "amount": "250", "unit": "g" },
+      { "name": "Onion", "amount": "1", "unit": "pc" },
+      { "name": "Vegetable stock", "amount": "1", "unit": "l" },
+      { "name": "Parmesan", "amount": "40", "unit": "g" },
+      { "name": "Butter", "amount": "2", "unit": "tbsp" }
+    ],
+    "instructions": [
+      "Sauté the onion and mushrooms in butter.",
+      "Stir in the rice, then add stock a ladle at a time.",
+      "Cook until the rice is creamy and just tender.",
+      "Finish with parmesan and black pepper."
+    ]
+  },
+  {
+    "id": "5",
+    "title": "Chickpea Coconut Curry",
+    "imgUrl": "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=1200&q=80",
+    "servings": 6,
+    "rating": { "stars": 4.5, "reviews": 201 },
+    "timeInMinutes": 30,
+    "dietaryAttributes": ["Vegan", "Vegetarian", "Gluten-Free", "Dairy-Free"],
+    "saved": false,
+    "ingredients": [
+      { "name": "Chickpeas", "amount": "400", "unit": "g" },
+      { "name": "Coconut milk", "amount": "400", "unit": "ml" },
+      { "name": "Tomato", "amount": "2", "unit": "pcs" },
+      { "name": "Onion", "amount": "1", "unit": "pc" },
+      { "name": "Spinach", "amount": "100", "unit": "g" },
+      { "name": "Curry powder", "amount": "1", "unit": "tbsp" }
+    ],
+    "instructions": [
+      "Soften the onion, then stir in the curry powder.",
+      "Add the tomato, chickpeas, and coconut milk.",
+      "Simmer for 15 minutes.",
+      "Fold in the spinach and serve."
+    ]
+  },
+  {
+    "id": "6",
+    "title": "Salmon Rice Bowl",
+    "imgUrl": "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=1200&q=80",
+    "servings": 1,
+    "rating": { "stars": 4.9, "reviews": 64 },
+    "timeInMinutes": 20,
+    "dietaryAttributes": ["Gluten-Free", "Dairy-Free", "Keto"],
+    "saved": false,
+    "ingredients": [
+      { "name": "Salmon", "amount": "150", "unit": "g" },
+      { "name": "Rice", "amount": "100", "unit": "g" },
+      { "name": "Avocado", "amount": "1", "unit": "pc" },
+      { "name": "Cucumber", "amount": "0.5", "unit": "pc" },
+      { "name": "Soy sauce", "amount": "1", "unit": "tbsp" }
+    ],
+    "instructions": [
+      "Cook the rice.",
+      "Pan-sear the salmon until just cooked through.",
+      "Slice the avocado and cucumber.",
+      "Assemble the bowl and finish with soy sauce."
+    ]
+  },
+  {
+    "id": "7",
+    "title": "Black Bean Tacos",
+    "imgUrl": "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=1200&q=80",
+    "servings": 4,
+    "rating": { "stars": 4.3, "reviews": 142 },
+    "timeInMinutes": 25,
+    "dietaryAttributes": ["Vegan", "Vegetarian", "Dairy-Free"],
+    "saved": false,
+    "ingredients": [
+      { "name": "Black beans", "amount": "400", "unit": "g" },
+      { "name": "Corn tortillas", "amount": "8", "unit": "pcs" },
+      { "name": "Avocado", "amount": "1", "unit": "pc" },
+      { "name": "Red onion", "amount": "0.5", "unit": "pc" },
+      { "name": "Lime", "amount": "1", "unit": "pc" },
+      { "name": "Cilantro", "amount": "1", "unit": "handful" }
+    ],
+    "instructions": [
+      "Warm the black beans with cumin, salt, and a splash of water.",
+      "Char the tortillas in a dry pan.",
+      "Smash the avocado with lime juice.",
+      "Fill the tortillas with beans, avocado, onion, and cilantro."
+    ]
+  },
+  {
+    "id": "8",
+    "title": "Greek Salad",
+    "imgUrl": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=1200&q=80",
+    "servings": 2,
+    "rating": { "stars": 4.2, "reviews": 77 },
+    "timeInMinutes": 15,
+    "dietaryAttributes": ["Vegetarian", "Gluten-Free", "Keto"],
+    "saved": false,
+    "ingredients": [
+      { "name": "Cucumber", "amount": "1", "unit": "pc" },
+      { "name": "Tomato", "amount": "2", "unit": "pcs" },
+      { "name": "Red onion", "amount": "0.5", "unit": "pc" },
+      { "name": "Feta", "amount": "80", "unit": "g" },
+      { "name": "Olives", "amount": "50", "unit": "g" },
+      { "name": "Olive Oil", "amount": "2", "unit": "tbsp" }
+    ],
+    "instructions": [
+      "Chop the cucumber, tomato, and red onion.",
+      "Add the olives and crumbled feta.",
+      "Dress with olive oil, oregano, and lemon.",
+      "Toss gently and serve immediately."
+    ]
+  },
+  {
+    "id": "9",
+    "title": "Beef Stir Fry",
+    "imgUrl": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=1200&q=80",
+    "servings": 3,
+    "rating": { "stars": 4.6, "reviews": 188 },
+    "timeInMinutes": 30,
+    "dietaryAttributes": ["Dairy-Free"],
+    "saved": false,
+    "ingredients": [
+      { "name": "Beef steak", "amount": "400", "unit": "g" },
+      { "name": "Broccoli", "amount": "1", "unit": "head" },
+      { "name": "Bell pepper", "amount": "1", "unit": "pc" },
+      { "name": "Soy sauce", "amount": "3", "unit": "tbsp" },
+      { "name": "Garlic", "amount": "2", "unit": "cloves" },
+      { "name": "Rice", "amount": "250", "unit": "g" }
+    ],
+    "instructions": [
+      "Slice the steak thinly and sear it in a hot pan.",
+      "Stir-fry the broccoli, bell pepper, and garlic.",
+      "Return the beef and add soy sauce.",
+      "Serve over rice."
+    ]
+  },
+  {
+    "id": "10",
+    "title": "Lentil Soup",
+    "imgUrl": "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=1200&q=80",
+    "servings": 6,
+    "rating": { "stars": 4.7, "reviews": 231 },
+    "timeInMinutes": 50,
+    "dietaryAttributes": ["Vegan", "Vegetarian", "Gluten-Free", "Dairy-Free"],
+    "saved": false,
+    "ingredients": [
+      { "name": "Lentils", "amount": "300", "unit": "g" },
+      { "name": "Carrot", "amount": "2", "unit": "pcs" },
+      { "name": "Celery", "amount": "2", "unit": "stalks" },
+      { "name": "Onion", "amount": "1", "unit": "pc" },
+      { "name": "Tomato", "amount": "2", "unit": "pcs" },
+      { "name": "Vegetable stock", "amount": "1.2", "unit": "l" }
+    ],
+    "instructions": [
+      "Sauté the onion, carrot, and celery until soft.",
+      "Add the tomato, lentils, and vegetable stock.",
+      "Simmer for 35 minutes until the lentils are tender.",
+      "Season with salt, pepper, and lemon."
+    ]
+  },
+  {
+    "id": "11",
+    "title": "Shakshuka",
+    "imgUrl": "https://images.unsplash.com/photo-1590412200988-a436970781fa?w=1200&q=80",
+    "servings": 2,
+    "rating": { "stars": 4.8, "reviews": 164 },
+    "timeInMinutes": 30,
+    "dietaryAttributes": ["Vegetarian", "Gluten-Free", "Keto"],
+    "saved": false,
+    "ingredients": [
+      { "name": "Eggs", "amount": "4", "unit": "pcs" },
+      { "name": "Tomato", "amount": "4", "unit": "pcs" },
+      { "name": "Bell pepper", "amount": "1", "unit": "pc" },
+      { "name": "Onion", "amount": "1", "unit": "pc" },
+      { "name": "Garlic", "amount": "2", "unit": "cloves" },
+      { "name": "Cumin", "amount": "1", "unit": "tsp" }
+    ],
+    "instructions": [
+      "Cook the onion, bell pepper, and garlic until soft.",
+      "Add the tomato and cumin and simmer into a sauce.",
+      "Make wells and crack in the eggs.",
+      "Cover until the whites are set and the yolks are still soft."
+    ]
+  },
+  {
+    "id": "12",
+    "title": "Shrimp Garlic Noodles",
+    "imgUrl": "https://images.unsplash.com/photo-1557872943-16a5ac26437e?w=1200&q=80",
+    "servings": 2,
+    "rating": { "stars": 4.5, "reviews": 119 },
+    "timeInMinutes": 20,
+    "dietaryAttributes": ["Dairy-Free"],
+    "saved": false,
+    "ingredients": [
+      { "name": "Shrimp", "amount": "250", "unit": "g" },
+      { "name": "Noodles", "amount": "200", "unit": "g" },
+      { "name": "Garlic", "amount": "4", "unit": "cloves" },
+      { "name": "Soy sauce", "amount": "2", "unit": "tbsp" },
+      { "name": "Lime", "amount": "1", "unit": "pc" },
+      { "name": "Scallion", "amount": "2", "unit": "pcs" }
+    ],
+    "instructions": [
+      "Boil the noodles until just tender.",
+      "Sauté the garlic, then add the shrimp until pink.",
+      "Toss with noodles and soy sauce.",
+      "Finish with lime and scallion."
+    ]
+  },
+  {
+    "id": "13",
+    "title": "Quinoa Stuffed Peppers",
+    "imgUrl": "https://images.unsplash.com/photo-1606756790138-261d2b21cd75?w=1200&q=80",
+    "servings": 4,
+    "rating": { "stars": 4.4, "reviews": 96 },
+    "timeInMinutes": 45,
+    "dietaryAttributes": ["Vegetarian", "Gluten-Free"],
+    "saved": false,
+    "ingredients": [
+      { "name": "Bell pepper", "amount": "4", "unit": "pcs" },
+      { "name": "Quinoa", "amount": "150", "unit": "g" },
+      { "name": "Black beans", "amount": "200", "unit": "g" },
+      { "name": "Corn", "amount": "100", "unit": "g" },
+      { "name": "Tomato", "amount": "1", "unit": "pc" },
+      { "name": "Cheddar", "amount": "80", "unit": "g" }
+    ],
+    "instructions": [
+      "Cook the quinoa and mix it with black beans, corn, and tomato.",
+      "Cut the tops off the peppers and remove the seeds.",
+      "Stuff the peppers and top with cheddar.",
+      "Bake at 190°C for 25 minutes."
+    ]
+  },
+  {
+    "id": "14",
+    "title": "Cauliflower Steaks",
+    "imgUrl": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=1200&q=80",
+    "servings": 2,
+    "rating": { "stars": 4.1, "reviews": 58 },
+    "timeInMinutes": 35,
+    "dietaryAttributes": ["Vegan", "Vegetarian", "Gluten-Free", "Dairy-Free", "Keto"],
+    "saved": false,
+    "ingredients": [
+      { "name": "Cauliflower", "amount": "1", "unit": "head" },
+      { "name": "Olive Oil", "amount": "2", "unit": "tbsp" },
+      { "name": "Paprika", "amount": "1", "unit": "tsp" },
+      { "name": "Garlic", "amount": "1", "unit": "clove" },
+      { "name": "Lemon", "amount": "0.5", "unit": "pc" },
+      { "name": "Parsley", "amount": "1", "unit": "handful" }
+    ],
+    "instructions": [
+      "Slice the cauliflower into thick steaks.",
+      "Brush with olive oil, paprika, and garlic.",
+      "Roast at 200°C for 25 minutes until browned.",
+      "Finish with lemon and parsley."
+    ]
+  },
+  {
+    "id": "15",
+    "title": "Turkey Chili",
+    "imgUrl": "https://images.unsplash.com/photo-1574484284002-952d92456975?w=1200&q=80",
+    "servings": 8,
+    "rating": { "stars": 4.6, "reviews": 274 },
+    "timeInMinutes": 55,
+    "dietaryAttributes": ["Gluten-Free", "Dairy-Free"],
+    "saved": false,
+    "ingredients": [
+      { "name": "Ground turkey", "amount": "500", "unit": "g" },
+      { "name": "Kidney beans", "amount": "400", "unit": "g" },
+      { "name": "Tomato", "amount": "400", "unit": "g" },
+      { "name": "Onion", "amount": "1", "unit": "pc" },
+      { "name": "Bell pepper", "amount": "1", "unit": "pc" },
+      { "name": "Chili powder", "amount": "2", "unit": "tbsp" }
+    ],
+    "instructions": [
+      "Brown the ground turkey with the onion.",
+      "Add the bell pepper, chili powder, tomato, and beans.",
+      "Simmer for 35 minutes.",
+      "Adjust salt and serve in bowls."
+    ]
+  },
+  {
+    "id": "16",
+    "title": "Caprese Sandwich",
+    "imgUrl": "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=1200&q=80",
+    "servings": 1,
+    "rating": { "stars": 4.3, "reviews": 41 },
+    "timeInMinutes": 10,
+    "dietaryAttributes": ["Vegetarian"],
+    "saved": false,
+    "ingredients": [
+      { "name": "Ciabatta", "amount": "1", "unit": "roll" },
+      { "name": "Mozzarella", "amount": "80", "unit": "g" },
+      { "name": "Tomato", "amount": "1", "unit": "pc" },
+      { "name": "Basil", "amount": "6", "unit": "leaves" },
+      { "name": "Olive Oil", "amount": "1", "unit": "tbsp" },
+      { "name": "Balsamic", "amount": "1", "unit": "tsp" }
+    ],
+    "instructions": [
+      "Slice and toast the ciabatta.",
+      "Layer mozzarella, tomato, and basil.",
+      "Drizzle with olive oil and balsamic.",
+      "Close the sandwich and serve."
+    ]
+  },
+  {
+    "id": "17",
+    "title": "Miso Glazed Eggplant",
+    "imgUrl": "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=1200&q=80",
+    "servings": 3,
+    "rating": { "stars": 4.5, "reviews": 83 },
+    "timeInMinutes": 35,
+    "dietaryAttributes": ["Vegan", "Vegetarian", "Dairy-Free"],
+    "saved": false,
+    "ingredients": [
+      { "name": "Eggplant", "amount": "2", "unit": "pcs" },
+      { "name": "Miso paste", "amount": "2", "unit": "tbsp" },
+      { "name": "Maple syrup", "amount": "1", "unit": "tbsp" },
+      { "name": "Rice vinegar", "amount": "1", "unit": "tbsp" },
+      { "name": "Sesame seeds", "amount": "1", "unit": "tsp" },
+      { "name": "Scallion", "amount": "1", "unit": "pc" }
+    ],
+    "instructions": [
+      "Halve the eggplants and score the flesh.",
+      "Roast at 200°C for 20 minutes.",
+      "Brush with miso, maple syrup, and rice vinegar.",
+      "Broil until glazed and finish with sesame seeds and scallion."
+    ]
+  },
+  {
+    "id": "18",
+    "title": "Baked Cod with Herbs",
+    "imgUrl": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=1200&q=80",
+    "servings": 2,
+    "rating": { "stars": 4.7, "reviews": 112 },
+    "timeInMinutes": 25,
+    "dietaryAttributes": ["Gluten-Free", "Dairy-Free", "Keto"],
+    "saved": false,
+    "ingredients": [
+      { "name": "Cod", "amount": "2", "unit": "fillets" },
+      { "name": "Lemon", "amount": "1", "unit": "pc" },
+      { "name": "Parsley", "amount": "1", "unit": "handful" },
+      { "name": "Garlic", "amount": "1", "unit": "clove" },
+      { "name": "Olive Oil", "amount": "1", "unit": "tbsp" },
+      { "name": "Cherry tomato", "amount": "150", "unit": "g" }
+    ],
+    "instructions": [
+      "Place the cod and cherry tomatoes in a baking dish.",
+      "Top with olive oil, garlic, parsley, and lemon.",
+      "Bake at 190°C for 15 minutes.",
+      "Serve with the pan juices."
+    ]
+  }
+]
