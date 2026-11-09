@@ -19,7 +19,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.themarto.recimechallenge.components.RecipeCard
 import com.themarto.recimechallenge.features.explore.components.FeaturedRecipe
 import com.themarto.recimechallenge.features.explore.components.Header
-import com.themarto.recimechallenge.data.Recipe
+import com.themarto.recimechallenge.data.model.Recipe
 import com.themarto.recimechallenge.ui.preview.PreviewData
 import org.koin.androidx.compose.koinViewModel
 

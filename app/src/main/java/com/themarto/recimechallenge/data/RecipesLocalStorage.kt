@@ -1,5 +1,7 @@
 package com.themarto.recimechallenge.data
 
+import com.themarto.recimechallenge.data.model.Recipe
+
 interface RecipesLocalStorage {
 
     suspend fun getSavedRecipe(id: Int): Result<Recipe>

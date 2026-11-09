@@ -1,5 +1,8 @@
 package com.themarto.recimechallenge.data
 
+import com.themarto.recimechallenge.data.model.ExploreFeed
+import com.themarto.recimechallenge.data.model.Recipe
+import com.themarto.recimechallenge.data.model.RecipeSearch
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

@@ -16,7 +16,7 @@ import coil.compose.AsyncImage
 import com.themarto.recimechallenge.components.BackButton
 import com.themarto.recimechallenge.components.BookmarkButton
 import com.themarto.recimechallenge.components.DietaryBadges
-import com.themarto.recimechallenge.data.Recipe
+import com.themarto.recimechallenge.data.model.Recipe
 import com.themarto.recimechallenge.ui.preview.PreviewData
 import com.themarto.recimechallenge.ui.theme.ReciMeChallengeTheme
 

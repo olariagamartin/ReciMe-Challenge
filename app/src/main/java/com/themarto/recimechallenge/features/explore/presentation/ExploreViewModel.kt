@@ -1,7 +1,7 @@
 package com.themarto.recimechallenge.features.explore.presentation
 
 import androidx.lifecycle.ViewModel
-import com.themarto.recimechallenge.data.Recipe
+import com.themarto.recimechallenge.data.model.Recipe
 import com.themarto.recimechallenge.ui.preview.PreviewData
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

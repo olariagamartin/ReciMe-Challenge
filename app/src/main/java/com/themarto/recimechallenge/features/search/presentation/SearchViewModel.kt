@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.themarto.recimechallenge.features.search.model.DietaryPreference
 import com.themarto.recimechallenge.features.search.model.FiltersStatus
 import com.themarto.recimechallenge.features.search.model.ServingOption
-import com.themarto.recimechallenge.data.Recipe
+import com.themarto.recimechallenge.data.model.Recipe
 import com.themarto.recimechallenge.ui.preview.PreviewData
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
