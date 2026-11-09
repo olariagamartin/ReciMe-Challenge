@@ -21,12 +21,14 @@ import androidx.compose.material.icons.outlined.BookmarkBorder
 import androidx.compose.material.icons.outlined.Schedule
 import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -35,7 +37,19 @@ import com.themarto.recimechallenge.R
 import com.themarto.recimechallenge.data.model.DietaryAttribute
 import com.themarto.recimechallenge.data.model.Rating
 import com.themarto.recimechallenge.ui.preview.PreviewData
+import com.themarto.recimechallenge.ui.theme.DairyFreeBadgeContainer
+import com.themarto.recimechallenge.ui.theme.DairyFreeBadgeContent
+import com.themarto.recimechallenge.ui.theme.GlutenFreeBadgeContainer
+import com.themarto.recimechallenge.ui.theme.GlutenFreeBadgeContent
+import com.themarto.recimechallenge.ui.theme.HighProteinBadgeContainer
+import com.themarto.recimechallenge.ui.theme.HighProteinBadgeContent
+import com.themarto.recimechallenge.ui.theme.KetoBadgeContainer
+import com.themarto.recimechallenge.ui.theme.KetoBadgeContent
 import com.themarto.recimechallenge.ui.theme.ReciMeChallengeTheme
+import com.themarto.recimechallenge.ui.theme.VeganBadgeContainer
+import com.themarto.recimechallenge.ui.theme.VeganBadgeContent
+import com.themarto.recimechallenge.ui.theme.VegetarianBadgeContainer
+import com.themarto.recimechallenge.ui.theme.VegetarianBadgeContent
 
 @Composable
 fun RatingChip(
@@ -46,7 +60,7 @@ fun RatingChip(
     Row(
         modifier = modifier
             .background(
-                MaterialTheme.colorScheme.primaryContainer,
+                MaterialTheme.colorScheme.tertiaryContainer,
                 RoundedCornerShape(16.dp)
             )
             .padding(vertical = 4.dp, horizontal = 8.dp)
@@ -56,20 +70,22 @@ fun RatingChip(
         Icon(
             imageVector = Icons.Filled.Star,
             contentDescription = "Rating",
-            tint = MaterialTheme.colorScheme.primary,
+            tint = MaterialTheme.colorScheme.tertiary,
             modifier = Modifier.size(16.dp)
         )
         Spacer(modifier = Modifier.width(4.dp))
         Text(
             text = rating.stars.toString(),
-            style = MaterialTheme.typography.bodyMedium
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onTertiaryContainer
         )
         if (showReviews) {
             Spacer(modifier = Modifier.width(4.dp))
             // todo: format
             Text(
                 text = stringResource(R.string.reviews, rating.reviews),
-                style = MaterialTheme.typography.bodySmall
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onTertiaryContainer
             )
         }
     }
@@ -83,7 +99,19 @@ fun BookmarkButton(
 ) {
     FilledIconButton(
         modifier = modifier,
-        onClick = onClick
+        onClick = onClick,
+        colors = IconButtonDefaults.filledIconButtonColors(
+            containerColor = if (saved) {
+                MaterialTheme.colorScheme.secondary
+            } else {
+                MaterialTheme.colorScheme.surfaceContainerLowest
+            },
+            contentColor = if (saved) {
+                MaterialTheme.colorScheme.onSecondary
+            } else {
+                MaterialTheme.colorScheme.secondary
+            }
+        )
     ) {
         Icon(
             imageVector = if (saved) Icons.Filled.Bookmark else Icons.Outlined.BookmarkBorder,
@@ -99,7 +127,11 @@ fun BackButton(
 ) {
     FilledIconButton(
         modifier = modifier,
-        onClick = onClick
+        onClick = onClick,
+        colors = IconButtonDefaults.filledIconButtonColors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainerLowest,
+            contentColor = MaterialTheme.colorScheme.onSurface
+        )
     ) {
         Icon(
             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
@@ -118,6 +150,7 @@ fun DietaryBadges(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         for (attribute in dietaryAttributes) {
+            val (container, content) = attribute.badgeColors()
             Box(
                 modifier = Modifier.padding(vertical = 4.dp)
             ) {
@@ -125,9 +158,9 @@ fun DietaryBadges(
                     text = getDietaryAttrString(attribute),
                     modifier = Modifier
                         .clip(RoundedCornerShape(16.dp))
-                        .background(MaterialTheme.colorScheme.primaryContainer)
+                        .background(container)
                         .padding(4.dp),
-                    color = MaterialTheme.colorScheme.onPrimaryContainer
+                    color = content
                 )
             }
 
@@ -147,6 +180,15 @@ fun getDietaryAttrString(filter: DietaryAttribute): String {
     }
 }
 
+private fun DietaryAttribute.badgeColors(): Pair<Color, Color> = when (this) {
+    DietaryAttribute.VEGETARIAN -> VegetarianBadgeContainer to VegetarianBadgeContent
+    DietaryAttribute.VEGAN -> VeganBadgeContainer to VeganBadgeContent
+    DietaryAttribute.GLUTEN_FREE -> GlutenFreeBadgeContainer to GlutenFreeBadgeContent
+    DietaryAttribute.DAIRY_FREE -> DairyFreeBadgeContainer to DairyFreeBadgeContent
+    DietaryAttribute.KETO -> KetoBadgeContainer to KetoBadgeContent
+    DietaryAttribute.HIGH_PROTEIN -> HighProteinBadgeContainer to HighProteinBadgeContent
+}
+
 @Composable
 fun DietaryFilter(
     text: String,
@@ -156,9 +198,10 @@ fun DietaryFilter(
     Row(
         modifier = modifier
             .clip(RoundedCornerShape(16.dp))
+            .background(MaterialTheme.colorScheme.surfaceContainerLowest)
             .border(
                 width = 1.dp,
-                color = MaterialTheme.colorScheme.primary,
+                color = MaterialTheme.colorScheme.outlineVariant,
                 shape = RoundedCornerShape(16.dp)
             )
             .clickable(onClick = onClick),
@@ -167,6 +210,7 @@ fun DietaryFilter(
         Text(
             text = text,
             style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp)
         )
     }

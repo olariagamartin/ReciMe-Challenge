@@ -12,6 +12,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.LocalDining
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -73,13 +74,17 @@ private fun IngredientRow(
             .fillMaxWidth()
             .padding(4.dp)
             .background(
-                MaterialTheme.colorScheme.surfaceBright, RoundedCornerShape(16.dp)
+                MaterialTheme.colorScheme.surfaceContainerLow, RoundedCornerShape(16.dp)
             ),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Checkbox(
             checked = checked,
-            onCheckedChange = onCheckedChange
+            onCheckedChange = onCheckedChange,
+            colors = CheckboxDefaults.colors(
+                checkedColor = MaterialTheme.colorScheme.primary,
+                checkmarkColor = MaterialTheme.colorScheme.surface
+            )
         )
         Spacer(modifier = Modifier.width(8.dp))
         Text(

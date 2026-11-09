@@ -1,5 +1,6 @@
 package com.themarto.recimechallenge.features.search.components
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -32,6 +33,7 @@ import androidx.compose.material.icons.outlined.Tag
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
@@ -57,17 +59,7 @@ import com.themarto.recimechallenge.components.getDietaryAttrString
 import com.themarto.recimechallenge.data.model.DietaryAttribute
 import com.themarto.recimechallenge.features.search.model.FiltersStatus
 import com.themarto.recimechallenge.features.search.model.ServingOption
-import com.themarto.recimechallenge.ui.theme.DietarySectionCountColor
-import com.themarto.recimechallenge.ui.theme.DietarySelectedChip
-import com.themarto.recimechallenge.ui.theme.ExcludeIngredientsSectionCountColor
-import com.themarto.recimechallenge.ui.theme.ExcludedIngredientChip
-import com.themarto.recimechallenge.ui.theme.FilterSelectedBg
-import com.themarto.recimechallenge.ui.theme.FilterSelectedContent
-import com.themarto.recimechallenge.ui.theme.IncludeIngredientsSectionCountColor
-import com.themarto.recimechallenge.ui.theme.IncludedIngredientChip
 import com.themarto.recimechallenge.ui.theme.ReciMeChallengeTheme
-import com.themarto.recimechallenge.ui.theme.ServingOptionNotSelectedTint
-import com.themarto.recimechallenge.ui.theme.ServingOptionSelectedTint
 
 @Composable
 fun FiltersCard(
@@ -150,7 +142,7 @@ private fun DietarySection(
             icon = Icons.Outlined.Eco,
             title = stringResource(R.string.dietary_preferences),
             countText = stringResource(R.string.active_count, 1),
-            countColor = DietarySectionCountColor
+            countColor = MaterialTheme.colorScheme.primary
         )
         FlowRow(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -160,7 +152,6 @@ private fun DietarySection(
                 FilterChip(
                     text = getDietaryAttrString(preference),
                     selected = preference in dietaryAttrsSelected,
-                    selectedColor = DietarySelectedChip,
                     onClick = { onDietaryPreferenceSelected(preference) }
                 )
             }
@@ -199,7 +190,7 @@ private fun IncludeIngredientsSection(
             icon = Icons.Default.AddCircleOutline,
             title = stringResource(R.string.include_ingredients),
             countText = stringResource(R.string.selected_count, includeIngredients.size),
-            countColor = IncludeIngredientsSectionCountColor
+            countColor = MaterialTheme.colorScheme.primary
         )
         FlowRow(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -208,7 +199,8 @@ private fun IncludeIngredientsSection(
             includeIngredients.forEach { ingredient ->
                 IngredientChip(
                     text = ingredient,
-                    color = IncludedIngredientChip,
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
                     onRemove = { removeFromIncluded(ingredient) }
                 )
             }
@@ -231,7 +223,7 @@ private fun ExcludeIngredientsSection(
             icon = Icons.Outlined.RemoveCircleOutline,
             title = stringResource(R.string.exclude_ingredients),
             countText = stringResource(R.string.excluded_count, 1),
-            countColor = ExcludeIngredientsSectionCountColor
+            countColor = MaterialTheme.colorScheme.secondary
         )
         FlowRow (
             horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -239,7 +231,8 @@ private fun ExcludeIngredientsSection(
             excludeIngredients.forEach { ingredient ->
                 IngredientChip(
                     text = ingredient,
-                    color = ExcludedIngredientChip,
+                    containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                    contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
                     onRemove = { removeFromExcluded(ingredient) }
                 )
             }
@@ -265,6 +258,10 @@ private fun FooterSection(
     ) {
         OutlinedButton(
             onClick = onResetFilters,
+            border = BorderStroke(1.5.dp, MaterialTheme.colorScheme.outline),
+            colors = ButtonDefaults.outlinedButtonColors(
+                contentColor = MaterialTheme.colorScheme.onSurface
+            )
         ) {
             Icon(
                 imageVector = Icons.Outlined.RestartAlt,
@@ -344,14 +341,29 @@ private fun FilterChip(
     text: String,
     selected: Boolean,
     modifier: Modifier = Modifier,
-    selectedColor: Color = Color.Transparent,
     onClick: () -> Unit,
 ) {
+    val container = if (selected) {
+        MaterialTheme.colorScheme.primary
+    } else {
+        MaterialTheme.colorScheme.surfaceContainerLowest
+    }
+    val content = if (selected) {
+        MaterialTheme.colorScheme.onPrimary
+    } else {
+        MaterialTheme.colorScheme.onSurfaceVariant
+    }
+    val borderColor = if (selected) {
+        MaterialTheme.colorScheme.primary
+    } else {
+        MaterialTheme.colorScheme.outlineVariant
+    }
     Row(
         modifier = modifier
             .clip(RoundedCornerShape(20.dp))
             .clickable { onClick() }
-            .background(if (selected) selectedColor else FilterSelectedBg)
+            .background(container)
+            .border(1.dp, borderColor, RoundedCornerShape(20.dp))
             .padding(horizontal = 12.dp, vertical = 6.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -360,7 +372,7 @@ private fun FilterChip(
                 imageVector = Icons.Outlined.Check,
                 contentDescription = null,
                 modifier = Modifier.size(14.dp),
-                tint = FilterSelectedContent
+                tint = content
             )
             Spacer(modifier = Modifier.width(4.dp))
         }
@@ -369,7 +381,7 @@ private fun FilterChip(
             text = text,
             modifier = Modifier.padding(vertical = 2.dp),
             style = MaterialTheme.typography.bodyMedium,
-            color = FilterSelectedContent,
+            color = content,
             fontWeight = FontWeight.Medium
         )
     }
@@ -378,14 +390,15 @@ private fun FilterChip(
 @Composable
 private fun IngredientChip(
     text: String,
-    color: Color,
+    containerColor: Color,
+    contentColor: Color,
     onRemove: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Row(
         modifier = modifier
             .clip(RoundedCornerShape(20.dp))
-            .background(color)
+            .background(containerColor)
             .padding(horizontal = 12.dp, vertical = 6.dp)
             .clickable { onRemove() },
         verticalAlignment = Alignment.CenterVertically
@@ -393,6 +406,7 @@ private fun IngredientChip(
         Text(
             text = text,
             style = MaterialTheme.typography.bodyMedium,
+            color = contentColor,
             fontWeight = FontWeight.Medium
         )
         Spacer(modifier = Modifier.width(4.dp))
@@ -400,6 +414,7 @@ private fun IngredientChip(
             imageVector = Icons.Outlined.Close,
             contentDescription = null,
             modifier = Modifier.size(14.dp),
+            tint = contentColor
         )
     }
 }
@@ -468,7 +483,7 @@ private fun ServingsSelector(
         modifier = modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(8.dp))
-            .background(Color(0xFFF0E7E7))
+            .background(MaterialTheme.colorScheme.surfaceContainer)
             .padding(4.dp),
         horizontalArrangement = Arrangement.SpaceEvenly,
     ) {
@@ -511,7 +526,10 @@ fun ServingOptionItem(
         modifier = modifier
             .size(height = 56.dp, width = 80.dp)
             .clip(RoundedCornerShape(4.dp))
-            .background(if (isSelected) Color.White else Color.Transparent)
+            .background(
+                if (isSelected) MaterialTheme.colorScheme.surfaceContainerLowest
+                else Color.Transparent
+            )
             .clickable { onClick() },
         contentAlignment = Alignment.Center
     ) {
@@ -520,12 +538,20 @@ fun ServingOptionItem(
                 imageVector = icon,
                 contentDescription = null,
                 modifier = Modifier.size(16.dp),
-                tint = if (isSelected) ServingOptionSelectedTint else ServingOptionNotSelectedTint
+                tint = if (isSelected) {
+                    MaterialTheme.colorScheme.secondary
+                } else {
+                    MaterialTheme.colorScheme.onSurfaceVariant
+                }
             )
             Text(
                 text = text,
                 style = MaterialTheme.typography.bodyMedium,
-                color = if (isSelected) ServingOptionSelectedTint else ServingOptionNotSelectedTint,
+                color = if (isSelected) {
+                    MaterialTheme.colorScheme.secondary
+                } else {
+                    MaterialTheme.colorScheme.onSurfaceVariant
+                },
                 fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Medium
             )
         }
@@ -542,11 +568,11 @@ fun FilterBtn(
     BadgedBox(
         badge = {
             if (filtersApplied > 0) {
-                Badge {
+                Badge(containerColor = MaterialTheme.colorScheme.secondary) {
                     Text(
                         text = filtersApplied.toString(),
                         style = MaterialTheme.typography.labelSmall,
-                        color = Color.White
+                        color = MaterialTheme.colorScheme.onSecondary
                     )
                 }
             }

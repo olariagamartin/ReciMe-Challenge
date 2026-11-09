@@ -35,19 +35,21 @@ fun RatingSection(
         Icon(
             imageVector = Icons.Filled.Star,
             contentDescription = "Rating",
-            tint = MaterialTheme.colorScheme.primary,
+            tint = MaterialTheme.colorScheme.tertiary,
             modifier = Modifier.size(16.dp)
         )
         Spacer(modifier = Modifier.width(4.dp))
         Text(
             text = rating.stars.toString(),
-            style = MaterialTheme.typography.bodyMedium
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onTertiaryContainer
         )
         Spacer(modifier = Modifier.width(4.dp))
         // todo: format
         Text(
             text = stringResource(R.string.reviews, rating.reviews),
-            style = MaterialTheme.typography.bodyMedium
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
         )
     }
 }

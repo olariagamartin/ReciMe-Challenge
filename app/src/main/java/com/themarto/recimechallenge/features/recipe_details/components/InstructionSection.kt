@@ -52,7 +52,7 @@ fun InstructionSection(
                     .fillMaxWidth()
                     .padding(4.dp)
                     .background(
-                        MaterialTheme.colorScheme.surfaceBright, RoundedCornerShape(16.dp)
+                        MaterialTheme.colorScheme.surfaceContainerLow, RoundedCornerShape(16.dp)
                     )
             ) {
                 Text(
