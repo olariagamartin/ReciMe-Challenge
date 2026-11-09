@@ -66,7 +66,7 @@ fun BottomNavBar(
         containerColor = MaterialTheme.colorScheme.surface
     ) {
         bottomTabs.forEach { tab ->
-            val selected = currentRoute == tab.route
+            val selected = currentRoute?.startsWith(tab.route) == true
             NavigationBarItem(
                 icon = {
                     Box(
