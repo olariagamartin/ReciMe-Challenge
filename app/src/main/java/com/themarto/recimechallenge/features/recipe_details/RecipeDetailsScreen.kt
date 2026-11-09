@@ -95,6 +95,11 @@ fun RecipeDetailsContent(
                 modifier = Modifier
                     .padding(4.dp)
             )
+            TitleSection(
+                title = recipe.title,
+                modifier = Modifier
+                    .padding(horizontal = 8.dp, vertical = 4.dp)
+            )
             IngredientsSection(
                 ingredients = recipe.ingredients,
                 checkedIngredients = checkedIngredients,
