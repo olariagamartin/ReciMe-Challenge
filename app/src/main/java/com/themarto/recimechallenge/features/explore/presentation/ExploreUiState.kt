@@ -8,6 +8,5 @@ sealed class ExploreUiState {
         val recipes: List<Recipe>,
         val recipeOfTheDay: Recipe,
     ) : ExploreUiState()
-    // todo: add types
     data class Error(val message: String) : ExploreUiState()
 }

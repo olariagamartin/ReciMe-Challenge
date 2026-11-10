@@ -32,7 +32,7 @@
     <string name="keto_chip">🥑 Keto</string>
     <string name="high_protein_chip">🍗 Alto en Proteína</string>
     <string name="apply">Aplicar</string>
-    <string name="reviews">(%d reseñas)</string>
+    <string name="reviews">(%s reseñas)</string>
     <string name="details_title">Detalles</string>
     <string name="back">Volver</string>
     <string name="ingredients">Ingredientes</string>

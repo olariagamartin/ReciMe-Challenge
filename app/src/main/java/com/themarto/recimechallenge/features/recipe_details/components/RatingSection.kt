@@ -18,6 +18,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.themarto.recimechallenge.R
+import com.themarto.recimechallenge.components.formatCount
 import com.themarto.recimechallenge.data.model.Rating
 import com.themarto.recimechallenge.ui.theme.ReciMeChallengeTheme
 
@@ -45,9 +46,8 @@ fun RatingSection(
             color = MaterialTheme.colorScheme.onTertiaryContainer
         )
         Spacer(modifier = Modifier.width(4.dp))
-        // todo: format
         Text(
-            text = stringResource(R.string.reviews, rating.reviews),
+            text = stringResource(R.string.reviews, formatCount(rating.reviews)),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )

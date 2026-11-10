@@ -81,15 +81,19 @@ fun RatingChip(
         )
         if (showReviews) {
             Spacer(modifier = Modifier.width(4.dp))
-            // todo: format
             Text(
-                text = stringResource(R.string.reviews, rating.reviews),
+                text = stringResource(R.string.reviews, formatCount(rating.reviews)),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onTertiaryContainer
             )
         }
     }
 }
+
+fun formatCount(count: Int): String = if (count >= 1000) {
+    val value = count / 1000
+    "${value}k"
+} else count.toString()
 
 @Composable
 fun BookmarkButton(
