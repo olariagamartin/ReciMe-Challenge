@@ -20,11 +20,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.themarto.recimechallenge.R
-import com.themarto.recimechallenge.components.RecipeCard
-import com.themarto.recimechallenge.data.model.Recipe
+import com.themarto.recimechallenge.core.components.RecipeCard
+import com.themarto.recimechallenge.core.data.model.Recipe
 import com.themarto.recimechallenge.features.saved.presentation.SavedViewModel
-import com.themarto.recimechallenge.ui.preview.PreviewData
-import com.themarto.recimechallenge.ui.theme.ReciMeChallengeTheme
+import com.themarto.recimechallenge.core.ui.preview.PreviewData
+import com.themarto.recimechallenge.core.ui.theme.ReciMeChallengeTheme
 import org.koin.androidx.compose.koinViewModel
 
 @Composable

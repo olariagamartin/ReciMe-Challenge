@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalContracts::class)
 
-package com.themarto.recimechallenge.data.model
+package com.themarto.recimechallenge.core.data.model
 
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.contract

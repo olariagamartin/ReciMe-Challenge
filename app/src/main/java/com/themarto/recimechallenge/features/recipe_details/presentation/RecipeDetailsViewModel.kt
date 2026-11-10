@@ -2,9 +2,9 @@ package com.themarto.recimechallenge.features.recipe_details.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.themarto.recimechallenge.data.model.isError
-import com.themarto.recimechallenge.data.repository.RecipesRepository
-import com.themarto.recimechallenge.ui.preview.PreviewData
+import com.themarto.recimechallenge.core.data.model.isError
+import com.themarto.recimechallenge.core.data.repository.RecipesRepository
+import com.themarto.recimechallenge.core.ui.preview.PreviewData
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

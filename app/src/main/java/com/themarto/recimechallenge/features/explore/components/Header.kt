@@ -23,9 +23,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.themarto.recimechallenge.R
-import com.themarto.recimechallenge.components.DietaryFilter
-import com.themarto.recimechallenge.components.getDietaryAttrString
-import com.themarto.recimechallenge.data.model.DietaryAttribute
+import com.themarto.recimechallenge.core.components.DietaryFilter
+import com.themarto.recimechallenge.core.components.getDietaryAttrString
+import com.themarto.recimechallenge.core.data.model.DietaryAttribute
 
 @Composable
 fun Header(

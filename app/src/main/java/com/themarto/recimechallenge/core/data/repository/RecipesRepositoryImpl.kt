@@ -1,13 +1,13 @@
-package com.themarto.recimechallenge.data.repository
+package com.themarto.recimechallenge.core.data.repository
 
-import com.themarto.recimechallenge.data.model.Result
-import com.themarto.recimechallenge.data.database.RecipesLocalStorage
-import com.themarto.recimechallenge.data.model.isError
-import com.themarto.recimechallenge.data.model.isSuccess
-import com.themarto.recimechallenge.data.model.ExploreFeed
-import com.themarto.recimechallenge.data.model.Recipe
-import com.themarto.recimechallenge.data.model.RecipeSearch
-import com.themarto.recimechallenge.data.network.RecipesApi
+import com.themarto.recimechallenge.core.data.model.Result
+import com.themarto.recimechallenge.core.data.database.RecipesLocalStorage
+import com.themarto.recimechallenge.core.data.model.isError
+import com.themarto.recimechallenge.core.data.model.isSuccess
+import com.themarto.recimechallenge.core.data.model.ExploreFeed
+import com.themarto.recimechallenge.core.data.model.Recipe
+import com.themarto.recimechallenge.core.data.model.RecipeSearch
+import com.themarto.recimechallenge.core.data.network.RecipesApi
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow

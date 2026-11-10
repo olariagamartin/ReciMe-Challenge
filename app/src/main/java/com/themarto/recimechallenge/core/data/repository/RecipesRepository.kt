@@ -1,9 +1,9 @@
-package com.themarto.recimechallenge.data.repository
+package com.themarto.recimechallenge.core.data.repository
 
-import com.themarto.recimechallenge.data.model.Result
-import com.themarto.recimechallenge.data.model.ExploreFeed
-import com.themarto.recimechallenge.data.model.Recipe
-import com.themarto.recimechallenge.data.model.RecipeSearch
+import com.themarto.recimechallenge.core.data.model.Result
+import com.themarto.recimechallenge.core.data.model.ExploreFeed
+import com.themarto.recimechallenge.core.data.model.Recipe
+import com.themarto.recimechallenge.core.data.model.RecipeSearch
 import kotlinx.coroutines.flow.Flow
 
 interface RecipesRepository {

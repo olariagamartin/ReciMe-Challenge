@@ -1,13 +1,13 @@
-package com.themarto.recimechallenge.data.network
+package com.themarto.recimechallenge.core.data.network
 
 import android.content.Context
-import com.themarto.recimechallenge.data.model.DietaryAttribute
-import com.themarto.recimechallenge.data.model.ExploreFeed
-import com.themarto.recimechallenge.data.model.Ingredient
-import com.themarto.recimechallenge.data.model.Rating
-import com.themarto.recimechallenge.data.model.Recipe
-import com.themarto.recimechallenge.data.model.RecipeSearch
-import com.themarto.recimechallenge.data.model.Result
+import com.themarto.recimechallenge.core.data.model.DietaryAttribute
+import com.themarto.recimechallenge.core.data.model.ExploreFeed
+import com.themarto.recimechallenge.core.data.model.Ingredient
+import com.themarto.recimechallenge.core.data.model.Rating
+import com.themarto.recimechallenge.core.data.model.Recipe
+import com.themarto.recimechallenge.core.data.model.RecipeSearch
+import com.themarto.recimechallenge.core.data.model.Result
 import com.themarto.recimechallenge.features.search.model.ServingOption
 import org.json.JSONArray
 import org.json.JSONObject

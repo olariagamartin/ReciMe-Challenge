@@ -2,13 +2,13 @@ package com.themarto.recimechallenge.features.search.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.themarto.recimechallenge.data.model.DietaryAttribute
+import com.themarto.recimechallenge.core.data.model.DietaryAttribute
 import com.themarto.recimechallenge.features.search.model.FiltersStatus
 import com.themarto.recimechallenge.features.search.model.ServingOption
-import com.themarto.recimechallenge.data.model.Recipe
-import com.themarto.recimechallenge.data.model.RecipeSearch
-import com.themarto.recimechallenge.data.model.isError
-import com.themarto.recimechallenge.data.repository.RecipesRepository
+import com.themarto.recimechallenge.core.data.model.Recipe
+import com.themarto.recimechallenge.core.data.model.RecipeSearch
+import com.themarto.recimechallenge.core.data.model.isError
+import com.themarto.recimechallenge.core.data.repository.RecipesRepository
 import com.themarto.recimechallenge.features.search.model.SearchScreenParam
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

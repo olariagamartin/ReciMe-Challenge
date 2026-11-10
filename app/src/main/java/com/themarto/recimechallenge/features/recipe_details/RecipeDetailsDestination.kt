@@ -1,6 +1,6 @@
 package com.themarto.recimechallenge.features.recipe_details
 
-import com.themarto.recimechallenge.navigation.Destination
+import com.themarto.recimechallenge.core.navigation.Destination
 
 object RecipeDetailsDestination : Destination {
     override val route: String = "details/{$PARAM_RECIPE_ID}"

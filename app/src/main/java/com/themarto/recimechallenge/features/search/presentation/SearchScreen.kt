@@ -22,18 +22,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.themarto.recimechallenge.R
-import com.themarto.recimechallenge.data.model.DietaryAttribute
+import com.themarto.recimechallenge.core.data.model.DietaryAttribute
 import com.themarto.recimechallenge.features.search.components.FilterBtn
 import com.themarto.recimechallenge.features.search.components.FiltersCard
 import com.themarto.recimechallenge.features.search.components.SearchBar
 import com.themarto.recimechallenge.features.search.components.SearchResult
 import com.themarto.recimechallenge.features.search.model.FiltersStatus
 import com.themarto.recimechallenge.features.search.model.ServingOption
-import com.themarto.recimechallenge.data.model.Recipe
+import com.themarto.recimechallenge.core.data.model.Recipe
 import com.themarto.recimechallenge.features.search.components.IngredientPromptDialog
 import com.themarto.recimechallenge.features.search.model.SearchScreenParam
-import com.themarto.recimechallenge.ui.preview.PreviewData
-import com.themarto.recimechallenge.ui.theme.ReciMeChallengeTheme
+import com.themarto.recimechallenge.core.ui.preview.PreviewData
+import com.themarto.recimechallenge.core.ui.theme.ReciMeChallengeTheme
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
 

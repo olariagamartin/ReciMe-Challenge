@@ -55,11 +55,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.themarto.recimechallenge.R
-import com.themarto.recimechallenge.components.getDietaryAttrString
-import com.themarto.recimechallenge.data.model.DietaryAttribute
+import com.themarto.recimechallenge.core.components.getDietaryAttrString
+import com.themarto.recimechallenge.core.data.model.DietaryAttribute
 import com.themarto.recimechallenge.features.search.model.FiltersStatus
 import com.themarto.recimechallenge.features.search.model.ServingOption
-import com.themarto.recimechallenge.ui.theme.ReciMeChallengeTheme
+import com.themarto.recimechallenge.core.ui.theme.ReciMeChallengeTheme
 
 @Composable
 fun FiltersCard(

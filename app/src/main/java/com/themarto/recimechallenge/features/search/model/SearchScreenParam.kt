@@ -1,6 +1,6 @@
 package com.themarto.recimechallenge.features.search.model
 
-import com.themarto.recimechallenge.data.model.DietaryAttribute
+import com.themarto.recimechallenge.core.data.model.DietaryAttribute
 import com.themarto.recimechallenge.features.search.SearchDestination
 import kotlin.collections.contains
 

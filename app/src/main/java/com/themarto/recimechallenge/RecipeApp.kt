@@ -9,7 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.themarto.recimechallenge.components.BottomNavBar
+import com.themarto.recimechallenge.core.components.BottomNavBar
 import com.themarto.recimechallenge.features.explore.ExploreDestination
 import com.themarto.recimechallenge.features.explore.presentation.ExploreScreen
 import com.themarto.recimechallenge.features.recipe_details.RecipeDetailsDestination

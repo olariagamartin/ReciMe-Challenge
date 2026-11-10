@@ -1,17 +1,17 @@
 package com.themarto.recimechallenge
 
-import com.themarto.recimechallenge.data.model.DietaryAttribute
-import com.themarto.recimechallenge.data.model.ExploreFeed
-import com.themarto.recimechallenge.data.model.Recipe
-import com.themarto.recimechallenge.data.model.RecipeSearch
-import com.themarto.recimechallenge.data.model.Result
-import com.themarto.recimechallenge.data.repository.RecipesRepository
+import com.themarto.recimechallenge.core.data.model.DietaryAttribute
+import com.themarto.recimechallenge.core.data.model.ExploreFeed
+import com.themarto.recimechallenge.core.data.model.Recipe
+import com.themarto.recimechallenge.core.data.model.RecipeSearch
+import com.themarto.recimechallenge.core.data.model.Result
+import com.themarto.recimechallenge.core.data.repository.RecipesRepository
 import com.themarto.recimechallenge.features.search.model.FiltersStatus
 import com.themarto.recimechallenge.features.search.model.SearchScreenParam
 import com.themarto.recimechallenge.features.search.model.ServingOption
 import com.themarto.recimechallenge.features.search.presentation.SearchUiState
 import com.themarto.recimechallenge.features.search.presentation.SearchViewModel
-import com.themarto.recimechallenge.ui.preview.PreviewData
+import com.themarto.recimechallenge.core.ui.preview.PreviewData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow

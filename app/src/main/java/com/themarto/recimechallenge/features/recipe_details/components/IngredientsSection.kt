@@ -24,8 +24,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.themarto.recimechallenge.R
-import com.themarto.recimechallenge.data.model.Ingredient
-import com.themarto.recimechallenge.ui.theme.ReciMeChallengeTheme
+import com.themarto.recimechallenge.core.data.model.Ingredient
+import com.themarto.recimechallenge.core.ui.theme.ReciMeChallengeTheme
 
 @Composable
 fun IngredientsSection(

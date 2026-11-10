@@ -1,4 +1,4 @@
-package com.themarto.recimechallenge.components
+package com.themarto.recimechallenge.core.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -30,7 +30,7 @@ import com.themarto.recimechallenge.R
 import com.themarto.recimechallenge.features.explore.ExploreDestination
 import com.themarto.recimechallenge.features.saved.SavedDestination
 import com.themarto.recimechallenge.features.search.SearchDestination
-import com.themarto.recimechallenge.ui.theme.ReciMeChallengeTheme
+import com.themarto.recimechallenge.core.ui.theme.ReciMeChallengeTheme
 
 data class BottomBar(
     val labelRes: Int,

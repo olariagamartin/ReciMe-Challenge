@@ -36,13 +36,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.themarto.recimechallenge.R
-import com.themarto.recimechallenge.components.BookmarkButton
-import com.themarto.recimechallenge.components.DietaryBadges
-import com.themarto.recimechallenge.components.MetricChip
-import com.themarto.recimechallenge.components.RatingChip
-import com.themarto.recimechallenge.data.model.Recipe
-import com.themarto.recimechallenge.ui.preview.PreviewData
-import com.themarto.recimechallenge.ui.theme.ReciMeChallengeTheme
+import com.themarto.recimechallenge.core.components.BookmarkButton
+import com.themarto.recimechallenge.core.components.DietaryBadges
+import com.themarto.recimechallenge.core.components.MetricChip
+import com.themarto.recimechallenge.core.components.RatingChip
+import com.themarto.recimechallenge.core.data.model.Recipe
+import com.themarto.recimechallenge.core.ui.preview.PreviewData
+import com.themarto.recimechallenge.core.ui.theme.ReciMeChallengeTheme
 
 @Composable
 fun FeaturedRecipe(

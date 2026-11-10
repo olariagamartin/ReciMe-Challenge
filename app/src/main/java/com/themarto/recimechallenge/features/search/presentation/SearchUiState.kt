@@ -1,7 +1,7 @@
 package com.themarto.recimechallenge.features.search.presentation
 
 import com.themarto.recimechallenge.features.search.model.FiltersStatus
-import com.themarto.recimechallenge.data.model.Recipe
+import com.themarto.recimechallenge.core.data.model.Recipe
 
 data class SearchUiState(
     val searchQuery: String = "",

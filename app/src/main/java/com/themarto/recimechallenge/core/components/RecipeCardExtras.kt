@@ -1,4 +1,4 @@
-package com.themarto.recimechallenge.components
+package com.themarto.recimechallenge.core.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -34,22 +34,22 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.themarto.recimechallenge.R
-import com.themarto.recimechallenge.data.model.DietaryAttribute
-import com.themarto.recimechallenge.data.model.Rating
-import com.themarto.recimechallenge.ui.preview.PreviewData
-import com.themarto.recimechallenge.ui.theme.DairyFreeBadgeContainer
-import com.themarto.recimechallenge.ui.theme.DairyFreeBadgeContent
-import com.themarto.recimechallenge.ui.theme.GlutenFreeBadgeContainer
-import com.themarto.recimechallenge.ui.theme.GlutenFreeBadgeContent
-import com.themarto.recimechallenge.ui.theme.HighProteinBadgeContainer
-import com.themarto.recimechallenge.ui.theme.HighProteinBadgeContent
-import com.themarto.recimechallenge.ui.theme.KetoBadgeContainer
-import com.themarto.recimechallenge.ui.theme.KetoBadgeContent
-import com.themarto.recimechallenge.ui.theme.ReciMeChallengeTheme
-import com.themarto.recimechallenge.ui.theme.VeganBadgeContainer
-import com.themarto.recimechallenge.ui.theme.VeganBadgeContent
-import com.themarto.recimechallenge.ui.theme.VegetarianBadgeContainer
-import com.themarto.recimechallenge.ui.theme.VegetarianBadgeContent
+import com.themarto.recimechallenge.core.data.model.DietaryAttribute
+import com.themarto.recimechallenge.core.data.model.Rating
+import com.themarto.recimechallenge.core.ui.preview.PreviewData
+import com.themarto.recimechallenge.core.ui.theme.DairyFreeBadgeContainer
+import com.themarto.recimechallenge.core.ui.theme.DairyFreeBadgeContent
+import com.themarto.recimechallenge.core.ui.theme.GlutenFreeBadgeContainer
+import com.themarto.recimechallenge.core.ui.theme.GlutenFreeBadgeContent
+import com.themarto.recimechallenge.core.ui.theme.HighProteinBadgeContainer
+import com.themarto.recimechallenge.core.ui.theme.HighProteinBadgeContent
+import com.themarto.recimechallenge.core.ui.theme.KetoBadgeContainer
+import com.themarto.recimechallenge.core.ui.theme.KetoBadgeContent
+import com.themarto.recimechallenge.core.ui.theme.ReciMeChallengeTheme
+import com.themarto.recimechallenge.core.ui.theme.VeganBadgeContainer
+import com.themarto.recimechallenge.core.ui.theme.VeganBadgeContent
+import com.themarto.recimechallenge.core.ui.theme.VegetarianBadgeContainer
+import com.themarto.recimechallenge.core.ui.theme.VegetarianBadgeContent
 
 @Composable
 fun RatingChip(

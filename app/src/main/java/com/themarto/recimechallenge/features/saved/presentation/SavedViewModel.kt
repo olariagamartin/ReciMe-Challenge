@@ -2,8 +2,8 @@ package com.themarto.recimechallenge.features.saved.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.themarto.recimechallenge.data.model.Recipe
-import com.themarto.recimechallenge.data.repository.RecipesRepository
+import com.themarto.recimechallenge.core.data.model.Recipe
+import com.themarto.recimechallenge.core.data.repository.RecipesRepository
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map

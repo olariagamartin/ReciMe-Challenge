@@ -1,6 +1,6 @@
 package com.themarto.recimechallenge.features.explore.presentation
 
-import com.themarto.recimechallenge.data.model.Recipe
+import com.themarto.recimechallenge.core.data.model.Recipe
 
 sealed class ExploreUiState {
     object Loading : ExploreUiState()

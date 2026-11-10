@@ -1,4 +1,4 @@
-package com.themarto.recimechallenge.ui.theme
+package com.themarto.recimechallenge.core.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

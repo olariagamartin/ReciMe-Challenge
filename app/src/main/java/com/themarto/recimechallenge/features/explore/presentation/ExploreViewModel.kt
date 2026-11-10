@@ -2,12 +2,12 @@ package com.themarto.recimechallenge.features.explore.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.themarto.recimechallenge.data.model.DietaryAttribute
-import com.themarto.recimechallenge.data.model.ExploreFeed
-import com.themarto.recimechallenge.data.model.Recipe
-import com.themarto.recimechallenge.data.model.Result
-import com.themarto.recimechallenge.data.model.isSuccess
-import com.themarto.recimechallenge.data.repository.RecipesRepository
+import com.themarto.recimechallenge.core.data.model.DietaryAttribute
+import com.themarto.recimechallenge.core.data.model.ExploreFeed
+import com.themarto.recimechallenge.core.data.model.Recipe
+import com.themarto.recimechallenge.core.data.model.Result
+import com.themarto.recimechallenge.core.data.model.isSuccess
+import com.themarto.recimechallenge.core.data.repository.RecipesRepository
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map

@@ -1,7 +1,7 @@
 package com.themarto.recimechallenge
 
 import android.app.Application
-import com.themarto.recimechallenge.data.DataModuleProvider
+import com.themarto.recimechallenge.core.data.DataModuleProvider
 import com.themarto.recimechallenge.features.explore.ExploreModuleProvider
 import com.themarto.recimechallenge.features.recipe_details.DetailsModuleProvider
 import com.themarto.recimechallenge.features.saved.SavedModuleProvider

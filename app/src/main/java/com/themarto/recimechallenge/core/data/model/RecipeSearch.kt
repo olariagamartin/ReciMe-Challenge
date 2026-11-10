@@ -1,4 +1,4 @@
-package com.themarto.recimechallenge.data.model
+package com.themarto.recimechallenge.core.data.model
 
 import com.themarto.recimechallenge.features.search.model.ServingOption
 

@@ -1,7 +1,7 @@
-package com.themarto.recimechallenge.data.database
+package com.themarto.recimechallenge.core.data.database
 
-import com.themarto.recimechallenge.data.model.Recipe
-import com.themarto.recimechallenge.data.model.Result
+import com.themarto.recimechallenge.core.data.model.Recipe
+import com.themarto.recimechallenge.core.data.model.Result
 
 // simulates a Room implementation
 class FakeRecipesStorage : RecipesLocalStorage {
