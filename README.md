@@ -51,9 +51,4 @@ The project divides the layers into folders (for a bigger project this folders w
 
 Clone the repo and open in Android Studio
 
-<br>
-
------
-<br>
-
 Crafted with ❤️ and Kotlin.
