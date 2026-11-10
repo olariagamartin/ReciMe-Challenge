@@ -19,7 +19,7 @@
     <string name="active_count">%d ativo</string>
     <string name="servings_title">Porções</string>
     <string name="include_ingredients">Incluir ingredientes</string>
-    <string name="selected_count">%d selecionado</string>
+    <string name="included_count">%d incluido</string>
     <string name="exclude_ingredients">Excluir ingredientes</string>
     <string name="excluded_count">%d excluído</string>
     <string name="any">Qualquer</string>

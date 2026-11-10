@@ -141,7 +141,7 @@ private fun DietarySection(
         SectionHeader(
             icon = Icons.Outlined.Eco,
             title = stringResource(R.string.dietary_preferences),
-            countText = stringResource(R.string.active_count, 1),
+            countText = stringResource(R.string.active_count, dietaryAttrsSelected.size),
             countColor = MaterialTheme.colorScheme.primary
         )
         FlowRow(
@@ -189,7 +189,7 @@ private fun IncludeIngredientsSection(
         SectionHeader(
             icon = Icons.Default.AddCircleOutline,
             title = stringResource(R.string.include_ingredients),
-            countText = stringResource(R.string.selected_count, includeIngredients.size),
+            countText = stringResource(R.string.included_count, includeIngredients.size),
             countColor = MaterialTheme.colorScheme.primary
         )
         FlowRow(
@@ -222,7 +222,7 @@ private fun ExcludeIngredientsSection(
         SectionHeader(
             icon = Icons.Outlined.RemoveCircleOutline,
             title = stringResource(R.string.exclude_ingredients),
-            countText = stringResource(R.string.excluded_count, 1),
+            countText = stringResource(R.string.excluded_count, excludeIngredients.size),
             countColor = MaterialTheme.colorScheme.secondary
         )
         FlowRow (
