@@ -99,7 +99,7 @@ fun BottomNavBar(
                     label = {
                         Text(
                             text = stringResource(tab.labelRes),
-                            style = MaterialTheme.typography.labelSmall,
+                            style = MaterialTheme.typography.labelMedium,
                             fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Medium
                         )
                     },
