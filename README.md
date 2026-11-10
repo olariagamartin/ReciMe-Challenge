@@ -49,6 +49,6 @@ The project divides the layers into folders (for a bigger project this folders w
 
 ## 🏁 Getting Started
 
-Clone the repo and open in Android Studio
+Clone the repo and open in Android Studio (preferably Coil or later versions)
 
 Crafted with ❤️ and Kotlin.
