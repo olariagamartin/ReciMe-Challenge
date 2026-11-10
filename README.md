@@ -29,7 +29,7 @@ The project divides the layers into folders (for a bigger project this folders w
 ```
 [UI] <--> [ViewModel] <--> [Repository] <--> [API/Database]
 ```
-*API and Database are mocked*
+*API and Database are Faked with a local json file*
 
 ## 🔧 Technologies and tools
 - **Jetpack Compose** to build the UI
@@ -40,8 +40,9 @@ The project divides the layers into folders (for a bigger project this folders w
 
 ## 📽️ Screenshots
 
-|Explore|Search|Search filters|Saved|
-|---|---|---|---|
+|Explore|Search|Search filters|Saved|Recipe Details|
+|---|---|---|---|---|
+|![](screenshots/explore.png)|![](screenshots/search.png)|![](screenshots/filters.png)|![](screenshots/saved.png)|![](screenshots/recipe-details.png)|
 
 
 &nbsp;
