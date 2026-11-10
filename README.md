@@ -20,10 +20,10 @@ The project divides the layers into folders (for a bigger project this folders w
     - **navigation** app destinations.
 
 - **features** Screen UIs, ViewModels, Koin modules for each feature.
-    - **explore**
-    - **search**
-    - **recipe_details**
-    - **saved**
+    - **explore** home screen showing a feed with a "Recipe of the day"
+    - **search** search with filters
+    - **recipe_details** showing all recipe data
+    - **saved** saved recipes
 
 ### DataFlow
 ```
@@ -37,6 +37,7 @@ The project divides the layers into folders (for a bigger project this folders w
 - **Unit Tests** for the ViewModels
 - **Kotlin Flows** for reactiveness
 - **MVVM** architecture
+- **Stitch** AI design tool to create the design framework
 
 ## 📽️ Screenshots
 
